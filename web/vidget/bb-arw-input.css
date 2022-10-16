@@ -1,0 +1,174 @@
+.bb-arw-input {
+    display: grid;
+    grid-template-areas: "container";
+    overflow: hidden;
+    user-select: none;
+}
+
+.bb-arw-input__control {
+    background-color: #F0F0F0;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-weight: 300;
+    grid-area: container;
+    outline-style: none;
+}
+
+.bb-arw-input__control:focus {
+    border-color: #00A6CA;
+}
+
+.bb-arw-input__control:invalid {
+    border-color: #C50815;
+}
+.bb-arw-select.bb-arw-card__field.invalid,
+.bb-arw-input__control.invalid {
+  border-color: #C50815;
+}
+.bb-astr{
+  position: absolute;
+  bottom: 3px;
+  font-weight: 300;
+
+}
+
+.bb-arw-input__control::placeholder {
+    visibility: hidden;
+}
+
+.bb-arw-input__placeholder {
+    color: #686868;
+    grid-area: container;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all 100ms ease-in-out;
+    transform: translateZ(0);
+    white-space: nowrap;
+}
+
+.bb-arw-input__control:invalid~.bb-arw-input__placeholder {
+    color: #C50815;
+}
+
+@media (max-width: 1023px) {
+    .bb-arw-input {
+        height: 38px;
+    }
+
+    .bb-arw-input__control {
+        font-size: 13px;
+        line-height: 14px;
+        padding: 17px 7px 4px;
+    }
+    .bb-astr{
+      font-size: 13px;
+      line-height: 14px;
+    }
+    .bb-arw-input__control[type='date']{
+      padding: 14px 7px 4px;
+    }
+
+    .bb-arw-input__placeholder {
+        font-size: 10px;
+        line-height: 13px;
+        padding: 3px 8px;
+    }
+
+    .bb-arw-input__control:placeholder-shown:not(:focus)~.bb-arw-input__placeholder {
+        font-size: 13px;
+        line-height: 14px;
+        padding: 11px 8px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .bb-arw-input {
+        height: 30px;
+    }
+
+    .bb-arw-input__control {
+        font-size: 10px;
+        line-height: 11px;
+        padding: 13px 5px 3px;
+    }
+    .bb-astr{
+      font-size: 10px;
+      line-height: 11px;
+    }
+    .bb-arw-input__control[type='date']{
+      padding: 10px 5px 3px;
+    }
+
+    .bb-arw-input__placeholder {
+        font-size: 8px;
+        line-height: 10px;
+        padding: 3px 6px;
+    }
+
+    .bb-arw-input__control:placeholder-shown:not(:focus)~.bb-arw-input__placeholder {
+        font-size: 10px;
+        line-height: 11px;
+        padding: 9px 6px;
+    }
+}
+
+@media (min-width: 1366px) and (max-width: 1599px) {
+    .bb-arw-input {
+        height: 34px;
+    }
+
+    .bb-arw-input__control {
+        font-size: 11px;
+        line-height: 12px;
+        padding: 15px 6px 4px;
+    }
+    .bb-astr{
+      font-size: 11px;
+      line-height: 12px;
+    }
+    .bb-arw-input__control[type='date']{
+      padding: 12px 6px 4px;
+    }
+
+    .bb-arw-input__placeholder {
+        font-size: 9px;
+        line-height: 11px;
+        padding: 3px 7px;
+    }
+
+    .bb-arw-input__control:placeholder-shown:not(:focus)~.bb-arw-input__placeholder {
+        font-size: 11px;
+        line-height: 12px;
+        padding: 10px 7px;
+    }
+}
+
+@media (min-width: 1600px) {
+  .bb-astr{
+    font-size: 13px;
+    line-height: 14px;
+  }
+    .bb-arw-input {
+        height: 39px;
+    }
+
+    .bb-arw-input__control {
+        font-size: 13px;
+        line-height: 14px;
+        padding: 17px 7px 5px;
+    }
+    .bb-arw-input__control[type='date']{
+      padding: 14px 7px 5px;
+    }
+    .bb-arw-input__placeholder {
+        font-size: 10px;
+        line-height: 13px;
+        padding: 3px 8px;
+    }
+
+    .bb-arw-input__control:placeholder-shown:not(:focus)~.bb-arw-input__placeholder {
+        font-size: 13px;
+        line-height: 14px;
+        padding: 12px 8px;
+    }
+}

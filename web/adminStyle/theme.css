@@ -1,0 +1,69 @@
+.main-header .nav-link {
+  height: 1.8rem;
+  background-color: #343a40;
+}
+.main-header.navbar.navbar-expand.navbar-white.navbar-light {
+  background-color: #343a40;
+}
+.navbar-expand .navbar-nav .nav-link {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.nav-link {
+  padding: 0.2rem 1rem;
+}
+.navbar-expand .navbar-nav {
+  margin: 0 0 0 auto;
+}
+.navbar-expand .navbar-nav .nav-link {
+  color: #fff;
+}
+
+#indexColum.block-colum {
+  overflow: hidden;
+  width: 290px;
+  margin: 0 0 0 15px;
+  padding: 25px;
+  background-color: #fff;
+  box-shadow: 0 11px 20px rgb(0 0 0 / 20%);
+  height: fit-content;
+}
+
+#indexColum.block-colum .card {
+  background: #dbf9ff;
+  border: none;
+  border-radius: 0;
+}
+
+#indexColum.block-colum .card-header {
+  background: #00a6ca;
+  padding: 9px;
+  text-align: center;
+  height: 39px;
+}
+#indexColum.block-colum .card-descr {
+  padding: 13px 21px;
+  display: grid;
+}
+
+#indexColum.block-colum .card-header h5 {
+  font-family: Stem,sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0;
+  font-weight: 400;
+  display: inline;
+  vertical-align: inherit;
+}
+
+#indexColum.block-colum .card .card-descr p {
+  vertical-align: text-top;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 8px;
+}

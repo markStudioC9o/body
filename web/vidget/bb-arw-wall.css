@@ -1,0 +1,7 @@
+.bb-arw-wall {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    place-items: start;
+}

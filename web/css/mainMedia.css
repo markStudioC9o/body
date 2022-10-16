@@ -1,0 +1,60 @@
+/* @media screen and (max-width: 1535px) {
+  .hbl_title{
+    font-size: 29px;
+    line-height: 33px;
+  }
+  .hbl_title .liner{
+    height: 2px;
+    margin-top: 4px;
+  }
+  #newhomebb .container{
+      width: 796px;
+  }
+  #newhomebb .main .main__inner .column{
+    width: 220px;
+    margin-right: 12px;
+  }
+  #newhomebb .main .main__inner .content{
+    padding: 20px;
+  }
+  .pt-40{
+    padding-top: 20px !important;
+  }
+  .page_view_one .hbl_desc, .page_view_one .hbl_desc p{
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .slert{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-bottom: 2px;
+  }
+  .hbl_desc{
+    margin: 0 0 32px;
+  }
+  .col-pod-s{
+    width: 252px;
+  }
+  .col-pod-s:nth-child(even){
+    margin-left: 20px;
+  }
+  .img_sh{
+    height: 106px;
+  }
+  .block_b.in-image {
+    font-size: 10px;
+    width: 38px;
+    height: 18px;
+}
+.set-er{
+  height: 179px;
+}
+.set-er .block-shild-title{
+  top: 106px;
+  padding: 8px 12px;
+}
+#newhomebb .col-pod-s .block-shild-arcti .block-shild-title p{
+  font-size: 18px;
+}
+} */

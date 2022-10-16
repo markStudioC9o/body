@@ -1,0 +1,29 @@
+#templateGallery{
+    display: flex;
+}
+#templateGallery .block-gall-default{
+    display: flex;
+}
+#templateGallery .col-bl{
+    background: #ddd;
+    position: relative;
+    border: 1px solid #d3d3d3;
+}
+.col-ml{
+    border: 1px solid #d3d3d3;
+}
+.bt-pr{
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 28px;
+    text-align: center;
+}
+.pl-col-j,
+.bt-pr span{
+    border-radius: 30px;
+    background: #e9e4e4;
+}

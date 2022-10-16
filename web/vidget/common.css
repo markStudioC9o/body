@@ -1,0 +1,12 @@
+:root {
+    font-family: 'Stem', system-ui, ui-sans-serif, sans-serif;
+}
+
+.bb-arw__shelf {
+    display: flex;
+    pointer-events: none;
+    position: fixed;
+    bottom: 25px;
+    right: 10px;
+}
+

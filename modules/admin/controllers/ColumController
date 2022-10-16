@@ -1,0 +1,22 @@
+<?php
+
+namespace app\modules\admin\controllers;
+
+use app\assets\AdminAsset;
+use app\models\LanguageSetting;
+use app\models\Widget;
+use Yii;
+use yii\data\ActiveDataProvider;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+
+class ColumController extends MainController
+{
+  public function actionIndex(){
+    if(Yii::$app->request->isAjax){
+      return $this->renderPartial('colum');
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.content-text-redactor{
+  margin-bottom: 15px;
+  
+}
+.block-tex-title h1.tit_elm{
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+h2.tit_elm{
+  margin-top: 70px;
+  margin-bottom: 25px;
+}
+.ul-wrap.croce li:before{
+  margin: 0;
+  left: -12px;
+}
+.ul-wrap.croce li{
+  margin-left: 15px;
+  width: calc(100% - 15px) !important;
+}
+.ul-wrap.check-list li:before{
+  margin: 0;
+  left: -12px;
+}
+.ul-wrap.check-list li{
+  margin-left: 15px;
+  width: calc(100% - 15px) !important;
+}
+.content-text-redactor .contrel-text{
+  font-size: 18px;
+  line-height: 25px;
+}
+.ul-wrap ul{
+  font-size: 18px;
+  line-height: 29px;
+}

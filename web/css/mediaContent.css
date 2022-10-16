@@ -1,0 +1,16 @@
+@media screen and (max-width: 1599px) {
+  .block-tex-title.element-bord h2, #mainH1{
+    font-size: 32px;
+    line-height: 39px;
+  }
+  .add-te{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .block-tex-title.element-bord h2, #mainH1{
+    font-size: 29px;
+    line-height: 35px;
+  }
+}

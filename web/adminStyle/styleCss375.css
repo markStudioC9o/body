@@ -1,0 +1,12 @@
+.btn-play{
+  width: 75px !important;
+}
+.title_video_sp {
+  position: absolute;
+  color: #fff;
+  left: 0;
+  background-color: #0000004f;
+  padding: 15px 30px;
+  font-size: 10px;
+  top: 0;
+}
