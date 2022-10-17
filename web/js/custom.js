@@ -149,6 +149,32 @@ $(document).on("click", "#ad-text-title", function (e) {
     }
   }
 });
+
+// var dragTitle = document.getElementById('ad-text-title');
+
+// dragTitle.onmousedown = function(e){
+//   dragTitle.style.position = 'absolute';
+//   moveAt(e);
+//   dragTitle.style.zIndex = 1000; // показывать мяч над другими элементами
+
+//   // передвинуть мяч под координаты курсора
+//   // и сдвинуть на половину ширины/высоты для центрирования
+//   function moveAt(e) {
+//     dragTitle.style.left = e.pageX - dragTitle.offsetWidth / 2 + 'px';
+//     dragTitle.style.top = e.pageY - dragTitle.offsetHeight / 2 + 'px';
+//   }
+//   document.onmousemove = function(e) {
+//     moveAt(e);
+//   }
+
+//   // 4. отследить окончание переноса
+//   dragTitle.onmouseup = function() {
+//     document.onmousemove = null;
+//     dragTitle.onmouseup = null;
+//       dragTitle.style.position = 'relative';
+//   }
+// }
+
 $(document).on("click", "#ad-head-title", function (e) {
   if ($(".param-colum.active").length) {
     $.post("/admin/articles/new-title-block-in-col", { data: "h2" }, Success);
