@@ -23,9 +23,9 @@ $(document).on('click', '.video-pop .controll', function(e){
   }
 })
 $(document).on("click", ".rever-img", function (e) {
+  AddsImage();
   $(".abbred-image").addClass("rever-img");
   $(".abbred-image").attr("data-img_id", $(this).data("id"));
-  $("#image").modal("show");
 });
 
 $(document).on("click", ".img-tag-prop", function (e) {

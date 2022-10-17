@@ -1,9 +1,7 @@
 <?
 
 use yii\helpers\ArrayHelper;
-
 ?>
-
 <div class="widget-calcbac">
   <section class="bb-arw-card gert">
     <div class="btn-cls-svg">
@@ -26,14 +24,12 @@ use yii\helpers\ArrayHelper;
       <? if (!empty($model)) : ?>
         <nav class="bb-arw-tabs bb-arw-card__tabs">
           <? foreach ($model as $item) : ?>
-            <button class="bb-arw-tabs__tab" data-id="tab-<?= $item->id ?>" id="tabs-<?= $item->id ?>">
+            <button class="bb-arw-tabs__tab" data-id="tab-<?= (isset($item->parent_id) && !empty($item->parent_id) ? $item->parent_id : $item->id) ?>" id="tabs-<?= (isset($item->parent_id) && !empty($item->parent_id) ? $item->parent_id : $item->id) ?>">
               <?= $item->name ?>
             </button>
           <? endforeach; ?>
         </nav>
       <? endif; ?>
-
-
       <? if (!empty($field)) : ?>
         <? foreach ($field as $item => $elem) : ?>
           <? $parametr = null; ?>
@@ -48,14 +44,11 @@ use yii\helpers\ArrayHelper;
             <? if (isset($result['img']) && !empty($result['img'])) : ?>
               <img class="bb-arw-card__banner" src="/callback/<?= $result['img']; ?>">
             <? endif; ?>
-
-
             <? if (isset($result['pos_linker']) && $result['pos_linker'] == 'start') : ?>
               <?= $this->render('callback-link', [
                 'result' => $result
               ]) ?>
             <? endif; ?>
-
             <? foreach ($elem as $fie) : ?>
               <? if ($fie['value'] == 'city') : ?>
                 <?= $this->render('vid-city', [
@@ -63,13 +56,10 @@ use yii\helpers\ArrayHelper;
                 ]) ?>
               <? endif; ?>
             <? endforeach; ?>
-
-
-
             <? foreach ($elem as $fie) : ?>
               <? if ($fie['value'] != 'city') : ?>
                 <label class="bb-arw-input bb-arw-card__field">
-                  <input type="<?= ($fie['value'] == "data" ? 'date' : 'text') ?>" class="bb-arw-input__control <?= ($fie['reqared'] == '1') ? "recs" : "" ?>" placeholder="<?= $fie['name'] ?><?= ($fie['reqared'] == '1') ? "*" : "" ?>" name="<?= $fie['value'] ?>" <?= ($fie['value'] == 'phone' ? 'onkeypress="validate(event)"' : '') ?>>
+                  <input data-id="<?= $fie['id']; ?>" type="<?= ($fie['value'] == "data" ? 'date' : 'text') ?>" class="bb-arw-input__control <?= ($fie['reqared'] == '1') ? "recs" : "" ?>" placeholder="<?= $fie['name'] ?><?= ($fie['reqared'] == '1') ? "*" : "" ?>" name="<?= $fie['value'] ?>" <?= ($fie['value'] == 'phone' ? 'onkeypress="validate(event)"' : '') ?>>
                   <span class="bb-arw-input__placeholder" aria-hidden="true"><?= $fie['name'] ?><?= ($fie['reqared'] == '1') ? "*" : "" ?></span>
                 </label>
                 <? if (isset($result['pos_linker']) && $result['pos_linker'] == $fie['id']) : ?>

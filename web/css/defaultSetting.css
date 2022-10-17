@@ -40,7 +40,7 @@ h2.tit_elm {
   }
   .content-text-redactor .contrel-text {
     font-size: 15px;
-    line-height: 21px;
+    line-height: 21px !important;
   }
   .block-tex-title h1.tit_elm {
     margin-top: 0;
@@ -76,9 +76,10 @@ h2.tit_elm {
   .content-text-redactor{
     margin-bottom: 10px;
   }
+  .add-te,
   .content-text-redactor .contrel-text{
     font-size: 14px;
-    line-height: 19px;
+    line-height: 19px !important;
   }
   .block-tex-title h1.tit_elm{
     margin-top: 0px;

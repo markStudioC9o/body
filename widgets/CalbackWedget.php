@@ -47,7 +47,7 @@ class CalbackWedget extends \yii\bootstrap4\Widget
       $name = CillbacOptionLang::find()->where(['param' => 'name'])->andWhere(['tag' => $lang])->asArray()->one();
       if (!empty($model)) {
         foreach ($model as $item) {
-          $field[$item->id] = CallbacFieldLang::find()->where(['widget_1' => $item->parent_id])->andWhere(['active' => '1'])->andWhere(['tag' => $lang])->asArray()->all();
+          $field[$item->parent_id] = CallbacFieldLang::find()->where(['widget_1' => $item->parent_id])->andWhere(['active' => '1'])->andWhere(['tag' => $lang])->asArray()->all();
         }
       }
     }
@@ -58,6 +58,7 @@ class CalbackWedget extends \yii\bootstrap4\Widget
       ];
     }
 
+    print_r($field);
     $mapOption = ArrayHelper::map($option, 'param', 'value');
     return $this->render('calbac', [
       'btn' => $btn,
@@ -68,7 +69,8 @@ class CalbackWedget extends \yii\bootstrap4\Widget
       'mapOption' => $mapOption,
       'arrayParam' => $arrayParam,
       'name' => $name,
-      'lang' => $lang
+      'lang' => $lang,
+      'param' => $param
     ]);
   }
 }
