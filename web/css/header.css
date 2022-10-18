@@ -241,12 +241,11 @@ header {
   background: attr(data-color);
 }
 .menu-link .menu-icon {
-  width: 29px;
-  height: 29px;
+  height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  margin-right: 11px;
+  margin-right: 8px;
   margin-top: -2px;
 }
 .icon img .hover {
