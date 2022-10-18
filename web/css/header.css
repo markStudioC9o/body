@@ -57,7 +57,7 @@ header {
   justify-content: right;
   -webkit-box-pack: end;
   padding-right: var(--pading-right);
-  height: 52px;
+  height: 49px;
   border-bottom: 1px solid #ffffff;
 }
 #menu-menyu-v-shapke-ru {
@@ -140,7 +140,7 @@ header {
   align-items: center;
   justify-content: right;
   padding-right: var(--pading-right);
-  height: 63px;
+  height: 62px;
   display: -webkit-box;
   -webkit-box-pack: end;
 }
