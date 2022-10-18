@@ -14,7 +14,7 @@
       <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
         <a href="<?= sendLink($baseLink, $lang); ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
           <? if (!empty($imgB)) : ?>
-            <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
+            <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
           <? endif; ?>
           <?php echo $baseLink['title']; ?>
         </a>
@@ -24,7 +24,7 @@
     <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <a href="<?= sendLink($elem, $lang); ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
         <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
-          <div class="menu-icon" style="<?= (isset($imgB['link']) && !empty($imgB['link']) ? 'background-image: url(/icon/' . $imgB['link'] . ')' : '') ?>"></div>
+          <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
         <? endif; ?>
         <? $promp = $menuParam->Proms($item['id'], $lang); ?>
         <?= (isset($promp['value']) && !empty($promp['value']) ? $promp['value'] : $elem['title']) ?>
@@ -39,7 +39,7 @@
   <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
     <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/articles/' : 'articles/') ?><?= (isset($elem['option']['link']) && ($elem['option']['link']) ? $elem['option']['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
-        <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
+        <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
       <? endif; ?>
       <? $promp = $menuParam->Proms($item['id'], $lang); ?>
       <?= (isset($promp['value']) && !empty($promp['value']) ? $promp['value'] : $elem['artic']['text']) ?>
@@ -52,7 +52,7 @@
   <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
     <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/pages/' : 'pages/') ?><?= (isset($elem['option']['link']) && ($elem['option']['link']) ? $elem['option']['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
-        <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
+        <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
       <? endif; ?>
       <? $promp = $menuParam->Proms($item['id'], $lang); ?>
       <?= (isset($promp['value']) && !empty($promp['value']) ? $promp['value'] : $elem['title']) ?>
