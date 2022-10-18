@@ -57,8 +57,6 @@ class CalbackWedget extends \yii\bootstrap4\Widget
         $elem['param'] => $elem['value']
       ];
     }
-
-    print_r($field);
     $mapOption = ArrayHelper::map($option, 'param', 'value');
     return $this->render('calbac', [
       'btn' => $btn,
@@ -74,3 +72,6 @@ class CalbackWedget extends \yii\bootstrap4\Widget
     ]);
   }
 }
+
+
+ 

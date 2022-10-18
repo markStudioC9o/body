@@ -63,11 +63,13 @@ class AdminAsset extends AssetBundle
         "adminStyle/plugins/select2/js/select2.full.min.js",
         "sortable/jquery-sortable-lists.js",
         "sortable/jquery-sortable-lists-mobile.js",
+        "js/dragdrop.js",
         "js/general.js",
         "js/croppie.js",
         "js/text-redactor.js",
         "js/custom.js",
         "jsAdmin/title-para.js",
+        
         // "jsAdmin/title-para.min.js"
         
         

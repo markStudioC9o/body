@@ -13,7 +13,7 @@
     <li class="main-menu-item menu-item menu-item-has-children" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <a data-id="<?= $item['id']?>" href="<?= sendLink($elem, $lang); ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
         <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
-          <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
+          <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
         <? endif; ?>
         <?= (isset($elem['title']) ? $elem['title'] : '') ?>
       </a>

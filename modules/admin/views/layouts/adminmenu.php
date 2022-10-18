@@ -1,5 +1,5 @@
 <ul class="bordContent">
-  <li>
+  <li class="draggable">
     <span id="ad-text-title" data-tolip="Заголовок H1">
       Hh
     </span>

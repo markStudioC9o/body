@@ -89,6 +89,7 @@ header {
   width: 100%;
   font-weight: 700;
   color: #fff;
+  line-height: 20px;
 }
 .sub-menu li a:hover {
   background-color: #fff;
