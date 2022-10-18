@@ -233,8 +233,8 @@ header {
   display: flex;
   height: 100%;
   align-items: center;
-  padding-right: 13px;
-  padding-left: 13px;
+  padding-right: 10px;
+  padding-left: 10px;
   padding-top: 1px;
 }
 .menu-link.main-menu-link:hover {
