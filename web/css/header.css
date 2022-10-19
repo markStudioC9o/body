@@ -645,3 +645,6 @@ span.gap-text{
   background-position: center;
   background-size: cover;
 }
+#mainH1, .block-tex-title.element-bord h2{
+  margin-top: -9px;
+}
