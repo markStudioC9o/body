@@ -263,6 +263,10 @@ div[contenteditable="true"] {
   display: none;
   flex-direction: column;
 }
+.step-block.accardion{
+  right: 100%;
+  left: auto;
+}
 .poor-block.active .step-block{
   display: flex !important;
 }
@@ -287,6 +291,21 @@ div[contenteditable="true"] {
   outline: none;
 }
 
+.content-one-accardion{
+  border-bottom: 40px solid #ddd;
+}
+
+.move-dragle{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  color: #ddd;
+  background-color: #007bff;
+  display: block;
+  border-radius: 5px;
+  width: 60px;  height: 60px;
+  text-align: center;
+}
 .block-tex-title {
   /* border: 1px dashed #ddd9; */
 }

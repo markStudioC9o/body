@@ -1,6 +1,6 @@
 <ul class="bordContent">
-  <li class="draggable">
-    <span id="ad-text-title" data-tolip="Заголовок H1">
+  <li>
+    <span id="ad-text-title" data-tolip="Заголовок H1" class="draggable">
       Hh
     </span>
   </li>
@@ -10,12 +10,12 @@
     </span>
   </li>
   <li>
-    <span id="ad-text-block" data-tolip="Блок с текстом">
+    <span id="ad-text-block" data-tolip="Блок с текстом" class="draggable">
       Tex
     </span>
   </li>
-  <li id="ad-colom-block">
-    <span data-tolip="Колонки">
+  <li>
+    <span data-tolip="Колонки" id="ad-colom-block"  class="draggable">
       Col
     </span>
   </li>

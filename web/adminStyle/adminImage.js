@@ -76,7 +76,7 @@ function addImageInAcardion(src, id) {
   function Success(data) {
     if (data) {
       console.log(id);
-      $("#dataRed-" + id).html(data);
+      $(".content-one-accardion[data-id='"+id+"']").append(data);
       $("#dataRed-" + id).removeAttr("contenteditable");
       $("#dataRed-" + id).removeClass("contrel-text");
       $("#dataRed-" + id)

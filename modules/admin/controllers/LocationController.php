@@ -244,6 +244,7 @@ class LocationController extends MainController
       'langer' => $langer,
       'city' => $city,
       'langerNew' => $langerNew,
+      'id' => $id
       
     ]);
   }
@@ -269,5 +270,16 @@ class LocationController extends MainController
     $model = Countries::findOne($id);
     $model->delete();
     return $this->redirect(['index']);
+  }
+
+  public function actionSortSoc($id){
+    $data = null;
+    $this->title = "Сортировка иконок в шапке";
+    $this->view->registerJsFile('/js/sort-social.js', ['depends' => AdminAsset::className()]);
+    $this->view->registerCssFile("/css/sort-social.css");
+    if(CoitiesData::find()->where(['cities_id' => $id])->exists()){
+      $data = CoitiesData::find()->where(['cities_id' => $id])->one();
+    }
+    return $this->render('sort', ['data' => $data]);
   }
 }

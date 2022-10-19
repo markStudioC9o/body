@@ -47,6 +47,7 @@ var DragManager = new function() {
     if (e.which != 1) return;
 
     var terget = e.target.closest('.draggable');
+    if(!terget) return;
     var elem = terget.cloneNode(true);
     if (!elem) return;
 
@@ -88,8 +89,10 @@ var DragManager = new function() {
     }
 
     // отобразить перенос объекта при каждом движении мыши
-    dragObject.avatar.style.left = e.pageX - dragObject.shiftX + 'px';
-    dragObject.avatar.style.top = e.pageY - dragObject.shiftY + 'px';
+    // dragObject.avatar.style.left = e.pageX - dragObject.shiftX + 'px';
+    // dragObject.avatar.style.top = e.pageY - dragObject.shiftY + 'px';
+    dragObject.avatar.style.left = e.pageX - 20 + 'px';
+    dragObject.avatar.style.top = e.pageY - 20 + 'px';
 
     return false;
   }
@@ -128,13 +131,13 @@ var DragManager = new function() {
     };
 
     // функция для отмены переноса
-    avatar.rollback = function() {
-      old.parent.insertBefore(avatar, old.nextSibling);
-      avatar.style.position = old.position;
-      avatar.style.left = old.left;
-      avatar.style.top = old.top;
-      avatar.style.zIndex = old.zIndex
-    };
+    // avatar.rollback = function() {
+    //   old.parent.insertBefore(avatar, old.nextSibling);
+    //   avatar.style.position = old.position;
+    //   avatar.style.left = old.left;
+    //   avatar.style.top = old.top;
+    //   avatar.style.zIndex = old.zIndex
+    // };
 
     return avatar;
   }
@@ -146,11 +149,12 @@ var DragManager = new function() {
     document.body.appendChild(avatar);
     avatar.style.zIndex = 9999;
     avatar.style.position = 'absolute';
+    avatar.classList.add('move-dragle');
   }
 
   function findDroppable(event) {
     // спрячем переносимый элемент
-    dragObject.avatar.hidden = true;
+    dragObject.avatar.remove();
 
     // получить самый вложенный элемент под курсором мыши
     var elem = document.elementFromPoint(event.clientX, event.clientY);
@@ -185,14 +189,30 @@ function getCoords(elem) { // кроме IE8-
 }
 
 DragManager.onDragCancel = function(dragObject) {
-  dragObject.avatar.rollback();
+  // dragObject.avatar.rollback();
 };
 
 DragManager.onDragEnd = function(dragObject, dropElem) {
+  var  idElem = dragObject.elem.getAttribute('id');
   dragObject.elem.style.display = 'none';
-  dropElem.classList.add('jkoyyyyy');
-  $.post("/admin/articles/new-title-block", { data: "h1" }, Success);
+  var atrId = dropElem.getAttribute('data-id');
+
+  if(idElem == 'ad-text-title'){
+    $.post("/admin/articles/new-title-block", { data: "h1" }, Success);
     function Success(data) {
-      dropElem.append(data);
+      $('.content-one-accardion[data-id="'+atrId+'"]').append(data);
     }
+  }
+  if(idElem == 'ad-text-block'){
+  $.post("/admin/articles/new-text-block", Success);
+  function Success(data) {
+    $('.content-one-accardion[data-id="'+atrId+'"]').append(data);
+  }
+}
+if(idElem == 'ad-colom-block'){
+  $.post("/admin/colum/index", Success);
+  function Success(data) {
+    $('.content-one-accardion[data-id="'+atrId+'"]').append(data);
+  }
+}
 };

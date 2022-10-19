@@ -76,7 +76,7 @@ header {
   position: absolute;
   top: 100%;
   z-index: 99;
-  width: 350px;
+  width: 300px;
   left: 0px;
 }
 .sub-menu li {
@@ -125,10 +125,10 @@ header {
   margin-right: 4px;
 }
 .item.comcol {
-  margin-right: 45px;
+  margin-right: 20px;
 }
 .item.social {
-  margin-right: 45px;
+  margin-right: 20px;
 }
 .item.search {
   margin-right: 4px;
@@ -364,7 +364,7 @@ header {
   vertical-align: baseline;
   font-weight: 300;
   color: #00000091;
-  padding: 4px 0 0 15px;
+  padding: 0px 0 0 15px;
 }
 .btn.col-elem-accr {
   display: none;
@@ -467,7 +467,7 @@ footer .fb3_right ul {
 }
 
 .breadcrambs p {
-  padding-bottom: 17px;
+  padding-bottom: 20px;
 }
 .breadcrambs p {
   font-size: 14px;
@@ -486,7 +486,9 @@ footer .fb3_right ul {
 }
 .breadcrambs p a {
   position: relative;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22px;
   color: #2e80a6;
   margin-right: 20px;
   cursor: pointer;
@@ -617,4 +619,10 @@ span.gap-text{
 }
 .perimage .im-wr{
   position: relative;
+}
+.breadcrambs{
+  padding: 0;
+}
+.main .main__inner .content{
+  padding-top: 20px;
 }

@@ -5,6 +5,9 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
 <div class="row">
+  <div class="col-md-12">
+    <?= Html::a('Сортировка', ['/admin/location/sort-soc', 'id' => $id])?>
+  </div>
   <div class="col-md-7">
     <div class="authors-form">
 
