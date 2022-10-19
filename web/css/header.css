@@ -475,6 +475,7 @@ footer .fb3_right ul {
 
 .breadcrambs p {
   padding-bottom: 20px;
+  line-height: 16px;
 }
 .breadcrambs p {
   font-size: 14px;
@@ -495,7 +496,7 @@ footer .fb3_right ul {
   position: relative;
   font-size: 16px;
   font-weight: 300;
-  line-height: 22px;
+  line-height: 16px;
   color: #2e80a6;
   margin-right: 20px;
   cursor: pointer;
