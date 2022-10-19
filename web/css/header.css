@@ -633,3 +633,14 @@ span.gap-text{
 .main .main__inner .content{
   padding-top: 20px;
 }
+.author_img {
+  float: left;
+  width: 47px;
+  height: 47px;
+  margin: 0 14px 0 0;
+  border-radius: 50%;
+  border: 2px solid #00A29D;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

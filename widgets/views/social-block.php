@@ -1,3 +1,4 @@
+<? if(isset($item['id']) && !empty($item['id']) && !empty($item['data'])):?>
 <div class="item <?= (isset($item['value']) && !empty($item['value']) && $item['value'] == "promt" ? "promtr" : "net-promt" )?>">
   <?
   switch ($item['id']) {
@@ -37,22 +38,16 @@
         <img src=\"/icon/vk.svg\" alt=\"\" class=\"hover\">
           </a>";
       break;
+
+      case "viber":
+        echo "<a class=\"icon sp-sd\" target=\"_blank\" href=\"" . $item['data'] . "\">
+          <img src=\"/icon/what.svg\" alt=\"\">
+          <img src=\"/icon/hover/Frame 8.svg\" alt=\"\" class=\"hover\">
+            </a>";
+        break;
   }
   ?>
 </div>
+<?//  = $item['id']?>
+<? endif;?>
 <!-- <div class="item user"><a class="icon icon-user" href="https://body-balance.com/account/"><img src="/icon/lk.svg" alt=""></a></div> -->
-<!-- Array
-(
-    
-
-    [1] => Array
-        (
-            [id] => youtube
-            [value] => promt
-            [order] => 1
-            [data] => https://www.youtube.com/channel/UCLrLW_tq5xANk8Pkxj3rUTg  
-        )
-
-    
-
-) -->
