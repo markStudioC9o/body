@@ -26,17 +26,24 @@ $(function () {
         "font-size": "1.1em",
       },
     },
-    ignoreClass: "addTab",
+    ignoreClass: "arrbuf",
   };
   
   $("#treeSortSoc").sortableLists(options2);
   
   $('.addTab').on('click', function(e){
     e.preventDefault();
-    // var LiTab = "<li class=\"tabLi\">пропуск</li>";
-    // $('#treeSortSoc').append(LiTab);
     $(this).closest("li").addClass('prytir');
-  })
+    $(this).closest("li").attr('data-value', 'promt');
+    
+  });
+
+  $('.removeTab').on('click', function(e){
+    e.preventDefault();
+    $(this).closest("li").removeClass('prytir');
+    $(this).closest("li").removeAttr('data-value');
+    
+  });
   // $("#toArrBtn").on("click", function () {
   //   var data = $("#sTree2").sortableListsToHierarchy();
   //   //console.log(data);
@@ -49,7 +56,18 @@ $(function () {
   // });
 
   $("#saveSort").on("click", function () {
-    var data = $("#treeSortSoc").sortableListsToArray();
-    console.log(data);
+    var result = $("#treeSortSoc").sortableListsToArray();
+    if(!result){
+    }else{
+      var id = $(this).data('id');
+      $.post('/admin/location/sort-save', {result: result, id: id}, Success);
+      function Success(data){
+        if(data){
+          document.location = document.location;
+        }else{
+          alert('Ошибка!');
+        }
+      }
+    }
   });
 });

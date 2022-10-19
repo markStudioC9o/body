@@ -1087,6 +1087,7 @@
             listItem.parentId = parentId;
             listItem.value = li.data( 'value' );
             listItem.order = order;
+            listItem.data = li.data('resurs');
             arr.push( listItem );
             li.children( 'ul,ol' ).sortableListsToArray( arr, id );
             order ++;

@@ -17,6 +17,7 @@ use app\models\Heading;
 use app\models\LanguageSetting;
 use app\models\MainOption;
 use app\models\Pages;
+use app\models\SortHeader;
 use Faker\Provider\Lorem;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
@@ -47,7 +48,7 @@ class LocationController extends MainController
     ]);
     $globalWord = CoitiesData::find()->where(['global' => '1'])->all();
     $globalArray = ArrayHelper::getColumn($globalWord, 'cities_id');
-    $globalCity = Cities::find()->where(['id'=> $globalArray])->all();
+    $globalCity = Cities::find()->where(['id' => $globalArray])->all();
     return $this->render('index', [
       'dataProvider' => $dataProvider,
       'globalCity' => $globalCity
@@ -222,8 +223,8 @@ class LocationController extends MainController
         if ($data['CoitiesData']['main'] == '1') {
           $cityList = Cities::find()->where(['counries_id' => $country->id])->all();
           $ciLisId = ArrayHelper::getColumn($cityList, 'id');
-          foreach($ciLisId as $yu => $vb){
-            if($vb != $model->cities_id){
+          foreach ($ciLisId as $yu => $vb) {
+            if ($vb != $model->cities_id) {
               Yii::$app->db->createCommand()->update('coities_data', ['main' => '0'], 'cities_id=' . $vb)->execute();
             }
           }
@@ -235,7 +236,7 @@ class LocationController extends MainController
         return $this->refresh();
       }
     }
-    
+
     return $this->render('update', [
       'model' => $model,
       'social' => $this->social,
@@ -245,24 +246,26 @@ class LocationController extends MainController
       'city' => $city,
       'langerNew' => $langerNew,
       'id' => $id
-      
+
     ]);
   }
 
-  public function actionDelete($id){
-    if(CoitiesData::find()->where(['cities_id' => $id])->exists()){
+  public function actionDelete($id)
+  {
+    if (CoitiesData::find()->where(['cities_id' => $id])->exists()) {
       $data = CoitiesData::find()->where(['cities_id' => $id])->one();
       $data->delete();
     }
     CitiesLang::deleteAll(['parent_id' => $id]);
     $model = Cities::findOne($id);
-    if($model->delete()){
+    if ($model->delete()) {
       return $this->redirect(['index']);
     }
   }
-  public function actionDeleteCor($id){
+  public function actionDeleteCor($id)
+  {
     $citys = Cities::find()->where(['counries_id' => $id])->all();
-    $cityIds = ArrayHelper::getColumn($citys,'id');
+    $cityIds = ArrayHelper::getColumn($citys, 'id');
     CoitiesData::deleteAll(['cities_id' => $cityIds]);
     CitiesLang::deleteAll(['parent_id' => $cityIds]);
     Cities::deleteAll(['counries_id' => $id]);
@@ -272,14 +275,54 @@ class LocationController extends MainController
     return $this->redirect(['index']);
   }
 
-  public function actionSortSoc($id){
+  public function actionSortSoc($id)
+  {
     $data = null;
+    $array = null;
+    $sortis = null;
     $this->title = "Сортировка иконок в шапке";
+    $model = SortHeader::find()->where(['parent_id' => $id])->asArray()->one();
+
     $this->view->registerJsFile('/js/sort-social.js', ['depends' => AdminAsset::className()]);
     $this->view->registerCssFile("/css/sort-social.css");
-    if(CoitiesData::find()->where(['cities_id' => $id])->exists()){
+    if (CoitiesData::find()->where(['cities_id' => $id])->exists()) {
       $data = CoitiesData::find()->where(['cities_id' => $id])->one();
     }
-    return $this->render('sort', ['data' => $data]);
+    if (!empty($data->kontakty)) {
+      $sortis = json_decode($data->kontakty, true);
+      unset($sortis['phone']);
+    }
+    if (!empty($model['value'])) {
+      $array = json_decode($model['value'], true);
+    }
+    if(!empty($array)){
+      foreach($array as $key => $item){
+        unset($sortis[$item['id']]);
+      }
+    }
+    return $this->render('sort', ['data' => $data, 'id' => $id, 'model' => $model, 'array' => $array, 'sortis' => $sortis]);
+  }
+
+  public function actionSortSave()
+  {
+    if (Yii::$app->request->isAjax) {
+      $data = Yii::$app->request->post();
+      if ($data['id']) {
+        if (SortHeader::find()->where(['parent_id' => $data['id']])->exists()) {
+          $model = SortHeader::find()->where(['parent_id' => $data['id']])->one();
+          $model->value = json_encode($data['result']);
+        } else {
+          $model = new SortHeader([
+            'parent_id' => $data['id'],
+            'value' => json_encode($data['result'])
+          ]);
+        }
+        if ($model->save()) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
   }
 }

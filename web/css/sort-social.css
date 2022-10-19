@@ -12,6 +12,11 @@
 #treeSortSoc li.prytir{
   border-bottom: 30px solid #ddd;
 }
+.arrbuf{
+  display: flow-root;
+  float: right;
+}
+.removeTab,
 .addTab{
   cursor: pointer;
   padding: 3px 5px;

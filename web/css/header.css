@@ -100,10 +100,18 @@ header {
 .item.item_phone {
   margin-right: 20px;
 }
+.item.net-promt{
+  margin-right: 4px;
+}
+.item.promtr{
+  margin-right: 30px;
+}
+.item.search{
+  margin-left: 30px;
+}
 .item.item_city {
   margin-right: 61px;
   position: relative;
-  margin-top: 2px;
 }
 .item.item_city:after {
   content: "";
@@ -119,7 +127,6 @@ header {
 }
 .item.logo {
   margin-right: 36px;
-  margin-top: 2px;
 }
 .icon.icon-youtube {
   margin-right: 4px;

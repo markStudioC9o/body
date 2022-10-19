@@ -10,6 +10,12 @@
     <a href="tel:<?= $kontakty['phone'] ?>" class="fil"><?= $kontakty['phone'] ?></a>
   </div>
 <? endif; ?>
+
+  <? if(isset($sort) && !empty($sort)):?>
+    <? foreach($sort as $item):?>
+      <?= $this->render('social-block', ['item' => $item])?>
+      <? endforeach;?>
+    <? else:?>
 <div class="item social">
   <? if (isset($kontakty['whatsapp']) && !empty($kontakty['whatsapp'])) : ?>
     <a class="icon icon-vk sp-sd" target="_blank" href="<?= $kontakty['whatsapp'] ?>">
@@ -45,10 +51,8 @@
       <img src="/icon/vk.svg" alt="" class="hover">
     </a>
   <? endif; ?>
-
-
-
 </div>
+
 
 <div class="item  comcol">
   <? if (isset($kontakty['email']) && !empty($kontakty['email'])) : ?>
@@ -59,15 +63,4 @@
   <? endif; ?>
   <!-- <div class="item user"><a class="icon icon-user" href="https://body-balance.com/account/"><img src="/icon/lk.svg" alt=""></a></div> -->
 </div>
-<!-- Array
-(
-    [phone] =&gt; +7 (900) 565-5005
-    [email] =&gt; info-cz@body-balance.com
-    [instagram] =&gt;  https://www.instagram.com/andrei_popravka/
-    [vkontakte] =&gt; 1
-    [viber] =&gt; 
-    [whatsapp] =&gt; 
-    [youtube] =&gt; https://www.youtube.com/channel/UCLrLW_tq5xANk8Pkxj3rUTg  
-    [facebook] =&gt; 
-    [telegram] =&gt; 
-) -->
+<? endif?>

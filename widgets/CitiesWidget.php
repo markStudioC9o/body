@@ -7,6 +7,7 @@ use app\models\Cities;
 use app\models\CitiesLang;
 use app\models\CoitiesData;
 use app\models\Heading;
+use app\models\SortHeader;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -71,13 +72,20 @@ class CitiesWidget extends \yii\bootstrap4\Widget
         return $kontakty['phone'];
       }
     }
-    
+    $serty = SortHeader::find()->where(['parent_id' => $cityName['id']])->asArray()->one();
+    if(!empty($serty['value'])){
+      $sort = json_decode($serty['value'], true);
+    }else{
+      $sort = null;
+    }
+
       return $this->render('cities', [
         'nameThisCity' => $nameThisCity,
         'cityName' => $cityName,
         'city' => $this->city,
         'cosial' => $this->cosial,
-        'kontakty' => $kontakty
+        'kontakty' => $kontakty,
+        'sort' => $sort
       ]);
     
   }
