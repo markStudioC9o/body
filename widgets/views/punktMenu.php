@@ -50,7 +50,8 @@
 <? if (stristr($item['id'], '_', true) == 'heading') : ?>
   <? $elem = $pages->findHeadingId($item['id']) ?>
   <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/heading/' : 'heading/') ?><?= (isset($elem['option']['link']) && ($elem['option']['link']) ? $elem['option']['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+
+    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/heading/' : 'heading/') ?><?= (isset($elem['link']) && ($elem['link']) ? $elem['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
         <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
       <? endif; ?>
