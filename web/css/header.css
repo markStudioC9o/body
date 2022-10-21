@@ -474,7 +474,7 @@ footer .fb3_right ul {
 }
 
 .breadcrambs p {
-  padding-bottom: 20px;
+  padding-bottom: 11px;
   line-height: 16px;
 }
 .breadcrambs p {
@@ -644,7 +644,4 @@ span.gap-text{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
-#mainH1, .block-tex-title.element-bord h2{
-  margin-top: -9px;
 }
