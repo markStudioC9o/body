@@ -3096,13 +3096,73 @@ $(document).on("click", "#add-quete", function (e) {
   $("#quote").modal("show");
 });
 
+
+$(document).on('click', '.icon-quote', function(e){
+  
+  $.post('/admin/qut/icon', Success);
+  function Success(data){
+    $('#fon-icon').modal('show');
+    $('#fon-icon .telo').html(data);
+  }
+})
+
+$(document).on('click', '.icon-revety', function(e){
+  e.preventDefault();
+  var data = $(this).data('sub');
+  $('#link-icon').val(data);
+  $('#link-img').val('');
+  $('#fon-icon').modal('hide');
+  
+})
 $(document).on("click", ".asd-fert", function (e) {
-  var plob = "<p>asda1111111sdasdasdasd</p>";
-  console.log($("#quote-bodsy").html(plob));
-  $('#quote-bodsy-container div[contenteditable="true"]').html(plob);
-  $("#quote-bodsy").val(plob);
+  // var plob = "<p>asda1111111sdasdasdasd</p>";
+  // console.log($("#quote-bodsy").html(plob));
+  // $('#quote-bodsy-container div[contenteditable="true"]').html(plob);
+  var obj = new Object();
+  obj['title'] = $('.title-qut').val();
+  obj['color'] = $('#colorMenu').val();
+  obj['text'] = $("#quote-bodsy").val();
+  obj['img'] = $("#link-img").val();
+  obj['icon'] = $("#link-icon").val();
+  if($("#quote").hasClass('update')){
+    var id = $("#quote").attr('data-id');
+    $.post('/admin/qut/update', {obj: obj, id: id}, Success);
+    function Success(data){
+      $('.block-qout[data-id="'+id+'"]').html(data);
+      $("#quote").removeClass('update');
+      $("#quote").removeAttr('data-id')
+      $("#quote").modal('hide');
+    }
+  }else{
+    $.post('/admin/qut/render', {obj: obj}, Success);
+    function Success(data){
+      MainBlock.append(data);
+      $("#quote").modal('hide');
+    }
+  }
+  
+});
+$(document).on('click','.su-service' ,function(e){
+  var id = $(this).closest('.block-qout').data('id');
+  $("#quote").modal("show");
+  $("#quote").addClass('update');
+  $("#quote").attr('data-id',id);
+  var title = $(this).find('.susu-title').html();
+  var text = $(this).find('.su-service-content').html();
+  var color = $(this).data('color');
+  var icon = $(this).find('.sui').data('tag');
+  
+  $('.title-qut').val(title);
+  $('#colorMenu').val(color);
+  $("#quote-bodsy").html(text);
+  $('#quote-bodsy-container div[contenteditable="true"]').html(text);
+  $("#link-icon").val(icon);
 });
 
+$(document).on('click', '.img-quote', function(e){
+  $('.abbred-image').addClass('qouter');
+  AddsImage();
+})
 $(document).on("change", "#colorImageBg", function (e) {
   var id = $("#idBlock").val();
   $("." + id).css("background-color", $(this).val());

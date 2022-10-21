@@ -2129,3 +2129,55 @@ span.gap-text{
 #tabs-2 .select2-selection.select2-selection--multiple{
   display: flow-root;
 }
+.modal#fon-icon,
+.modal#image{
+  z-index: 999999;
+}
+.su-service {
+  position: relative;
+  margin: 0 0 1.5em;
+}
+.su-service {
+  border: 1px solid #E2E2E2;
+  border-top-width: 7px;
+  padding: 20px 30px;
+  position: relative;
+  margin: 0 0 20px;
+}
+.su-service .su-service-title {
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Stem';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 30px;
+  padding-left: 0!important;
+}
+.su-service .su-service-content {
+  display: block;
+  margin-bottom: 0;
+  padding-left: 0!important;
+}
+.sui {
+  display: inline-block;
+  font: normal normal normal 14px/1 ShortcodesUltimateIcons;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.su-service .su-service-title img, .su-service .su-service-title i {
+  position: relative;
+  float: right;
+}
+.su-service-title i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block!important;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  line-height: 1em;
+}

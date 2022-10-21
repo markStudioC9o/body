@@ -31,9 +31,9 @@ use app\widgets\FooterMenu;
   <div class="block_3">
     <div class="container">
       <div class="fb3_left">
-        <p><i class="far fa-copyright"></i> Авторское право "Баланс Тела", 2020</p>
+        <!--  Авторское право "Баланс Тела", 2020 -->
         <!-- <span>©</span> -->
-        <?//= FooterDisc::widget();?>
+        <p style="white-space: nowrap;display: inline-block;"><i class="far fa-copyright"></i> <?= FooterDisc::widget();?></p>
       </div>
       <div class="fb3_right">
         <?= FooterMenu::widget()?>

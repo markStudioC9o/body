@@ -40,6 +40,7 @@ class AdminAsset extends AssetBundle
         "js/croppie.css",
         "adminStyle/custom.css",
         "adminStyle/theme.css",
+        'css/icon.css',
         //'css/defaultStyle1680.css'
     ];
     public $js = [

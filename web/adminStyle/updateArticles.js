@@ -20,7 +20,11 @@ $(document).ready(function (e) {
     var video = '<div class="sirkle-param-cop"><i class="fa fa-plus"></i><div class="cropp-block"><ul><li class="cop-block video">Копировать</li><li class="cop-paste">Вставить</li></ul></div></div>';
 
 
-
+if($('.block-qout').length){
+  $('.block-qout').each(function(e){
+    $(this).closest('.poor-block').append(deefer);
+  });
+}
 
   if ($("#mainH1").length) {
     $("#mainH1").children(".title-text").attr("contenteditable", "true");

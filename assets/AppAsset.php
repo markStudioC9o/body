@@ -46,6 +46,7 @@ class AppAsset extends AssetBundle
     '/css/mediaHeader.css',
     '/css/mediaContent.css',
     '/css/defaultSetting.css',
+    '/css/icon.css',
   ];
   public $js = [
     "http://www.youtube.com/player_api",

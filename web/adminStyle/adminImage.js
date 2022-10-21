@@ -33,6 +33,14 @@ $(document).on("click", ".img-tag-prop", function (e) {
   var src = $(this).data("img");
   var random = randomInteger(1, 999) + "img" + randomInteger(1, 999);
 
+  if($(this).closest(".abbred-image").hasClass("qouter")){
+    var link = $(this).data('img');
+    $('#link-img').val(link);
+    $('#link-icon').val('');
+    $(this).closest(".abbred-image").removeClass("qouter");
+    return false;
+  }
+
   if ($(this).closest(".abbred-image").hasClass("imageCol")) {
     var dataId = $(this).closest(".abbred-image").data("img_id");
     addImageCol(src, dataId);

@@ -81,7 +81,7 @@ class ContentWidget extends \yii\bootstrap4\Widget
       }
     }
     $option = HeadingOption::find()->where(['heading_id' => $id])->asArray()->all();
-    $category = $model->getArticles($this->sort)->all();
+    $category = $model->getArticles($this->sort);
 
     return $this->render('category', [
       'option' => $option,

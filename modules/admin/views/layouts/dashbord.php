@@ -125,7 +125,14 @@ AdminAsset::register($this);
   <?
   Modal::end();
   ?>
+  <? Modal::begin([
+    'id' => 'fon-icon',
+    'size' => 'modal-lg'
+  ]) ?>
+  <div class="telo">
 
+  </div>
+  <? Modal::end()?>
   <? Modal::begin([
     'id' => 'quote',
     'size' => 'modal-lg'
@@ -144,12 +151,19 @@ AdminAsset::register($this);
           ]);
           ?>
       </div>
-      <div class="col-md-9">
-        <input type="text" class="form-control" placeholder="Заголовок">
+      <div class="col-md-8">
+        <input type="text" class="form-control title-qut" placeholder="Заголовок">
       </div>
-      <div class="col-md-3">
-        <?= Html::submitButton('Картинка', ['class' => 'btn btn-success img-quote'])?>
-        
+      <div class="col-md-4">
+        <?//= Html::submitButton('Картинка', ['class' => 'btn btn-success img-quote'])?>
+      
+        <?= Html::submitButton('Иконка', ['class' => 'btn btn-success icon-quote'])?>
+      </div>
+      <div class="col-md-4 mt-1">
+        <input type="text" readonly id="link-img" class="form-control">
+      </div>
+      <div class="col-md-4 mt-1">
+        <input type="text" readonly id="link-icon" class="form-control">
       </div>
       <div class="col-md-6"></div>
       <div class="col-md-6">
