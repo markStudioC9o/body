@@ -15,14 +15,24 @@ use yii\widgets\ActiveForm;
         }else{
           $value = null;
         }?>
-        <?= Html::TextInput('form[' . $item->tag . ']', $value, ['class' => 'form-control']) ?>
+        <? if(isset($listLink[$item->tag]) && !empty($listLink[$item->tag])){
+          $link = $listLink[$item->tag];
+        }else{
+          $link = null;
+        }?>
+
+        
+
+        <?= Html::TextInput('form[' . $item->tag . '][name]', $value, ['class' => 'form-control']) ?>
+        <br>
+        <?= Html::TextInput('form[' . $item->tag . '][link]', $link, ['class' => 'form-control']) ?>
       </div>
     <? endforeach; ?>
   <? endif; ?>
-  <div class="col-md-12 mt-2">
-    <label>Ссылка</label>
-    <?= Html::TextInput('link', $linkShop, ['class' => 'form-control']) ?>
-  </div>
+  <!-- <div class="col-md-12 mt-2"> -->
+    <!-- <label>Ссылка</label> -->
+    <?//= Html::TextInput('link', $linkShop, ['class' => 'form-control']) ?>
+  <!-- </div> -->
   <div class="col-md-12 mt-2">
     <?= Html::submitButton('Сохранить',['class' => 'btn btn-success'])?>
   </div>

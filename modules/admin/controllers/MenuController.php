@@ -388,57 +388,70 @@ class MenuController extends MainController
     $lang = LanguageSetting::find()->all();
     $list = SiteSetting::find()->where(['param' => 'shop-attr'])->all();
     $listArra = ArrayHelper::map($list, 'tag', 'value');
-    $link = SiteSetting::find()->where(['param' => 'shop-link'])->one();
-    if (isset($link->value) && !empty($link->value)) {
-      $linkShop = $link->value;
-    } else {
-      $linkShop = null;
-    }
+    $link = SiteSetting::find()->where(['param' => 'shop-link'])->all();
+    $listLink = ArrayHelper::map($link, 'tag', 'value');
     if ($this->request->isPost) {
       $data = $this->request->post();
       // echo "<pre>";
       // print_r($data);
       // echo "</pre>";
+      // exit();
       if (!empty($data['form'])) {
         foreach ($data['form'] as $key => $val) {
           if (!empty($val)) {
             if (SiteSetting::find()->where(['param' => 'shop-attr'])->andWhere(['tag' => $key])->exists()) {
               $model = SiteSetting::find()->where(['param' => 'shop-attr'])->andWhere(['tag' => $key])->one();
-              $model->value = trim($val);
+              $model->value = trim($val['name']);
             } else {
               $model = new SiteSetting([
                 'param' => 'shop-attr',
-                'value' => trim($val),
+                'value' => trim($val['name']),
                 'tag' => $key
               ]);
             }
             if (!$model->save()) {
               var_dump($model->getErrors());
             }
+
+
+
+            if (SiteSetting::find()->where(['param' => 'shop-link'])->andWhere(['tag' => $key])->exists()) {
+              $ls = SiteSetting::find()->where(['param' => 'shop-link'])->andWhere(['tag' => $key])->one();
+              $ls->value = trim($val['link']);
+            } else {
+              $ls = new SiteSetting([
+                'param' => 'shop-link',
+                'value' => trim($val['link']),
+                'tag' => $key
+              ]);
+            }
+            if (!$ls->save()) {
+              var_dump($ls->getErrors());
+            }
           }
         }
       }
-      if (isset($data['link']) && !empty($data['link'])) {
-        if (SiteSetting::find()->where(['param' => 'shop-link'])->exists()) {
-          $ls = SiteSetting::find()->where(['param' => 'shop-link'])->one();
-          $ls->value = $data['link'];
-        } else {
-          $ls = new SiteSetting([
-            'param' => 'shop-link',
-            'value' => trim($data['link']),
-            'tag' => null
-          ]);
-        }
-        if (!$ls->save()) {
-          var_dump($ls->getErrors());
-        }
-      }
+      // if (isset($data['link']) && !empty($data['link'])) {
+      //   if (SiteSetting::find()->where(['param' => 'shop-link'])->where(['tag' => $data['tag']])->exists()) {
+      //     $ls = SiteSetting::find()->where(['param' => 'shop-link'])->where(['tag' => $data['tag']])->one();
+      //     $ls->value = $data['link'];
+      //   } else {
+      //     $ls = new SiteSetting([
+      //       'param' => 'shop-link',
+      //       'value' => trim($data['link']),
+      //       'tag' => trim($data['tag'])
+      //     ]);
+      //   }
+      //   if (!$ls->save()) {
+      //     var_dump($ls->getErrors());
+      //   }
+      // }
       return $this->refresh();
     }
     return $this->render('shop', [
       'lang' => $lang,
       'listArra' => $listArra,
-      'linkShop' => $linkShop
+      'listLink' => $listLink
 
     ]);
   }

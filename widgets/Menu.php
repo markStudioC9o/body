@@ -49,7 +49,8 @@ class Menu extends \yii\bootstrap4\Widget
       $textLink = "Магазин";
     }
 
-    $hrefShop = SiteSetting::find()->where(['param' => 'shop-link'])->asArray()->one();
+    $hrefShop = SiteSetting::find()->where(['param' => 'shop-link'])->andWhere(['tag' => $lang])->one();
+    
     $menuParam = new MenuParam();
     
     return $this->render('menu', [
