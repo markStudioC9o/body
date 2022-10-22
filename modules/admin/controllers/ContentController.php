@@ -63,6 +63,8 @@ class ContentController extends MainController
     } else {
       $modelAut = $this->getAuthors($tag);
     }
+
+
     if (isset($modelAut->value) && !empty($modelAut->value)) {
       $athors = $modelAut->value;
     } else {
@@ -79,6 +81,21 @@ class ContentController extends MainController
     } else {
       $modalTitle = null;
     }
+
+
+    // asdasdasd
+    if ($tag == null || $tag == 'ru') {
+      $crambs = $this->getBreadcrambs('ru');
+    } else {
+      $crambs = $this->getBreadcrambs($tag);
+    }
+    if (isset($crambs->value) && !empty($crambs->value)) {
+      $crambsTitle = $crambs->value;
+    } else {
+      $crambsTitle = null;
+    }
+    //asdasdasdasd
+
 
 
     if ($tag == null || $tag == 'ru') {
@@ -111,6 +128,10 @@ class ContentController extends MainController
 
     if ($this->request->isPost) {
       $data = $this->request->post();
+      // echo "<pre>";
+      // print_r($data);
+      // echo "</pre>";
+      // exit();
       if (isset($data['tells']) && !empty($data['tells'])) {
         $model->value = json_encode($data['tells']);
         $model->param = 'pre_footer';
@@ -127,7 +148,16 @@ class ContentController extends MainController
         if (!$modelAut->save()) {
           var_dump($modelAut->getErrors());
         }
-        
+      }
+
+      // breadcrambs
+      if(isset($data['breadcrambs']) && !empty($data['breadcrambs'])){
+        $crambs->value = $data['breadcrambs'];
+        $crambs->param = 'breadcrambs';
+        $crambs->tag = $tag;
+        if (!$crambs->save()) {
+          var_dump($crambs->getErrors());
+        }
       }
 
       if(isset($data['bannersTitle']) && !empty($data['bannersTitle'])){
@@ -169,7 +199,8 @@ class ContentController extends MainController
       'athors' => $athors,
       'Ftitle' => $Ftitle,
       'modalTitle' => $modalTitle,
-      'bannersTitle' => $bannersTitle
+      'bannersTitle' => $bannersTitle,
+      'crambsTitle' => $crambsTitle
     ]);
   }
 
@@ -219,6 +250,16 @@ class ContentController extends MainController
   {
     if (SiteSetting::find()->where(['param' => 'banners'])->andWhere(['tag' => $tag])->exists()) {
       $model = SiteSetting::find()->where(['param' => 'banners'])->andWhere(['tag' => $tag])->one();
+    } else {
+      $model = new SiteSetting();
+    }
+    return $model;
+  }
+
+  public function getBreadcrambs($tag)
+  {
+    if (SiteSetting::find()->where(['param' => 'breadcrambs'])->andWhere(['tag' => $tag])->exists()) {
+      $model = SiteSetting::find()->where(['param' => 'breadcrambs'])->andWhere(['tag' => $tag])->one();
     } else {
       $model = new SiteSetting();
     }

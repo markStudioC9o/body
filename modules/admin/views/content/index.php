@@ -56,6 +56,13 @@ use yii\helpers\Html;
     <?= Html::textInput('bannersTitle', $bannersTitle, ['class' => 'form-control']) ?>
   </div>
 
+  <div class="col-md-12 mt-1">
+    <label>Написание главной в хлебных крошках</label>
+    <?= Html::textInput('breadcrambs', $crambsTitle, ['class' => 'form-control']) ?>
+  </div>
+
+  
+
   <div class="col-md-12 mt-4">
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
   </div>

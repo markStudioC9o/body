@@ -30,7 +30,8 @@ class Authors extends ActiveRecord
     {
         return [
             [['photo', 'name', 'date', 'link'], 'string', 'max' => 255],
-            [['image'], 'file', 'extensions' => 'png, jpg, jpeg, svg, webp']
+            [['image'], 'file', 'extensions' => 'png, jpg, jpeg, svg, webp'],
+            ['default_author', 'in', 'range' => [0, 1], 'allowArray' => true]
         ];
     }
 
@@ -41,7 +42,8 @@ class Authors extends ActiveRecord
             'photo' => 'Фото',
             'name' => 'Имя',
             'date' => 'Дата',
-            'link' => 'Ссылка'
+            'link' => 'Ссылка',
+            'default_author'=> 'По умолчанию'
         ];
     }
 

@@ -47,7 +47,7 @@ header {
 }
 .flag-wrap {
   position: relative;
-  padding: 15px 51px 12px 9px;
+  padding: 13px 51px 13px 9px;
 }
 #top_header {
   display: flex;
@@ -98,7 +98,7 @@ header {
   display: none;
 }
 .item.item_phone {
-  margin-right: 20px;
+  margin-right: 35px;
 }
 .item.net-promt{
   margin-right: 4px;

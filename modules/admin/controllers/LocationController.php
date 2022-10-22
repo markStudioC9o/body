@@ -280,26 +280,44 @@ class LocationController extends MainController
     $data = null;
     $array = null;
     $sortis = null;
+
     $this->title = "Сортировка иконок в шапке";
     $model = SortHeader::find()->where(['parent_id' => $id])->asArray()->one();
-
+  
     $this->view->registerJsFile('/js/sort-social.js', ['depends' => AdminAsset::className()]);
     $this->view->registerCssFile("/css/sort-social.css");
+
     if (CoitiesData::find()->where(['cities_id' => $id])->exists()) {
       $data = CoitiesData::find()->where(['cities_id' => $id])->one();
     }
+    
     if (!empty($data->kontakty)) {
       $sortis = json_decode($data->kontakty, true);
       unset($sortis['phone']);
     }
+
     if (!empty($model['value'])) {
       $array = json_decode($model['value'], true);
     }
+    // echo "<pre>";
+    // print_r($array);
+    // print_r($sortis);
+    // echo "</pre>";
     if(!empty($array)){
       foreach($array as $key => $item){
-        unset($sortis[$item['id']]);
+        if($sortis[$item['id']] == ''){
+          unset($array[$key]);
+        }
+        foreach($sortis as $el => $ve){
+          if($el == $item['id']){
+            unset($sortis[$item['id']]);
+          }
+        }
+        
       }
     }
+
+
     return $this->render('sort', ['data' => $data, 'id' => $id, 'model' => $model, 'array' => $array, 'sortis' => $sortis]);
   }
 

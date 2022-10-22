@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\assets\AdminAsset;
 use app\models\Authors;
 use app\models\AuthorsLang;
 use app\models\LanguageSetting;
@@ -55,6 +56,7 @@ class AuthorsController extends MainController
     ]);
 
     $this->title = 'Авторы';
+    $this->view->registerJsFile('/adminStyle/adminAuthor.js', ['depends' => AdminAsset::className()]);
     return $this->render('index', [
       'dataProvider' => $dataProvider,
     ]);
@@ -132,6 +134,21 @@ class AuthorsController extends MainController
       }
       if (!$model->save()) {
         return false;
+      }else{
+        print_r($model->getErrors());
+      }
+    }
+  }
+
+  public function actionDefaultAuthor(){
+    if(Yii::$app->request->isAjax){
+      $data = Yii::$app->request->post();
+      $connection = \Yii::$app->db;
+      $request = $connection->createCommand("UPDATE `authors` SET default_author = '0'")->execute();
+      $model = Authors::findOne($data['id']);
+      $model->default_author = 1;
+      if($model->save()){
+        return true;
       }
     }
   }

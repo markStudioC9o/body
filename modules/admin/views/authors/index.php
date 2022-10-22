@@ -38,6 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Url::toRoute([$action, 'id' => $model->id]);
                         }
                     ],
+                    [
+                      'attribute' => 'default_author',
+                      'format' => 'raw',
+                      'value' => function($model){
+                        return "<div style=\"width: 20px\"><input class=\"cherf-author\" data-id=\"".$model->id."\" type=\"checkbox\" value=\"1\" ". ($model->default_author == 1 ? 'checked' : ' ')."></div>";
+                      }
+                    ],
                 ],
             ]); ?>
         </div>

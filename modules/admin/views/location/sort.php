@@ -13,10 +13,10 @@
         <? endforeach; ?>
       <? endif; ?>
       <? if (!empty($sortis)) : ?>
-        <? foreach ($sortis as $key => $item) : ?>
+        <? foreach ($sortis as $ste => $item) : ?>
           <? if (!empty($item)) : ?>
-            <li id="<?= $key ?>" data-resurs="<?= $item ?>">
-              <div><?= $key ?></div><sub><?= $item ?></sub>
+            <li id="<?= $ste ?>" data-resurs="<?= $item ?>">
+              <div><?= $ste ?></div><sub><?= $item ?></sub>
               <div class="arrbuf">
                 <span class="addTab">Добавить отступ</span>
                 <span class="removeTab">Удалить отступ</span>

@@ -72,13 +72,13 @@ class CitiesWidget extends \yii\bootstrap4\Widget
         return $kontakty['phone'];
       }
     }
+    
     $serty = SortHeader::find()->where(['parent_id' => $cityName['id']])->asArray()->one();
     if(!empty($serty['value'])){
       $sort = json_decode($serty['value'], true);
     }else{
       $sort = null;
     }
-
       return $this->render('cities', [
         'nameThisCity' => $nameThisCity,
         'cityName' => $cityName,
