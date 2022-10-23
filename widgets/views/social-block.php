@@ -1,4 +1,3 @@
-<? if(isset($item['id']) && !empty($item['id']) && !empty($item['data'])):?>
 <div class="item <?= (isset($item['value']) && !empty($item['value']) && $item['value'] == "promt" ? "promtr" : "net-promt" )?>">
   <?
   switch ($item['id']) {
@@ -49,5 +48,4 @@
   ?>
 </div>
 <?//  = $item['id']?>
-<? endif;?>
 <!-- <div class="item user"><a class="icon icon-user" href="https://body-balance.com/account/"><img src="/icon/lk.svg" alt=""></a></div> -->

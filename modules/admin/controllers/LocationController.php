@@ -336,9 +336,9 @@ class LocationController extends MainController
           ]);
         }
         if ($model->save()) {
-          return true;
+          return '111';
         } else {
-          return false;
+          print_r($model->getErrors());
         }
       }
     }

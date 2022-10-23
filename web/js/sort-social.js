@@ -55,19 +55,20 @@ $(function () {
   //   }
   // });
 
-  $("#saveSort").on("click", function () {
+  $("#saveSort").on("click", function (e){
+    e.preventDefault();
     var result = $("#treeSortSoc").sortableListsToArray();
-    if(!result){
-    }else{
-      var id = $(this).data('id');
+    var id = $(this).data('id');
       $.post('/admin/location/sort-save', {result: result, id: id}, Success);
       function Success(data){
-        if(data){
-          document.location = document.location;
+        if(data == '111'){
+          // window.location = window.location;
+          // document.location = document.location;
+          location.href=location.href;
+          location.reload(); // window.location.reload()
         }else{
-          alert('Ошибка!');
+          console.log(data);
         }
       }
-    }
   });
 });
