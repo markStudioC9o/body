@@ -43,7 +43,7 @@ class HeadingController extends MainController
     // echo "</pre>";
     if ($heading->col == '2') {
       return $this->render('indexTwoColnew', [
-        'heading' => null,
+        'heading' => $heading,
         'pagesOption' => null,
         'param' => null,
         'colorHex' => null
