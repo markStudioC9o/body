@@ -50,6 +50,7 @@ class HeadingController extends MainController
       ]);
     }
     if ($heading->col == '3') {
+      echo $heading->col;
       $children = Heading::find()->where(['parent_id' => $this->heading->id])->asArray()->all();
       return $this->render('indexFourCol', [
         'heading' => $heading,
