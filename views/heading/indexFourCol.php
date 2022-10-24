@@ -5,6 +5,7 @@ use app\widgets\LeftAside;
 ?>
 <section class="page_view_one pv2">
   <div id="newhomebb">
+    
     <div class="main">
       <div class="container">
         <? if (isset($heading->img) && !empty($heading->img)) : ?>
@@ -14,8 +15,8 @@ use app\widgets\LeftAside;
             </div>
           </div>
         <? endif; ?>
+        <? if(isset($children) && !empty($children)):?>
         <div class="razdel-field">
-          <? if(isset($children) && !empty($children)):?>
           <div id="selectRazdel">
             <span value="">Выберите раздел</span>
             <span class="galca">
@@ -29,8 +30,8 @@ use app\widgets\LeftAside;
             </ul>
             </div>
           <a href="" class="clearRazdel" style="<?= (isset($colorHex->color) && !empty($colorHex->color) ? "background:".$colorHex->color : "")?>">Очистить</a>
-          <? endif;?>
         </div>
+        <? endif;?>
         <div class="main__inner colum-derect">
           
 
@@ -50,7 +51,7 @@ use app\widgets\LeftAside;
                 <ul class="variableSort">
                   <li data-color="<?= (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "")?>" data-val="new">Сначала новые</li>
                   <li data-color="<?= (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "")?>" data-val="old">Более давние</li>
-                  <li data-color="<?= (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "")?>" data-val="popul">По популярности</li>
+                  <!-- <li data-color="<?= (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "")?>" data-val="popul">По популярности</li> -->
                 </ul>
               </div>
               <select id="sortRazdel" style="display:none">
@@ -60,10 +61,7 @@ use app\widgets\LeftAside;
               </select>
             </div>
           </div>
-
-            <? if (!empty($pagesOption['type'])) : ?>
-              <?= ContentFourColWidget::widget(['content' => $pagesOption['type'], 'sort' => $sort, 'color' => (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "#00A6CA")]); ?>
-            <? endif; ?>
+              <?= ContentFourColWidget::widget(['heading'=>$heading, 'type' => 'categ','content' => $pagesOption['type'], 'sort' => $sort, 'color' => (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "#00A6CA")]); ?>
           </div>
           <!-- leftaside -->
         </div>
