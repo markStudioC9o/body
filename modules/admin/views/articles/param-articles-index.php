@@ -12,7 +12,7 @@ use yii\helpers\Html;
     <div class="row">
       <div class="col-md-6 mt-3">
         <label for="">Заголовок</label>
-        <input value="<?= (isset($model->text) && !empty($model->text) ? $model->text : '') ?>" type="text" class="form-control" id="titleArticles">
+        <input value="<?= (isset($model->text) && !empty($model->text) ? htmlspecialchars($model->text) : '') ?>" type="text" class="form-control" id="titleArticles">
 
       </div>
       <div class="col-md-6 mt-3">

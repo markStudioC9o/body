@@ -52,7 +52,7 @@ class HeadingController extends MainController
     if ($heading->col == '3') {
       $children = Heading::find()->where(['parent_id' => $this->heading->id])->asArray()->all();
       return $this->render('indexFourCol', [
-        'heading' => $this->heading,
+        'heading' => $heading,
         'pagesOption' => null,
         'param' => null,
         'children' => $children,

@@ -90,6 +90,12 @@ $this->title = 'Новая статья';
               </div>
             </div>
             <div id="tabs-2" class="cust">
+            <div class="row">
+                <div class="col-md-12 mt-1 mb-1">
+                  <div id="imageSetPrev"></div>
+                </div>
+              </div>
+            <input type="hidden" id="articles_image">
               <div class="col-md-12 mt-1">
                 <div class="example-1">
                   <div class="form-gr">

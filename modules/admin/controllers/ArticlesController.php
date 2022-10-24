@@ -305,6 +305,7 @@ class ArticlesController extends MainController
     if (Yii::$app->request->isAjax) {
       $ids = null;
       $data = Yii::$app->request->post();
+
       if (empty($data['id'])) {
         $model = new Articles();
       } else {
@@ -383,80 +384,76 @@ class ArticlesController extends MainController
   {
     $array = array('articleSiblid', 'botomBanner', 'mainHeading', 'heading', 'text', 'title', 'img_articles', 'widget_articles', 'videoArticles', 'noindexArticles', 'link', 'description', 'keywords');
     foreach ($array as $item => $val) {
-      if (is_array($data[$val])) {
-        $value = json_encode($data[$val]);
-      } else {
-        $value = $data[$val];
-      }
-      if (!empty($lang) && $lang != 'ru') {
-        if (ArticlesOptionLang::find()->where(['option_param' => $val])->andWhere(['articles_id' => $id])->andWhere(['tag' => $lang])->exists()) {
-          $model = ArticlesOptionLang::find()
-            ->where(['option_param' => $val])
-            ->andWhere(['articles_id' => $id])
-            ->one();
+      if (!empty($data[$val])) {
+        if (is_array($data[$val])) {
+          $value = json_encode($data[$val]);
         } else {
-          $model = new ArticlesOptionLang([
-            'articles_id' => $id,
-            'option_param' => $val,
-            'tag' => $lang
-          ]);
+          $value = $data[$val];
         }
-      } else {
-        if (ArticlesOption::find()->where(['option_param' => $val])->andWhere(['articles_id' => $id])->exists()) {
-          $model = ArticlesOption::find()
-            ->where(['option_param' => $val])
-            ->andWhere(['articles_id' => $id])
-            ->one();
-        } else {
-          $model = new ArticlesOption([
-            'articles_id' => $id,
-            'option_param' => $val,
-          ]);
-        }
-      }
-      if ($val == 'link') {
-        
-        if (empty($value)) {
-          if (empty($title)) {
-            if(!empty($texter)){
-              $link = $this->Translit($texter);
-            }else{
-              $link = 'link-'.rand(0,999).'-'.rand(0,999).'-id-'.$id;
-            }
-            
+        if (!empty($lang) && $lang != 'ru') {
+          if (ArticlesOptionLang::find()->where(['option_param' => $val])->andWhere(['articles_id' => $id])->andWhere(['tag' => $lang])->exists()) {
+            $model = ArticlesOptionLang::find()
+              ->where(['option_param' => $val])
+              ->andWhere(['articles_id' => $id])
+              ->one();
           } else {
-            $link = $this->Translit($title);
-          }
-        } else {
-          $link = $value;
-        }
-
-
-        // if(ArticlesOption::find()->where(['value' => $link])->exists() || ArticlesOptionLang::find()->where(['value' => $link])->exists()){
-        //   $link = $link.'-'.rand(0,999);
-        // }
-
-        if(isset($model->value) && !empty($model->value) && $model->value != $link){
-          if(LinkRels::find()->where(['old' => $model->value])->exists()){
-            $linkRels = LinkRels::find()->where(['old' => $model->value])->one();
-            $linkRels->old = $model->value;
-            $linkRels->new = $link;
-          }else{
-            $linkRels = new LinkRels([
-              'old' => $model->value,
-              'new' => $link
+            $model = new ArticlesOptionLang([
+              'articles_id' => $id,
+              'option_param' => $val,
+              'tag' => $lang
             ]);
           }
-          $linkRels->save();
+        } else {
+          if (ArticlesOption::find()->where(['option_param' => $val])->andWhere(['articles_id' => $id])->exists()) {
+            $model = ArticlesOption::find()
+              ->where(['option_param' => $val])
+              ->andWhere(['articles_id' => $id])
+              ->one();
+          } else {
+            $model = new ArticlesOption([
+              'articles_id' => $id,
+              'option_param' => $val,
+            ]);
+          }
         }
-        $model->value = $link;
+        if ($val == 'link') {
 
-
-      } else {
-        $model->value = $value;
-      }
-      if (!$model->save()) {
-        return var_dump($model->getErrors());
+          if (empty($value)) {
+            if (empty($title)) {
+              if (!empty($texter)) {
+                $link = $this->Translit($texter);
+              } else {
+                $link = 'link-' . rand(0, 999) . '-' . rand(0, 999) . '-id-' . $id;
+              }
+            } else {
+              $link = $this->Translit($title);
+            }
+          } else {
+            $link = $value;
+          }
+          // if(ArticlesOption::find()->where(['value' => $link])->exists() || ArticlesOptionLang::find()->where(['value' => $link])->exists()){
+          //   $link = $link.'-'.rand(0,999);
+          // }
+          if (isset($model->value) && !empty($model->value) && $model->value != $link) {
+            if (LinkRels::find()->where(['old' => $model->value])->exists()) {
+              $linkRels = LinkRels::find()->where(['old' => $model->value])->one();
+              $linkRels->old = $model->value;
+              $linkRels->new = $link;
+            } else {
+              $linkRels = new LinkRels([
+                'old' => $model->value,
+                'new' => $link
+              ]);
+            }
+            $linkRels->save();
+          }
+          $model->value = $link;
+        } else {
+          $model->value = $value;
+        }
+        if (!$model->save()) {
+          return var_dump($model->getErrors());
+        }
       }
     }
     return "200";
@@ -504,7 +501,7 @@ class ArticlesController extends MainController
     if (Yii::$app->request->isAjax) {
       $data = Yii::$app->request->post();
       $dataTag = rand(0, 999) . 'img' . rand(0, 999);
-      return '/gallery/'.$data;
+      return '/gallery/' . $data;
     }
   }
 
@@ -731,7 +728,7 @@ class ArticlesController extends MainController
   }
 
 
-  
+
 
   public function actionSliderGel()
   {
@@ -836,9 +833,10 @@ class ArticlesController extends MainController
       ]);
     }
   }
-  public function actionRenderImageGal(){
-    if(Yii::$app->request->isAjax){
-       return $this->renderAjax('image-render-gal');
+  public function actionRenderImageGal()
+  {
+    if (Yii::$app->request->isAjax) {
+      return $this->renderAjax('image-render-gal');
     }
   }
 }

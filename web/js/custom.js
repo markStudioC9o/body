@@ -814,6 +814,7 @@ $(".saveArticleThis").on("click", function (e) {
   var size = $("#ArticlesSize").val();
   var keywords = $('textarea[name="SeoKeywords"]').val();
   var description = $('textarea[name="SeoDescription"]').val();
+  var imgArt = $('#articles_image').val();
 
   if ($("input[name='videoArticles']").prop("checked")) {
     var videoArticles = "2";
@@ -825,6 +826,7 @@ $(".saveArticleThis").on("click", function (e) {
   } else {
     var noindexArticles = "1";
   }
+  
 
   if ($('select[name="select-headin"]').length) {
     var mainHeading = $('select[name="select-headin"]').val();
@@ -850,7 +852,7 @@ $(".saveArticleThis").on("click", function (e) {
       $.post(
         "/admin/articles/save-artic",
         {
-          img_articles: response.path,
+          img_articles: imgArt,
           text: textArticles,
           title: titleArticles,
           texter: text,
@@ -3272,4 +3274,8 @@ $(document).on('click', '.paddingerToper', function(e){
 
 
 
-
+$(document).on('click', '#prevImageArticles', function(e){
+  e.preventDefault();
+  AddsImage();
+  $('.abbred-image').addClass('imageArticles');
+})

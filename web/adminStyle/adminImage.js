@@ -47,6 +47,16 @@ $(document).on("click", ".img-tag-prop", function (e) {
     $("#image .abbred-image").removeClass("imageCol");
     return false;
   }
+  if ($(this).closest(".abbred-image").hasClass("imageArticles")) {
+    var dataId = $(this).closest(".abbred-image").data("img_id");
+    var src = $(this).data('img');
+    $('#articles_image').val(src);
+    var img = "<img src=\"/gallery/"+src+"\" style=\"width:100%\">";
+    $("#imageSetPrev").html(img);
+    $("#image .abbred-image").removeClass("imageArticles");
+    return false;
+  }
+  
 
   if ($(this).closest(".abbred-image").hasClass("aprovCol")) {
     var dataId = $(this).closest(".abbred-image").data("img_id");

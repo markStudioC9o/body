@@ -126,12 +126,22 @@ use yii\helpers\ArrayHelper;
             </ul>
             <div id="tabs-1" class="cust">
               <div class="block-parametrs">
-                <? if (isset($articlesOption['img_articles']) && !empty($articlesOption['img_articles'])) {
-                  echo '<img src="/articles/' . $articlesOption['img_articles'] . '" style="width:100%"/>';
-                } ?>
+                
               </div>
             </div>
             <div id="tabs-2" class="cust">
+              <div class="row">
+                <div class="col-md-12 mt-1 mb-1">
+                  <div id="imageSetPrev">
+                  <? if (isset($articlesOption['img_articles']) && !empty($articlesOption['img_articles'])) {
+                  echo '<img src="/gallery/' . $articlesOption['img_articles'] . '" style="width:100%"/>';
+                } ?>
+                  </div>
+                </div>
+              </div>
+            <input type="hidden" id="articles_image" value="<? if (isset($articlesOption['img_articles']) && !empty($articlesOption['img_articles'])) {
+                  echo $articlesOption['img_articles'];
+                } ?>">
               <div class="col-md-12 mt-1">
                 <div class="example-1">
                   <div class="form-gr">

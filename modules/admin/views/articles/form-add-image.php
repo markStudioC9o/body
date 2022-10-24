@@ -4,13 +4,17 @@
     <div id="idrety">
     
     </div>
+    
   </div>
   <div class="col-md-3">
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
           <div class="input__wrapper">
-            <input name="file" type="file" name="file" id="input__file" class="input input__file">
+          
+          <input name="file" type="file" name="file" id="input__file" class="input input__file">
+            
+
             <label for="input__file" class="input__file-button">
               <span class="input__file-icon-wrapper">
                 <img class="input__file-icon" src="/img/add.svg" alt="Выбрать файл" width="25">
