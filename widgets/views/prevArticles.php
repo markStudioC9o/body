@@ -13,7 +13,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
 <div class="item_wrap vid_2">
   <div class="item">
       <? if (isset($image['value']) && !empty($image['value'])) : ?>
-        <div class="img" style="background-image: url(/articles/<?= $image['value'] ?>)">
+        <div class="img" style="background-image: url(/gallery/<?= $image['value'] ?>)">
         <? else:?>
           <div class="img" style="background-image: url(/img/default-img.jpg)">
         <? endif; ?>
@@ -51,7 +51,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
 <div class="item_wrap vid_2">
   <div class="item">
       <? if (isset($items['img_articles']) && !empty($items['img_articles'])) : ?>
-        <div class="img" style="background-image: url(/articles/<?= $items['img_articles'] ?>)">
+        <div class="img" style="background-image: url(/gallery/<?= $items['img_articles'] ?>)">
         <? else:?>
           <div class="img" style="background-image: url(/img/default-img.jpg)">
         <? endif; ?>
