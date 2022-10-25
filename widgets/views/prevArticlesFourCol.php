@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
   <? $array = ArrayHelper::map($param, 'option_param', 'value') ?>
   <div class="block-shild-arcti">
     <? if (isset($array['img_articles']) && !empty($array['img_articles'])) : ?>
-      <div class="prev_image" style='background-image: url("/articles/<?= $array['img_articles'] ?>")'>
+      <div class="prev_image" style='background-image: url("/gallery/<?= $array['img_articles'] ?>")'>
       <? else : ?>
         
         <div class="prev_image" style='background-image: url("/img/default-img.jpg")'>
@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
 
           <div class="block-shild-title  arlet">
             <? if (isset($array['title']) && !empty($array['title'])) : ?>
-              <p><a href="/gallery/<?= $id; ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
+              <p><a href="/articles/<?= $id; ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
             <? endif; ?>
           </div>
 
