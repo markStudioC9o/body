@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
 
           <div class="block-shild-title  arlet">
             <? if (isset($array['title']) && !empty($array['title'])) : ?>
-              <p><a href="/articles/<?= $id; ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
+              <p><a href="/gallery/<?= $id; ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
             <? endif; ?>
           </div>
 
