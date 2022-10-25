@@ -30,7 +30,7 @@ echo InputFile::widget([
 echo ElFinder::widget([
     'language'         => 'ru',
     'controller'       => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
-    'filter'           => array('image', 'video/mp4'),    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
+    'filter'           => array('image', 'video/mp4', 'application/pdf'),    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
     'callbackFunction' => new JsExpression('function(file, id){}'), // id - id виджета
     // 'uploadAllow'   => array('image/x-ms-bmp', 'image/gif', 'image/jpeg', 'image/png', 'image/x-icon', 'text/plain', ),
 ]);
