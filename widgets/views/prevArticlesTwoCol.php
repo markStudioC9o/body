@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
   <? $array = ArrayHelper::map($param, 'option_param', 'value') ?>
   <div class="block-shild-arcti set-er">
     <? if (isset($array['img_articles']) && !empty($array['img_articles'])) : ?>
-      <div class="img_sh" style='background-image: url("/articles/<?= $array['img_articles'] ?>")'>
+      <div class="img_sh" style='background-image: url("/gallery/<?= $array['img_articles'] ?>")'>
       <? else : ?>
         <div class="img_sh" style="background-image: url(/img/default-img.jpg)">
         <? endif; ?>
