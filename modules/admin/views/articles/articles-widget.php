@@ -73,7 +73,7 @@ $elem = json_decode($item['content'], true);
         <? if (isset($title['value']) && !empty($title['value'])) : ?>
           <li>
             <? if (!empty($img['value'])) : ?>
-              <div class="image-wid-art" style="background-image: url('/articles/<?= $img['value'] ?>')">
+              <div class="image-wid-art" style="background-image: url('/gallery/<?= $img['value'] ?>')">
               </div>
             <? else : ?>
               <div class="image-wid-art" style="background-image: url('/img/statistik_bg.jpg')">
@@ -100,7 +100,7 @@ $elem = json_decode($item['content'], true);
           <? $title = ArticlesOption::find()->where(['articles_id' => $item['id']])->andWhere(['option_param' => 'title'])->select(['value'])->asArray()->one(); ?>
           <? $img = ArticlesOption::find()->where(['articles_id' => $item['id']])->andWhere(['option_param' => 'img_articles'])->select(['value'])->asArray()->one(); ?>
           <? if (!empty($img['value'])) : ?>
-            <div class="image-wid-art" style="background-image: url('/articles/<?= $img['value'] ?>')">
+            <div class="image-wid-art" style="background-image: url('/gallery/<?= $img['value'] ?>')">
             </div>
           <? else : ?>
             <div class="image-wid-art" style="background-image: url('/img/statistik_bg.jpg')">
