@@ -845,7 +845,9 @@ class ArticlesController extends MainController
       $model = ArticleLang::find()->where(['parent_id' => $id])->andWhere(['size' => $size])->andWhere(['lang' => $tag])->one();
       
       if($model->delete()){
-        return $this->redirect(['/admin/articles/update', 'id' => $id]);
+          return $this->redirect(['/admin/articles/articles-version', 'id' => $id, 'tag' => $tag, 'size' => '1680']);
+        
+        // return $this->redirect(['/admin/articles/update', 'id' => $id]);
       }
       
     }
