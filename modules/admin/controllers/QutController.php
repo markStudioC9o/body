@@ -740,6 +740,12 @@ class QutController extends MainController
   .sui-signalapp";
 
 
+  public function actionIndex(){
+    if(Yii::$app->request->isAjax){
+      return $this->renderAjax('index');
+    }
+  }
+
   public function actionRender(){
     if(Yii::$app->request->isAjax){
       $data = Yii::$app->request->post();

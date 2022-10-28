@@ -39,6 +39,9 @@ use yii\helpers\ArrayHelper;
         </div>
         <div class="knopSave">
           <a class="btn btn-bottom btn-info" href="/articles/<?= $id ?>" target="blank">Просмотреть</a>
+          <? if($defaultModel->getVersion($id, $mot, $tag)):?>
+          <?= Html::a('Удалить версию', [ '/admin/articles/del-ver', 'id' => $id, 'tag' => $tag, 'size' => $mot],['class' => 'btn btn-bottom btn-info', 'data-confirm' => '"Вы уверены что хотите удалить?"'])?>
+          <? endif;?>
           <button class="btn btn-bottom btn-success saveArticleThis" id="saveArticle">Сохранить</button>
         </div>
       </div>

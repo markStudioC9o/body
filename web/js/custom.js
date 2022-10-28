@@ -3095,7 +3095,12 @@ $(document).on("change", 'select[name="paramauto"]', function (e) {
 });
 
 $(document).on("click", "#add-quete", function (e) {
-  $("#quote").modal("show");
+  $.post('/admin/qut/index', Success);
+  function Success(data){
+    $('.qoute').html(data);
+    $("#quote").modal("show");
+  }
+  
 });
 
 

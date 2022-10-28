@@ -839,4 +839,15 @@ class ArticlesController extends MainController
       return $this->renderAjax('image-render-gal');
     }
   }
+
+  public function actionDelVer($id, $tag, $size){
+    if(ArticleLang::find()->where(['parent_id' => $id])->andWhere(['size' => $size])->andWhere(['lang' => $tag])->exists()){
+      $model = ArticleLang::find()->where(['parent_id' => $id])->andWhere(['size' => $size])->andWhere(['lang' => $tag])->one();
+      
+      if($model->delete()){
+        return $this->redirect(['/admin/articles/update', 'id' => $id]);
+      }
+      
+    }
+  }
 }
