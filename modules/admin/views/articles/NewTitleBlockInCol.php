@@ -4,14 +4,14 @@
         <h1 style="color:<?= (!empty($color) ? $color : 'rgb(0, 166, 202)') ?>;" data-color="<?= (!empty($color) ? $color : 'rgb(0, 166, 202)') ?>" id="mainH1" class="tit_elm">
         <span class="titleLiner"></span>
             <div contenteditable="true" class="title-text default">
-                Lorem ipsum
+            Вставить текст...
             </div>
         </h1>
         <? else:?>
           <h2 style="color:<?= (!empty($color) ? $color : 'rgb(0, 166, 202)') ?>;" data-color="<?= (!empty($color) ? $color : 'rgb(0, 166, 202)') ?>" id="mainH2_<?= rand(0, 999)?>" class="tit_elm">
           <span class="titleLiner"></span>
             <div contenteditable="true" class="title-text default">
-                Lorem ipsum
+            Вставить текст...
             </div>
         </h2>
         <? endif;?>
