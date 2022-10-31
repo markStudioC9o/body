@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <input type="text" value="<?= $data['id'] ?>" id="idBootm">
+    <input type="hidden" value="<?= $data['id'] ?>" id="idBootm">
   </div>
   <div class="col-md-12">
     <label for="">
@@ -52,7 +52,7 @@
   </div>
   <div class="col-md-4 mt-3">
     <label for="">
-      Толщина обводки
+      Обводка
     </label>
     <input type="number" data-type="border" class="form-control font-boot text-boot" value="<?= (isset($data['output']['border-width']) && !empty($data['output']['border-width']) ? preg_replace('~\D+~', '', $data['output']['border-width']) : '0') ?>" max="50" min="0" step="1">
   </div>
@@ -62,9 +62,20 @@
     </label>
     <input type="number" data-type="border-radius" class="form-control font-boot text-redius" value="<?= (isset($data['output']['border-radius']) && !empty($data['output']['border-radius']) ? preg_replace('~\D+~', '', $data['output']['border-radius']) : '0') ?>" max="50" min="0" step="1">
   </div>
+  <div class="col-md-4 mt-3">
+    <label for="">
+      Межстрочный
+    </label>
+    <input type="number" data-type="line-height" class="form-control font-boot text-redius" value="<?= (isset($data['output']['line-height']) && !empty($data['output']['line-height']) ? preg_replace('~\D+~', '', $data['output']['line-height']) : '25') ?>" max="50" min="0" step="1">
+  </div>
 
   <div class="col-md-12">
+    <div class="row">
     <?= $this->render('../articles/param-padding', ['type' => 'bottn', 'id' =>$data['id'], 'output' => $data['output']]) ?>
+    <div class="col-md-6 mt-2">
+    <?= $this->render('../articles/param-margin', ['type' => 'bottn', 'id' =>$data['id'], 'output' => $data['output']]) ?>
+    </div>
+    </div>
   </div>
 
   <div class="col-md-12">

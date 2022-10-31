@@ -17,10 +17,12 @@ class CitiesWidget extends \yii\bootstrap4\Widget
   public $cosial;
   public $type = null;
   public $cityData = null;
+  public $cityHide = null;
   public function run()
   {
     $kontakty = null;
     $nameThisCity = null;
+    
     $session = Yii::$app->session;
     $city = isset($_SESSION['city']) ? $_SESSION['city'] : null;
     $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
@@ -85,7 +87,8 @@ class CitiesWidget extends \yii\bootstrap4\Widget
         'city' => $this->city,
         'cosial' => $this->cosial,
         'kontakty' => $kontakty,
-        'sort' => $sort
+        'sort' => $sort,
+        'cityHide' => $this->cityHide
       ]);
     
   }

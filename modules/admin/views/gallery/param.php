@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 ?>
 <div class="row">
-  <input type="hidden" value="<?=  $data['id']?>" class="id-gall">
+  <input type="text" value="<?=  $data['id']?>" class="id-gall">
   <div class="col-md-12 mb-3">
     <label for="">
       Внутрение отступы
@@ -20,4 +20,7 @@ use yii\helpers\Html;
   <div class="col-md-12">
   <?= Html::submitButton('Вставить',['class'=>'btn btn-success add-gal-par'])?>
   </div>
+    <div class="col-md-12">
+      <?= $this->render('../articles/param-margin',['id' => $data['id'], 'output' => $data['output'] ])?>
+    </div>
 </div>

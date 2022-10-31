@@ -17,6 +17,7 @@ use app\models\Heading;
 use app\models\LanguageSetting;
 use app\models\MainOption;
 use app\models\Pages;
+use app\models\SiteSetting;
 use app\models\SortHeader;
 use Faker\Provider\Lorem;
 use yii\data\ActiveDataProvider;
@@ -51,7 +52,8 @@ class LocationController extends MainController
     $globalCity = Cities::find()->where(['id' => $globalArray])->all();
     return $this->render('index', [
       'dataProvider' => $dataProvider,
-      'globalCity' => $globalCity
+      'globalCity' => $globalCity,
+      'visible' => SiteSetting::find()->where(['param' => 'site-hide'])->one()
     ]);
   }
 
@@ -342,5 +344,25 @@ class LocationController extends MainController
         }
       }
     }
+  }
+
+  public function actionHideCountry(){
+    if(SiteSetting::find()->where(['param' => 'site-hide'])->exists()){
+      $model = SiteSetting::find()->where(['param' => 'site-hide'])->one();
+      if($model->value == 'show'){
+        $model->value = 'hide';
+      }else{
+        $model->value = 'show';
+      }
+    }else{
+      $model = new SiteSetting([
+        'param' => 'site-hide',
+        'value' => 'show'
+      ]);
+    }
+    if($model->save()){
+      return $this->redirect('index');
+    }
+    
   }
 }

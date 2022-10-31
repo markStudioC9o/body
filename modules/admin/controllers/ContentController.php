@@ -64,6 +64,17 @@ class ContentController extends MainController
       $modelAut = $this->getAuthors($tag);
     }
 
+    if ($tag == null || $tag == 'ru') {
+      $modelSearch = $this->getSearch('ru');
+    } else {
+      $modelSearch = $this->getSearch($tag);
+    }
+    if (isset($modelSearch->value) && !empty($modelSearch->value)) {
+      $search = $modelSearch->value;
+    } else {
+      $search = null;
+    }
+    
 
     if (isset($modelAut->value) && !empty($modelAut->value)) {
       $athors = $modelAut->value;
@@ -132,6 +143,16 @@ class ContentController extends MainController
       // print_r($data);
       // echo "</pre>";
       // exit();
+      
+      if (isset($data['search']) && !empty($data['search'])) {
+        $modelSearch->value = $data['search'];
+        $modelSearch->param = 'search';
+        $modelSearch->tag = $tag;
+        if (!$modelSearch->save()) {
+          var_dump($modelSearch->getErrors());
+        }
+      }
+
       if (isset($data['tells']) && !empty($data['tells'])) {
         $model->value = json_encode($data['tells']);
         $model->param = 'pre_footer';
@@ -200,6 +221,7 @@ class ContentController extends MainController
       'Ftitle' => $Ftitle,
       'modalTitle' => $modalTitle,
       'bannersTitle' => $bannersTitle,
+      'search' => $search,
       'crambsTitle' => $crambsTitle
     ]);
   }
@@ -265,4 +287,15 @@ class ContentController extends MainController
     }
     return $model;
   }
+
+  public function getSearch($tag)
+  {
+    if (SiteSetting::find()->where(['param' => 'search'])->andWhere(['tag' => $tag])->exists()) {
+      $model = SiteSetting::find()->where(['param' => 'search'])->andWhere(['tag' => $tag])->one();
+    } else {
+      $model = new SiteSetting();
+    }
+    return $model;
+  }
+
 }

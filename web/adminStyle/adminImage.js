@@ -42,7 +42,7 @@ $(document).on("click", ".img-tag-prop", function (e) {
   }
 
   if ($(this).closest(".abbred-image").hasClass("imageCol")) {
-    var dataId = $(this).closest(".abbred-image").data("img_id");
+    var dataId = $(this).closest(".abbred-image").attr("data-img_id");
     addImageCol(src, dataId);
     $("#image .abbred-image").removeClass("imageCol");
     return false;
@@ -59,7 +59,7 @@ $(document).on("click", ".img-tag-prop", function (e) {
   
 
   if ($(this).closest(".abbred-image").hasClass("aprovCol")) {
-    var dataId = $(this).closest(".abbred-image").data("img_id");
+    var dataId = $(this).closest(".abbred-image").attr("data-img_id");
     aprovCol(src, dataId);
     $("#image .abbred-image").removeClass("aprovCol");
     return false;
@@ -150,13 +150,14 @@ function addImageStr(src) {
     function Success(data) {
       if (data) {
         MainBlock.append(data);
+        $("#image").modal("hide");
       }
     }
   }else{
     var id = $(".abbred-image.rever-img").attr("data-img_id");
     $(".img-tag-" + id).attr("src", '/gallery/'+src);
     $(".abbred-image").removeClass("rever-img");
-    return false;
+    $("#image").modal("hide");
   }
 }
 
@@ -237,7 +238,7 @@ $(document).on("click", ".fa-ad-image", function (e) {
     .attr("data-img_id", randImageNum);
   if (!$("#image .abbred-image").hasClass("imageCol")) {
     $("#image .abbred-image").addClass("imageCol");
-    $("#image .imageCol").data("img_id", randImageNum);
+    $("#image .imageCol").attr("data-img_id", randImageNum);
   }
 });
 

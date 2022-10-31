@@ -43,6 +43,7 @@ class Menu extends \yii\bootstrap4\Widget
     $cosial = MainOption::find()->where(['key_param' => 'cosial_param'])->asArray()->one();
 
     $linkShop = SiteSetting::find()->where(['param' => 'shop-attr'])->andWhere(['tag' => $lang])->asArray()->one();
+    $search = SiteSetting::find()->where(['param' => 'search'])->andWhere(['tag' => $lang])->asArray()->one();
     if(!empty($linkShop) && !empty($linkShop['value'])){
       $textLink = $linkShop['value'];
     }else{
@@ -53,6 +54,7 @@ class Menu extends \yii\bootstrap4\Widget
     
     $menuParam = new MenuParam();
     
+    
     return $this->render('menu', [
       'menuArr' => $menuArr,
       'pages' => $pages,
@@ -61,7 +63,9 @@ class Menu extends \yii\bootstrap4\Widget
       'textLink' => $textLink,
       'hrefShop' => $hrefShop,
       'lang' => $lang,
-      'menuParam' => $menuParam
+      'search' => $search,
+      'menuParam' => $menuParam,
+      'cityHide' => SiteSetting::find()->where(['param' => 'site-hide'])->one()
     ]);
   }
 }

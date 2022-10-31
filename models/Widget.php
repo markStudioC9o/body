@@ -28,8 +28,8 @@ class Widget extends \yii\db\ActiveRecord
     return [
       [['content'], 'string'],
       [['title', 'img'], 'string', 'max' => 255],
-      ['image', 'file', 'extensions' => 'png, jpg, jpeg, gif, pdf, webp'],
-      [['imageFiles'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 8, 'checkExtensionByMimeType' => false],
+      ['image', 'file', 'extensions' => 'png, jpg, jpeg, gif, pdf, webp, svg'],
+      [['imageFiles'], 'file', 'extensions' => 'png, jpg, jpeg, gif, pdf, webp, svg', 'maxFiles' => 8, 'checkExtensionByMimeType' => false],
     ];
   }
 

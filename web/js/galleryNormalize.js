@@ -12,11 +12,11 @@ if(1023 > width){
       $(this).find('.block-gall-default').each(function(prop, index){
         var size = $(this).width();
         var wok = size / (wd / 100);
-        console.log(wok);
+        // console.log(wok);
         $(this).css('width', wok+'%');
       })
 
-      console.log(wd);
+      // console.log(wd);
     })
   }
 }

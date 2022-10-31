@@ -20,19 +20,19 @@ $config = [
         // ],
         [
           'path' => 'files',
-          'name' => 'Files'
+          'name' => 'Файлы'
         ],
         [
           'path' => 'authors',
-          'name' => 'authors',
+          'name' => 'Авторы',
         ],
         [
           'path' => 'botom-banner',
-          'name' => 'authors',
+          'name' => 'Баннеры',
         ],
         [
           'path' => 'articles',
-          'name' => 'authors',
+          'name' => 'Обложка статей',
         ],
         [
           'path' => 'gallery',

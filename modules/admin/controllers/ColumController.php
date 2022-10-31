@@ -27,7 +27,7 @@ class ColumController extends MainController
       $data = array();
       $data['glow'] = '1';
     $array = array(
-      'textBlock' => "<div contenteditable=\"true\" data-id=\"".$randId."\" class=\"est-text text_padding_tag ".$randId."_opens innertText\" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus iure cumque, quisquam asperiores et incidunt. Quam odit id alias ipsum culpa. Ex, a impedit dolorum facilis modi deserunt voluptatibus veritatis.</div>",
+      'textBlock' => "<div contenteditable=\"true\" data-id=\"".$randId."\" class=\"est-text text_padding_tag ".$randId."_opens innertText\" >Вставить текст...</div>",
       'randId' => $randId,
       'temp' => $this->renderPartial('param',[
         'data' => $data,

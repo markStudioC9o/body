@@ -61,6 +61,11 @@ use yii\helpers\Html;
     <?= Html::textInput('breadcrambs', $crambsTitle, ['class' => 'form-control']) ?>
   </div>
 
+  <div class="col-md-12 mt-1">
+    <label>Поиск</label>
+    <?= Html::textInput('search', $search, ['class' => 'form-control']) ?>
+  </div>
+
   
 
   <div class="col-md-12 mt-4">

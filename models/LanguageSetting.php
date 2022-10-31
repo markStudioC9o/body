@@ -27,6 +27,7 @@ class LanguageSetting extends ActiveRecord
         return [
             [['name', 'short', 'tag', 'icon'], 'string', 'max' => 255],
             [['image'], 'file','checkExtensionByMimeType' => false, 'extensions' => 'jpeg, png, jpg, svg, webp'],
+            ['active', 'in', 'range' => [0, 1], 'allowArray' => true]
         ];
     }
 

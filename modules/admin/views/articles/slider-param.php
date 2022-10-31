@@ -74,3 +74,8 @@ use yii\widgets\ActiveForm;
   </div>
 </div>
 <? ActiveForm::end(); ?>
+    <div class="row">
+    <div class="col-md-6 mt-2">
+    <?= $this->render('../articles/param-margin', ['type' => 'slider-slis', 'id' =>$data['id'], 'output' => $data['output']]) ?>
+    </div>
+    </div>

@@ -21,7 +21,11 @@ use yii\helpers\ArrayHelper;
                 <? if ($lang == 'ru') : ?>
                   <a href="/ru">Главная</a>
                 <? else : ?>
-                  <a href="/<?= $lang ?>"><i class="fa fa-home" aria-hidden="true"></i></a>
+                  <a href="/<?= $lang ?>">
+                <? if(!empty($breadcrambs['value']) &&  isset($breadcrambs['value'])):?>
+                  <?= $breadcrambs['value']?>
+                <? endif;?>
+                </a>
                 <? endif; ?>
 
                 <? if (isset($param['mainHeading']) && !empty($param['mainHeading'])) : ?>

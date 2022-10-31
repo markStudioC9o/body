@@ -12,7 +12,19 @@ use yii\grid\GridView;
 <div class="row">
   <div class="col-md-10">
     <p>
+      
       <?= Html::a('<i class="fas fa-plus"></i>Добавить страну', ['add-country'], ['class' => 'btn btn-primary']) ?>
+      <? if(isset($visible->value) && !empty($visible->value)):?>
+        <? if($visible->value == 'show'){
+          $ter = 'Скрыть';
+          $teg = 'btn-danger';
+        }else{
+          $ter = 'Показать';
+          $teg = 'btn-success';
+        }?>
+        <?= Html::a($ter, ['hide-country'], ['class' => 'btn '.$teg]) ?>
+      <? endif;?>
+      
     </p>
   </div>
   <div class="col-md-10 mt-4">

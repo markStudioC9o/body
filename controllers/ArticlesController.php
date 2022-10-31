@@ -10,6 +10,7 @@ use app\models\ArticlesOptionLang;
 use app\models\Authors;
 use app\models\GqlleryHtml;
 use app\models\Heading;
+use app\models\SiteSetting;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
@@ -92,14 +93,15 @@ class ArticlesController extends MainController
     if (isset($param['title']) && !empty($param['title'])) {
       Yii::$app->params['title'] = $param['title'];
     }
-
+    $breadcrambs = SiteSetting::find()->where(['param'=>'breadcrambs'])->andWhere(['tag' => $lang])->asArray()->one();
     $heading = new Heading();
     return $this->render('index', [
       'model' => $model,
       'param' => $param,
       'lang' => $lang,
       'stecSize' => $stecSize,
-      'heading' => $heading
+      'heading' => $heading,
+      'breadcrambs'=>$breadcrambs
     ]);
   }
 }

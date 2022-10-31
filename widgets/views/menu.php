@@ -59,12 +59,12 @@ function sendLink($elem, $lang)
       body balance clinic
     </a>
   </div>
-  <?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial]); ?>
+  <?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'cityHide' => $cityHide]); ?>
   <div class="item search">
     <a class="search_icon"><img src="/icon/serty.svg" alt=""></a>
     <div class="search_form_header">
       <form class="search_footer search_header" id="pc_s" action="/">
-        <input type="text" name="s" placeholder="Поиск" class="field-search" />
+        <input type="text" name="s" placeholder="<?if(!empty($search) && isset($search['value'])){echo $search['value'];}?>" class="field-search" />
         <button type="submit" class="searchButton"></button>
       </form>
     </div>

@@ -34,8 +34,8 @@
       Form
     </span>
   </li>
-  <li id="add-imag">
-    <span data-tolip="Изображение">
+  <li>
+    <span data-tolip="Изображение"  id="add-imag" class="draggable">
       <i class="fa fa-image"></i>
     </span>
   </li>

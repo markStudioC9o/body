@@ -32,6 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Url::toRoute([$action, 'id' => $model->id]);
                         }
                     ],
+                    [
+                      'attribute' => 'active',
+                      'format' => 'raw',
+                      'value' => function($model){
+                        return "<input class='checLang' data-id='".$model->id."' type='checkbox'".($model->active == 1 ? 'checked' : '').">";
+                      }
+                    ],
+                    
                 ],
             ]); ?>
         </div>

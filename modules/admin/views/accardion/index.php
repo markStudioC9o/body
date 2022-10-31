@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 ?>
 <div class="poor-block">
-  <div class="block-accardion" data-id="<?= $randId?>">
+  <div class="block-accardion" data-id="<?= $randId ?>">
     <div class="block-accardion-page">
       <div class="accr-element">
         <div class="accardion-title">
@@ -12,23 +12,25 @@ use yii\helpers\Html;
           </div>
         </div>
         <div class="content-one-accardion" style="min-height:100px" data-id="<?= $randId ?>">
-        
-      </div>
-      <!-- <div class="btn btn-warning del-elem-accr">
+
+        </div>
+        <!-- <div class="btn btn-warning del-elem-accr">
         Удалить
       </div> -->
-      <div class="btn btn-success img-elem-accr" data-id="<?= $randId ?>">
-        Добавить изображение
+        <div class="btn btn-success img-elem-accr" data-id="<?= $randId ?>">
+          <i class="fa fa-image"></i>
+        </div>
+        <div class="btn btn-success col-elem-accr" data-id="<?= $randId ?>">
+          <i class="sui sui-columns"></i>
+        </div>
       </div>
-      <!-- <div class="btn btn-success col-elem-accr" data-id="<?//= $randId ?>">
-        Добавить Колонку
-      </div> -->
-    </div>
 
-    <!-- <div class="add-alem-accr ster_<?//= $randId ?>" data-class="ster_<?//= $randId ?>">
+      <!-- <div class="add-alem-accr ster_<? //= $randId 
+                                          ?>" data-class="ster_<? //= $randId 
+                                                                              ?>">
       Добавить пункт  
     </div> -->
-  </div>
+    </div>
   </div>
   <div class="step-block accardion" style="opacity: 0;">
     <span class="up-bs">

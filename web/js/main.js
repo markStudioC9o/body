@@ -53,7 +53,7 @@ window.addEventListener(
   },
   false
 );
-console.log($.session.get("siz"), "222");
+//console.log($.session.get("siz"), "222");
 // $('.main-menu-item.menu-item-has-children > a:not([href*="/shop/"])').each(function(){
 // 	$(this).attr('href','javascript:void(0);')
 // });
@@ -363,7 +363,7 @@ $(document).ready(function (e) {
   });
 
   $(document).on("click", ".prew-img img", function (e) {
-    console.log(e.target.getAttribute("src"));
+    //console.log(e.target.getAttribute("src"));
     if (
       e.target.getAttribute("src") == "/icon/left-a.svg" ||
       e.target.getAttribute("src") == "/icon/right-a.svg"
@@ -412,7 +412,7 @@ $(document).ready(function (e) {
     var div2 = $(".or-elm img");
     var div3 = $(".class-loop");
     var div4 = $(".iicon-loop");
-    console.log(e.target);
+    //console.log(e.target);
     if (
       !div.is(e.target) &&
       !div2.is(e.target) &&
@@ -609,7 +609,7 @@ $(".selectVarRazdel li").hover(
 
 $(".variableSort li").click(function (e) {
   var val = $(this).data("val");
-  console.log(val);
+  //console.log(val);
   document.location = "?sort=" + val;
 });
 
@@ -617,14 +617,35 @@ $(".search_icon").on("click", function (e) {
   e.preventDefault();
   if (!$(this).hasClass("opner")) {
     $(this).addClass("opner");
-    var ourWidth =
-      $("#top_header .item_phone").outerWidth(true) +
-      $("#top_header .item.social").outerWidth(true) +
-      $("#top_header .item.comcol").outerWidth(true) +
-      $("#top_header .item.search").outerWidth(true);
+    var phone = $("#top_header .item_phone").outerWidth(true);
+    var social = 0;
+
+    $("#top_header .item.social").each(function(e){
+      social = social+$(this).outerWidth(true);
+    })
+
+    var item = 0;
+    $("#top_header .item.net-promt").each(function(e){
+      item = item+$(this).outerWidth(true);
+    })
+
+    var itemv = 0;
+    $("#top_header .item.promt").each(function(e){
+      itemv = itemv+$(this).outerWidth(true);
+    })
+    
+    if($("#top_header .item.comcol").length){
+      var comol = $("#top_header .item.comcol").outerWidth(true);
+    }else{
+      var comol = 0;
+    }
+    
+    var search = $("#top_header .item.search").outerWidth(true);
+    var ourWidth = phone+social +item+itemv+comol+search;
 
     $(".search_form_header").css("display", "block");
     $(".search_form_header").css("width", ourWidth + "px");
+    console.log(comol, search, social, item, itemv, ourWidth);
   }
 });
 $(".ui-resizable-handle").remove();
@@ -633,12 +654,12 @@ $(document).ready(function (e) {
     if ($(".card__wrapper").length) {
       $(".card__wrapper").each(function (e) {
         if ($(this).find(".card-image") && $(this).find(".card-descr")) {
-          console.log("123");
+          //console.log("123");
           // $(this)
           //   .children(".card-descr")
           //   .css("height", $(this).children(".card-image").height() + "px");
         } else {
-          console.log("222");
+          //console.log("222");
         }
       });
     }
@@ -712,10 +733,10 @@ $(".bb-arw-button.bb-arw-card__button").on("click", function (e) {
     });
     if (step) {
       var form = $("#" + id).serializeArray();
-      console.log(form);
+      //console.log(form);
       $.post("/apisend/index", { form: form }, Success);
       function Success(data) {
-        console.log(data);
+        //console.log(data);
       }
 
       $(".bb-arw-card").css("display", "none");
@@ -937,6 +958,31 @@ $(document).on("click", ".class-loop", function (e) {
     imageZoom("prewImage-s", "plazer-zoom");
     $(this).addClass('active-loop');
   }
-  
-  
 });
+
+$(document).ready(function(e){
+  if($('.bt-sg').length){
+    $('.bt-sg').each(function(e){
+      var mac = $(this).width();
+      if($(this).find('.param-colum').length){
+        var btSg = 0;
+
+        $(this).find('.param-colum').each(function(e){
+          var width = $(this).width();
+          btSg = btSg + width;
+        });
+        console.log(btSg);
+
+        $(this).find('.param-colum').each(function(e){
+          var width = $(this).width();
+          var start = (width / (btSg / 100)) * (mac / 100);
+          //console.log(procent);
+          $(this).css('width', start+'px');
+        });
+        
+      }
+    });
+  }
+});
+
+

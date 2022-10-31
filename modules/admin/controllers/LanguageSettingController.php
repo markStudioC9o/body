@@ -2,7 +2,9 @@
 
 namespace app\modules\admin\controllers;
 
+use app\assets\AdminAsset;
 use app\models\LanguageSetting;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -53,6 +55,8 @@ class LanguageSettingController extends MainController
             */
         ]);
         $this->title = 'Языковые параметры';
+        
+        $this->view->registerJsFile('/js/langue.js', ['depends' => AdminAsset::className()]);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
@@ -120,6 +124,21 @@ class LanguageSettingController extends MainController
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    public function actionActive(){
+      if(Yii::$app->request->isAjax){
+        $data = Yii::$app->request->post();
+        $model = LanguageSetting::find()->where(['id' => $data['id']])->one();
+        if($model->active == 0){
+          $model->active = 1;
+        }else{
+          $model->active = 0;
+        }
+        if($model->save()){
+          return '200';
+        }
+      }
     }
 
     /**
