@@ -29,7 +29,7 @@ class MainOption extends \yii\db\ActiveRecord
     {
         return [
             [['key_param'], 'string', 'max' => 500],
-            [['value'], 'string', 'max' => 1000],
+            [['value'], 'string'],
             [['date'], 'string', 'max' => 255],
         ];
     }
