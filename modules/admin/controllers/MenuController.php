@@ -323,6 +323,8 @@ class MenuController extends MainController
         $menuList->value = json_encode($menu);
         if ($menuList->save()) {
           return $this->redirect(['index']);
+        }else{
+          var_dump($menuList->getErrors());
         }
       }
     }
