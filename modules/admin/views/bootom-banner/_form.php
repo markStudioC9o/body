@@ -12,7 +12,10 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'link')->textInput(); ?>
       </div>
       <div class="col-md-12">
-        <?= $form->field($model, 'image')->fileInput(['required' => true]); ?>
+        <?= $form->field($model, 'name')->textInput(); ?>
+      </div>
+      <div class="col-md-12">
+        <?= $form->field($model, 'image')->fileInput(); ?>
       </div>
       <div class="col-md-12">
       <?= $form->field($model, 'active')->checkbox(['value' => '1', 'checked' => true])?>

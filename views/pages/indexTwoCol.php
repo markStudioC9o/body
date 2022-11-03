@@ -14,7 +14,7 @@ use app\widgets\LeftAside;
                   <? endif;?>
                 </div>
                 <? if (isset($param['widget']) && !empty($param['widget'])) {
-            $listWidget = $param['widget'];
+            $listWidget['value'] = $param['widget'];
             echo LeftAside::widget(['listWidget' => $listWidget]);
           } else {
             $listWidget = '';

@@ -57,8 +57,10 @@ class DirWidget extends \yii\bootstrap4\Widget
     foreach($dir as $key => $elem){
       
       if($elem != '.' && $elem != '..' && is_dir($path.$item."/".$elem)){
-        $array['name'] = $elem;
-        $array['child'] = $this->getChild($path.$item."/", $elem);
+        $array[] = array(
+          'name' => $elem,
+          'child' => $this->getChild($path.$item."/", $elem)
+        );
       }
       
     }

@@ -18,7 +18,10 @@ use yii\helpers\Html;
       <div class="col-md-6 mt-3">
         <label for="">Ссылка</label>
         <input value="<?= (isset($articlesOption['link']) && !empty($articlesOption['link']) ? $articlesOption['link'] : '') ?>" name="link" type="text" class="form-control" id="linkArticles">
-
+      </div>
+      <div class="col-md-12 mt-3">
+        <label for="">Заголовок таксономия</label>
+        <input value="<?= (isset($articlesOption['breadcram']) && !empty($articlesOption['breadcram']) ? $articlesOption['breadcram'] : '') ?>" name="breadcram" type="text" class="form-control" id="breadcramArticles">
       </div>
       <div class="col-md-6 mt-3">
         <label for="">Рубрика</label>
@@ -79,7 +82,12 @@ use yii\helpers\Html;
           $selectedVal = '';
         }
         ?>
-        <?= Html::dropDownList('bottom-banner', $selectedVal, ArrayHelper::map(BootomBanner::find()->asArray()->all(), 'id', 'id'), ['class' => 'form-control', 'prompt' => 'Выберите баннер']) ?>
+        
+        <? $datas = array(
+          'nans' => 'без баннера',
+          'Список баннеров' => ArrayHelper::map(BootomBanner::find()->asArray()->all(), 'id', 'name')
+          )?>
+        <?= Html::dropDownList('bottom-banner', $selectedVal, $datas, ['class' => 'form-control', 'prompt' => 'Выберите баннер']) ?>
       </div>
       <div class="col-md-12 mt-3">
         <label for="">Статьи по теме</label>

@@ -1,17 +1,19 @@
-<?
-
-use yii\widgets\Pjax;
-?>
 <div class="row">
   <div class="col-md-2">
     <? function ShestArray($array, $name)
     {
-      $ns = $name . "/" . $array['name'];
+      $ns = $name . "/";
       $rest = '<ul>';
-      $rest .= "<li><span class=\"dir-tag\" data-dir=\"" . $ns . "\">" . $array['name'] . "</span></li>";
-      if (isset($array['child']) && !empty($array['child'])) {
-        $rest .= ShestArray($array['child'], $ns);
+      foreach($array as $key => $item){
+        $rest .= "<li><span class=\"dir-tag\" data-dir=\"" . $ns .$item['name']."\">" . $item['name'] . "</span></li>";
+        if(isset($item['child']) && !empty($item['child'])){
+          $rest .= ShestArray($item['child'], $ns.$item['name']);
+        }
       }
+      
+      // if (isset($array['child']) && !empty($array['child'])) {
+      //   $rest .= ShestArray($array['child'], $ns);
+      // }
       $rest .= '</ul>';
       return $rest;
     } ?>
@@ -19,16 +21,15 @@ use yii\widgets\Pjax;
       <li class="dir-home"><span>../</span></li>
       <? foreach ($listDir as $item) : ?>
         <li><span class="dir-tag" data-dir="<?= $item['name'] ?>"><?= $item['name'] ?></span>
+          <? if(isset($item['child']) && !empty($item['child'])):?>
           <?= ShestArray($item['child'], $item['name']) ?>
+          <? endif;?>
         </li>
       <? endforeach; ?>
     </ul>
   </div>
   <div class="col-md-10">
     <div class="pod_ht">
-      <?php Pjax::begin([
-        'id' => 'pajax-modal-img'
-      ]); ?>
       <div class="row">
         <? if (isset($cat) && !empty($cat)) : ?>
           <? foreach ($cat as $key => $val) : ?>
@@ -49,7 +50,6 @@ use yii\widgets\Pjax;
           <? endforeach; ?>
         <? endif; ?>
       </div>
-      <?php Pjax::end(); ?>
     </div>
     <div class="pod_fd">
 

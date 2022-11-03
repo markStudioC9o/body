@@ -74,8 +74,18 @@ class CitiesWidget extends \yii\bootstrap4\Widget
         return $kontakty['phone'];
       }
     }
-    
-    $serty = SortHeader::find()->where(['parent_id' => $cityName['id']])->asArray()->one();
+    if(!isset($cityName['id']) && empty($cityName['id'])){
+      $globcon = CoitiesData::find()->where(['global' => 1])->asArray()->one();
+      $sledId = $globcon['cities_id'];
+    }else{
+      if(isset($cityName['parent_id']) && !empty($cityName['parent_id'])){
+        $sledId = $cityName['parent_id'];
+      }else{
+        $sledId = $cityName['id'];
+      }
+      
+    }
+    $serty = SortHeader::find()->where(['parent_id' => $sledId])->asArray()->one();
     if(!empty($serty['value'])){
       $sort = json_decode($serty['value'], true);
     }else{

@@ -13,7 +13,7 @@ use app\widgets\LeftAside;
           <?= $model->content ?>
         </div>
         <? if (isset($param['widget']) && !empty($param['widget'])) {
-          $listWidget = $param['widget'];
+          $listWidget['value'] = $param['widget'];
         } else {
           $listWidget = '';
         }; ?>

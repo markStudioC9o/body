@@ -739,10 +739,20 @@ class QutController extends MainController
   .sui-laravel
   .sui-signalapp";
 
+  public function actionParametr(){
+    if(Yii::$app->request->isAjax){
+      $data = Yii::$app->request->post();
+      return $this->renderPartial('parametr',[
+        'data'=>$data
+      ]);
+    }
+  }
 
   public function actionIndex(){
     if(Yii::$app->request->isAjax){
-      return $this->renderAjax('index');
+      $data = Yii::$app->request->post();
+
+      return $this->renderAjax('index',['data' => $data]);
     }
   }
 
@@ -765,7 +775,8 @@ class QutController extends MainController
     if(Yii::$app->request->isAjax){
       $data = Yii::$app->request->post();
       return $this->renderPartial('qut-update', [
-        'data' => $data['obj']
+        'data' => $data['obj'],
+        'cssStyle' => $data['cssStyle']
       ]);
     }
   }

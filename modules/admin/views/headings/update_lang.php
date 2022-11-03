@@ -1,4 +1,7 @@
+
+
 <div id="tabrel" style="border:none;padding:0">
+
 <ul>
   <? foreach ($lang as $elem) : ?>
     <li><a href="#tabs-<?= $elem->id ?>"><?= $elem->name ?></a></li>
@@ -9,7 +12,11 @@
   'lang' => $lang,
   'model' => $model,
   'modelLang' => $modelLang,
-  'list' => $list
+  'list' => $list,
+  'widgetMap' => $widgetMap,
+  'headingWidget' => $headingWidget,
+  'widgetBB' => $widgetBB,
+  'bottomBanner' => $bottomBanner
 ]) ?>
 </div>
 <?

@@ -1,11 +1,3 @@
-function AddsImage(){
-  $.post('/admin/articles/render-image-gal',Success);
-  function Success(data){
-    $('#idrety').html(data);
-    $("#image").modal("show");
-  }
-}
-
 
 function randomInteger(min, max) {
   let rand = min - 0.5 + Math.random() * (max - min + 1);
@@ -23,9 +15,15 @@ $(document).on('click', '.video-pop .controll', function(e){
   }
 })
 $(document).on("click", ".rever-img", function (e) {
-  AddsImage();
-  $(".abbred-image").addClass("rever-img");
-  $(".abbred-image").attr("data-img_id", $(this).data("id"));
+  var dataId = $(this).data("id");
+  $.post("/admin/articles/render-image-gal", Success).done(function(){
+    $(".abbred-image").addClass("rever-img");
+    $(".abbred-image").attr("data-img_id", dataId);
+  });
+  function Success(data) {
+      $("#image").modal("show");
+      //$("#idrety").html(data);
+  }
 });
 
 $(document).on("click", ".img-tag-prop", function (e) {

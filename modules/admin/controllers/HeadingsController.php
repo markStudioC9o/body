@@ -3,11 +3,14 @@
 namespace app\modules\admin\controllers;
 
 use app\assets\AdminAsset;
+use app\models\BootomBanner;
 use yii;
 use app\models\Heading;
 use app\models\HeadingLang;
 use app\models\HeadingOption;
 use app\models\LanguageSetting;
+use app\models\Widget;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 /**
@@ -30,8 +33,6 @@ class HeadingsController extends MainController
     if (Yii::$app->request->post()) {
       $data = Yii::$app->request->post();
       
-      // debug($data);
-      // exit();
       if(empty($data['Heading']['title'])){
         Yii::$app->session->setFlash('success', "Не заполнен заголовок");
         return $this->refresh();
@@ -148,27 +149,40 @@ class HeadingsController extends MainController
     if (Yii::$app->request->isAjax) {
       $list = Heading::find()->asArray()->orderBy(['sort' => SORT_DESC])->all();
       $data = Yii::$app->request->post();
-
+      $headingWidget = HeadingOption::find()->where(['heading_id' => $data['id']])->andWhere(['option_param' => 'widget'])->one();
+      $bottomBanner = HeadingOption::find()->where(['heading_id' => $data['id']])->andWhere(['option_param' => 'bottomBanner'])->one();
+      
       $lang = LanguageSetting::find()->all();
       $model = Heading::find()->where(['id' => $data['id']])->one();
+      $widget = Widget::find()->all();
+      $widgetMap = ArrayHelper::map($widget, 'id', 'title');
+      $botomBanner = BootomBanner::find()->all();
+      $widgetBB = ArrayHelper::map($botomBanner, 'id', 'name');
       if (!empty($lang)) {
         return $this->renderAjax('update_lang', [
           'model' => $model,
           'lang' => $lang,
           'modelLang' => HeadingLang::find()->where(['heading_id' => $data['id']])->all(),
-          'list' => $list
+          'list' => $list,
+          'widgetMap' => $widgetMap,
+          'headingWidget' => $headingWidget,
+          'widgetBB' => $widgetBB,
+          'bottomBanner' => $bottomBanner
         ]);
       }
+
+
+
       return $this->renderAjax('update', [
-        'model' => $model
+        'model' => $model,
+        'widgetMap'=> $widgetMap
       ]);
     }
 
     if (Yii::$app->request->post()) {
       $data = Yii::$app->request->post();
       //var_dump($this->Translit($data['Heading']['title']));
-      //debug($data);
-      //exit();
+      
 
       if(!isset($data['Heading']['title']) || empty($data['Heading']['title'])){
         Yii::$app->session->setFlash('success', "Не указан заголовок");
@@ -208,7 +222,38 @@ class HeadingsController extends MainController
           $optHeading->save();
         }
       }
+      
+        if(HeadingOption::find()->where(['heading_id' => $data['Heading']['id']])->andWhere(['option_param' => 'widget'])->exists()){
+          $headingWidget = HeadingOption::find()->where(['heading_id' => $data['Heading']['id']])->andWhere(['option_param' => 'widget'])->one();
+          $headingWidget->value = json_encode($data['HeadingWidget']['widget']);
+        }else{
+          $headingWidget = new HeadingOption([
+            'heading_id' => $data['Heading']['id'],
+            'option_param' => 'widget',
+            'value' => json_encode($data['HeadingWidget']['widget'])
+          ]);
+        }
 
+        if(!$headingWidget->save()){
+          return var_dump($headingWidget->getErrors());
+        }
+
+
+        if(HeadingOption::find()->where(['heading_id' => $data['Heading']['id']])->andWhere(['option_param' => 'bottomBanner'])->exists()){
+          $bottomBanner = HeadingOption::find()->where(['heading_id' => $data['Heading']['id']])->andWhere(['option_param' => 'bottomBanner'])->one();
+          $bottomBanner->value = json_encode($data['HeadingWidget']['bottomBanner']);
+        }else{
+          $bottomBanner = new HeadingOption([
+            'heading_id' => $data['Heading']['id'],
+            'option_param' => 'bottomBanner',
+            'value' => json_encode($data['HeadingWidget']['bottomBanner'])
+          ]);
+        }
+
+        if(!$bottomBanner->save()){
+          return var_dump($bottomBanner->getErrors());
+        }
+        
       if (isset($data['ArticlesType']) && !empty($data['ArticlesType'])) {
         foreach ($data['ArticlesType'] as $esr => $emr) {
           if (HeadingOption::find()->where(['heading_id' => $data['Heading']['id']])->andWhere(['option_param' => $esr])->exists()) {
@@ -256,6 +301,10 @@ class HeadingsController extends MainController
       }
     }
   }
+
+
+
+
 
   public function actionDelete()
   {

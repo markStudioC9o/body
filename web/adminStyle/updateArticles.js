@@ -18,13 +18,18 @@ $(document).ready(function (e) {
     var setting4 = '<div class="sirkle-param-cop"><i class="fa fa-plus"></i><div class="cropp-block"><ul><li class="cop-block colum">Копировать</li><li class="cop-paste">Вставить</li></ul></div></div>';
     var setting5 = '<div class="sirkle-param-cop"><i class="fa fa-plus"></i><div class="cropp-block"><ul><li class="cop-paste">Вставить</li></ul></div></div>';
     var video = '<div class="sirkle-param-cop"><i class="fa fa-plus"></i><div class="cropp-block"><ul><li class="cop-block video">Копировать</li><li class="cop-paste">Вставить</li></ul></div></div>';
-
+    var radactor = '<div class="block-radactor-pen"><i class="sui sui-pencil"></i></div>';
 
 if($('.block-qout').length){
   $('.block-qout').each(function(e){
     $(this).closest('.poor-block').append(deefer);
+    $(this).closest('.poor-block').append(setting5);
+    $(this).append(radactor);
   });
 }
+
+
+
 
   if ($("#mainH1").length) {
     $("#mainH1").children(".title-text").attr("contenteditable", "true");
@@ -153,6 +158,14 @@ if($('.block-qout').length){
       }
     });
   }
+
+
+if($('.block-author-default').length){
+  $('.block-author-default').each(function(e){
+    $(this).after(setting5);
+    // .append(setting5);
+  });
+}
   if($('.content-form-redactor').length){
     $('.content-form-redactor').each(function(e){
       $(this).parent(".poor-block").prepend(deefer);
@@ -202,5 +215,7 @@ if($('.block-qout').length){
   
   
 });
+
+
 
 // setting5

@@ -1,8 +1,9 @@
 function AddsImage() {
-  $.post("/admin/articles/render-image-gal", Success);
+  
+  $.post("/admin/articles/render-image-gal", Success)
   function Success(data) {
-    $("#idrety").html(data);
     $("#image").modal("show");
+    $("#idrety").html(data);
   }
 }
 
@@ -183,6 +184,9 @@ $(document).on("input keyup", "#list-margin-input input", function (e) {
   var type = $(this).data("type");
   var block = $(this).data("param");
   var id = $(this).data("id");
+  if(block == "qut"){
+    $('.block-qout[data-id="'+id+'"]').find('.su-service ').css(type, val + "px");
+  }
   if (block == "text-imger") {
     $("." + block + "_margin_tag." + id + "_opens")
       .siblings(".img-wrap")
@@ -327,28 +331,20 @@ $("#img-dowloand").on("click", function (e) {
           $(".abbred-image").data("img_id", "");
           $("#image .abbred-image").removeClass("in-slider");
           $("#image").modal("hide");
-          return false;
-        }
-
-        if ($(".abbred-image").hasClass("aprovCol")) {
+        }else if ($(".abbred-image").hasClass("aprovCol")) {
           var dataId = $(".abbred-image").attr("data-img_id");
           console.log(dataId);
           aprovCol(data.path, dataId);
           $("#image .abbred-image").removeClass("aprovCol");
           $("#image").modal("hide");
-          return false;
-        }
-
-        if ($(".abbred-image").hasClass("imageCol")) {
+        }else if ($(".abbred-image").hasClass("imageCol")) {
           var dataId = $(".abbred-image").attr("data-img_id");
           addImageCol(data.path, dataId);
           $("#image .abbred-image").removeClass("imageCol");
           $("#image").modal("hide");
-          return false;
+        }else{
+          addImageStr(data.path);
         }
-        
-        addImageStr(data.path);
-        
       },
     });
   }
@@ -814,6 +810,7 @@ $(".saveArticleThis").on("click", function (e) {
   var link = $("#linkArticles").val();
   var val = $("#blockContent");
   $(".element-bord").unwrap(".poor-block");
+  $('.block-radactor-pen').remove();
   $(".sirkle-param-cop").remove();
   $(".step-block").remove();
   $(".setLestBlock").remove();
@@ -838,6 +835,7 @@ $(".saveArticleThis").on("click", function (e) {
   var keywords = $('textarea[name="SeoKeywords"]').val();
   var description = $('textarea[name="SeoDescription"]').val();
   var imgArt = $("#articles_image").val();
+  var breadcram = $('#breadcramArticles').val();
 
   if ($("input[name='videoArticles']").prop("checked")) {
     var videoArticles = "2";
@@ -884,6 +882,7 @@ $(".saveArticleThis").on("click", function (e) {
           widget_articles: widget,
           articleSiblid: articleSiblid,
           botomBanner: botomBanner,
+          breadcram: breadcram,
           id: id,
           lang: lang,
           size: size,
@@ -3000,15 +2999,22 @@ $(document).on("click", ".deleteThisElem", function (e) {
 });
 $(document).on("click", ".dir-tag", function (e) {
   var path = $(this).data("dir");
+  $('.dir-tag').removeClass('this-folder');
+  $(this).addClass('this-folder');
   $.post("/admin/file/get-dir", { path: path }, Success);
   function Success(data) {
-    $(".pod_ht").css("display", "none");
-    $(".pod_fd").html(data);
+    $(".pod_ht").html(data);
+    // $(".pod_fd").html(data);
   }
 });
 $(document).on("click", ".dir-home", function (e) {
-  $(".pod_ht").css("display", "block");
-  $(".pod_fd").html("");
+  $.post("/admin/file/get-dir", { path: '/' }, Success);
+  function Success(data) {
+    $(".pod_ht").html(data);
+    // $(".pod_fd").html(data);
+  }
+  // $(".pod_ht").css("display", "block");
+  // $(".pod_fd").html("");
 });
 $(function () {
   $("#tabsNap").tabs();
@@ -3192,6 +3198,7 @@ $(document).on("click", "#add-quete", function (e) {
   $.post("/admin/qut/index", Success);
   function Success(data) {
     $(".qoute").html(data);
+    $("#quote").removeClass("update");
     $("#quote").modal("show");
   }
 });
@@ -3218,17 +3225,20 @@ $(document).on("click", ".asd-fert", function (e) {
   var obj = new Object();
   obj["title"] = $(".title-qut").val();
   obj["color"] = $("#colorMenu").val();
-  obj["text"] = $("#quote-bodsy").val();
+  obj["text"] = $("#quote-bodsy").find('.contrel-text').html();
+  var cssStyle = $("#quote-bodsy").find('.contrel-text').attr('style');
+  console.log(cssStyle);
   obj["img"] = $("#link-img").val();
   obj["icon"] = $("#link-icon").val();
   if ($("#quote").hasClass("update")) {
     var id = $("#quote").attr("data-id");
-    $.post("/admin/qut/update", { obj: obj, id: id }, Success);
+    $.post("/admin/qut/update", { obj: obj, id: id, cssStyle: cssStyle }, Success);
     function Success(data) {
       $('.block-qout[data-id="' + id + '"]').html(data);
       $("#quote").removeClass("update");
       $("#quote").removeAttr("data-id");
       $("#quote").modal("hide");
+
     }
   } else {
     $.post("/admin/qut/render", { obj: obj }, Success);
@@ -3238,22 +3248,55 @@ $(document).on("click", ".asd-fert", function (e) {
     }
   }
 });
-$(document).on("click", ".su-service", function (e) {
-  var id = $(this).closest(".block-qout").data("id");
-  $("#quote").modal("show");
-  $("#quote").addClass("update");
-  $("#quote").attr("data-id", id);
-  var title = $(this).find(".susu-title").html();
-  var text = $(this).find(".su-service-content").html();
-  var color = $(this).data("color");
-  var icon = $(this).find(".sui").data("tag");
 
-  $(".title-qut").val(title);
-  $("#colorMenu").val(color);
-  $("#quote-bodsy").html(text);
-  $('#quote-bodsy-container div[contenteditable="true"]').html(text);
-  $("#link-icon").val(icon);
+$(document).on('click', ".block-qout", function(e){
+  
+  var id = $(this).data('id');
+
+  var output = new Object();
+  var cssProperties = $(this)
+    .find(".su-service ")
+    .css([
+      "margin-top",
+      "margin-bottom",
+      "margin-right",
+      "margin-left",
+    ]);
+  $.each(cssProperties, function (prop, value) {
+    output[prop] = value;
+  });
+
+
+  $.post('/admin/qut/parametr', {id: id, output: output}, Success);
+  function Success(data){
+    $(".block-parametrs").html(data);
+  }
+})
+$(document).on("click", ".block-radactor-pen", function (e) {
+  var id = $(this).closest(".block-qout").data("id");
+  $("#quote").attr("data-id", id);
+
+  // $(".title-qut").val(title);
+  // $("#colorMenu").val(color);
+  // $("#quote-bodsy").html(text);
+  // $('#quote-bodsy-container div[contenteditable="true"]').html(text);
+  // $("#link-icon").val(icon);
+
+  var data = new Object();
+  data['title'] = $(this).closest(".block-qout").find(".susu-title").html();
+  data['text'] = $(this).closest(".block-qout").find(".su-service-content").html();
+  var cssStyle = $(this).closest(".block-qout").find(".su-service-content").attr('style');
+  data['icon'] = $(this).closest(".block-qout").find(".sui").attr("data-tag");
+  data['color'] = $(this).closest(".block-qout").find('.su-service').attr("data-color");
+
+  $.post("/admin/qut/index", {data: data, cssStyle: cssStyle}, Success);
+  function Success(data) {
+    $(".qoute").html(data);
+    $("#quote").addClass("update");
+    $("#quote").modal("show");
+  }
 });
+
 
 $(document).on("click", ".img-quote", function (e) {
   $(".abbred-image").addClass("qouter");

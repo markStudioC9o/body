@@ -34,19 +34,25 @@ class HeadingController extends MainController
       $heading = Heading::find()->where(['id' => $headinLang->heading_id])->one();
     }
     $children = Heading::find()->where(['parent_id' => $this->heading->id])->asArray()->all();
-    $headingOption = HeadingOption::find()->where(['heading_id' => $heading->id])->all();
-    // echo "<pre>";
-    // print_r($heading);
-    // print_r($children);
-    // print_r($headingOption);
+    $headingOption = HeadingOption::find()->where(['heading_id' => $heading->id])->asArray()->all();
+    //  echo "<pre>";
+    // // print_r($heading);
+    // // print_r($children);
+    //  print_r($headingOption);
     
-    // echo "</pre>";
+    //  echo "</pre>";
+    $widgetArray = array();
+    foreach($headingOption as $key => $item){
+      $widgetArray[$item['option_param']] = $item;
+    }
     if ($heading->col == '2') {
       return $this->render('indexTwoColnew', [
         'heading' => $heading,
         'pagesOption' => null,
         'param' => null,
-        'colorHex' => null
+        'colorHex' => null,
+        'headingOption' => $headingOption,
+        'widgetArray' => $widgetArray
       ]);
     }
     if ($heading->col == '3') {
@@ -64,7 +70,9 @@ class HeadingController extends MainController
       'heading' => $heading,
       'pagesOption' => null,
       'param' => null,
-      'colorHex' => null
+      'colorHex' => null,
+      'lang' => $lang,
+      'widgetArray' => $widgetArray
     ]);
   }
 }

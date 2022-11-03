@@ -81,6 +81,17 @@ class Articles extends ActiveRecord
     }
   }
 
+  public function getMHeading()
+  {
+    $option = ArticlesOption::find()->where(['articles_id' => $this->id])->andWhere(['option_param' => 'mainHeading'])->one();
+    if (!empty($option)) {
+      $heading = Heading::find()->where(['id' => $option->value])->one();
+      return $heading;
+    }else{
+      return null;
+    }
+  }
+
   public function getVersion($id, $size, $lang){
     if(ArticleLang::find()->where(['parent_id' => $id])->andWhere(['size' => $size])->andWhere(['lang' => $lang])->exists()){
       return true;

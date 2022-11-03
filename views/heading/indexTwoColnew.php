@@ -13,8 +13,10 @@ use app\widgets\LeftAside;
                     <?= ContentTwoColWidget::widget(['heading' => $heading,'type' => 'categ', 'content' => $pagesOption['type'], 'color' =>$colorHex,]);?>
                     <? endif;?>
                 </div>
-                <? if (isset($param['widget']) && !empty($param['widget'])) {
-            $listWidget = $param['widget'];
+                
+                <? if (isset($widgetArray['widget']) && !empty($widgetArray['widget'])) {
+            $listWidget = $widgetArray['widget'];
+            
             echo LeftAside::widget(['listWidget' => $listWidget]);
           } else {
             $listWidget = '';

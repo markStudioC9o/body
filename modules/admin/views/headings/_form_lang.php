@@ -5,8 +5,9 @@ use yii\widgets\ActiveForm;
 use vova07\imperavi\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-
+use kartik\select2\Select2;
 ?>
+
 
 <? $form = ActiveForm::begin() ?>
 <? if (isset($model->id) && !empty($model->id)) : ?>
@@ -14,7 +15,50 @@ use yii\helpers\Html;
   <div id="tabs-param">
     <input type="hidden" value="<?= $model->id ?>" class="id_heading">
     <br>
+  <div class="form-group">
+  <label for="">Виджеты</label>
+  <? if(isset($headingWidget->value) && !empty($headingWidget->value)){
+    $dataVal = json_decode($headingWidget->value , true);
+  }else{
+    $dataVal = null;
+  }?>
+    <?
+  echo Select2::widget([
+    'name' => 'HeadingWidget[widget]',
+    'data' => $widgetMap,
+    'value' => $dataVal,
+    'options' => [
+      'placeholder' => 'Виджеты',
+      'multiple' => true,
+      'class' => 'form-control selecter23 headingSelect'
+    ],
+  ]);
+  ?>
+  </div>
 
+  <div class="form-group">
+  <label for="">Нижний баннер</label>
+  <? if(isset($bottomBanner->value) && !empty($bottomBanner->value)){
+    $dataBB = json_decode($bottomBanner->value , true);
+  }else{
+    $dataBB = null;
+  }?>
+    <?
+  echo Select2::widget([
+    'name' => 'HeadingWidget[bottomBanner]',
+    'data' => $widgetBB,
+    'value' => $dataBB,
+    'options' => [
+      'placeholder' => 'Выберите баннер',
+      'multiple' => false,
+      'class' => 'form-control selecter23 headingSelect'
+    ],
+  ]);
+  ?>
+  </div>
+
+
+<br>
     <? $articles = $model->getArticl()->select('articles_id')->asArray()->all();?>
     <? $option = $model->getOption();?>
     <?= ArticlesType::widget(['articles' => $articles, 'option' => $option])?>

@@ -29,7 +29,7 @@ class BootomBanner extends ActiveRecord
     {
         return [
             [['active'], 'string'],
-            [['img', 'link', 'data'], 'string', 'max' => 255],
+            [['img', 'link', 'data', 'name'], 'string', 'max' => 255],
             [['image'], 'file', 'extensions' => 'png, jpg, jpeg, svg, webp']
         ];
     }

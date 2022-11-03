@@ -79,6 +79,11 @@ class Heading extends ActiveRecord
       return $model;
     }
 
+    public function getBootomBanner(){
+      $model = HeadingOption::find()->where(['heading_id' => $this->id])->andWhere(['option_param' => 'bottomBanner'])->asArray()->one();
+      return $model;
+    }
+
     public function getHeading($id){
       $model = Heading::find()->where(['id' => $id])->asArray()->one();
       return $model;

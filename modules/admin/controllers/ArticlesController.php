@@ -380,7 +380,7 @@ class ArticlesController extends MainController
 
   public function SetOptions($data, $id, $lang, $texter, $title)
   {
-    $array = array('articleSiblid', 'botomBanner', 'mainHeading', 'heading', 'text', 'title', 'img_articles', 'widget_articles', 'videoArticles', 'noindexArticles', 'link', 'description', 'keywords');
+    $array = array('articleSiblid', 'botomBanner', 'mainHeading', 'heading', 'text', 'title', 'img_articles', 'widget_articles', 'videoArticles', 'noindexArticles', 'link', 'description', 'keywords', 'breadcram');
     foreach ($array as $item => $val) {
       if (!empty($lang) && $lang != 'ru') {
         if (ArticlesOptionLang::find()->where(['option_param' => $val])->andWhere(['articles_id' => $id])->andWhere(['tag' => $lang])->exists()) {

@@ -478,10 +478,11 @@ footer .fb3_right ul {
   line-height: 16px;
 }
 .breadcrambs p {
-  font-size: 14px;
+  font-size: 16px;
   color: #2e80a6;
   cursor: default;
 }
+
 .breadcrambs p a:after {
   content: "";
   display: block;
@@ -500,6 +501,11 @@ footer .fb3_right ul {
   color: #2e80a6;
   margin-right: 20px;
   cursor: pointer;
+}
+.author_color_tag:hover,
+.breadcrambs p span:hover,
+.breadcrambs p a:hover{
+  text-decoration: underline !important;
 }
 .breadcrambs p a:first-letter {
   text-transform: uppercase !important;
@@ -644,4 +650,9 @@ span.gap-text{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.img-werst {
+  width: 73px;
+  height: 73px;
+  margin: 5px;
 }
