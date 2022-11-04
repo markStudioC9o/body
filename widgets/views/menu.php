@@ -44,9 +44,12 @@ function sendLink($elem, $lang)
   </div>
 </div>
 <div id="mob_bottom_header">
+<?$citesVal =  CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob']); ?>
+<? if(!empty($citesVal)):?>
   <div class="item item_city">
-    <a class="current" href=""><?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob']); ?></a>
+      <a class="current" href=""><?= $citesVal?></a>
   </div>
+  <? endif;?>
   <div class="item item_phone">
     <a href="tel:<?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'phone']); ?>" class="fil"><?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'phone']); ?></a>
   </div>
@@ -155,7 +158,10 @@ function sendLink($elem, $lang)
     <? endif; ?>
 
     <li>
-      <a class="current" href=""><?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob']); ?></a>
+      <?$citesVal =  CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob']); ?>
+      <? if(!empty($citesVal)):?>
+      <a class="current" href=""><?= $citesVal?></a>
+      <? endif;?>
     </li>
   </ul>
 

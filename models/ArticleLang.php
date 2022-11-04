@@ -54,4 +54,16 @@ class ArticleLang extends \yii\db\ActiveRecord
             'size' => 'Размер'
         ];
     }
+
+
+  public function getMHeading()
+  {
+    $option = ArticlesOption::find()->where(['articles_id' => $this->id])->andWhere(['option_param' => 'mainHeading'])->one();
+    if (!empty($option)) {
+      $heading = Heading::find()->where(['id' => $option->value])->one();
+      return $heading;
+    }else{
+      return null;
+    }
+  }
 }

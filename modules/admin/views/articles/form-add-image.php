@@ -1,8 +1,14 @@
+<?php
+
+use app\widgets\DirWidget;
+?>
 
 <div class="row">
   <div class="col-md-9">
     <div id="idrety">
-    
+    <?= DirWidget::widget(['type' => 'renster'])?>
+
+
     </div>
     
   </div>

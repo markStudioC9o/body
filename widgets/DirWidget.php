@@ -6,6 +6,8 @@ use Yii;
 
 class DirWidget extends \yii\bootstrap4\Widget
 {
+
+  public $type = null;
   public function run()
   {
     $path = Yii::getAlias('@webroot') . '/gallery/';
@@ -38,17 +40,28 @@ class DirWidget extends \yii\bootstrap4\Widget
   {
     $array_name[$key] = $row['mtime'];
   }
+
   array_multisort($array_name, SORT_DESC, $arrayFileImg);
   
     $dirGallTwo = scandir($pathTwo);
     $cat = array();
     $catTwo = array();
-    return $this->render('dirwidget', [
-      'cat' => null,
-      'catTwo' => $arrayFileImg,
-      'listDir' => $listDir
-    ]);
+    if($this->type == 'renster'){
+      return $this->render('directs',[
+        'cat' => null,
+        'catTwo' => $arrayFileImg,
+        'listDir' => $listDir
+      ]);
+    }else{
+      return $this->render('dirwidget', [
+        'cat' => null,
+        'catTwo' => $arrayFileImg,
+        'listDir' => $listDir
+      ]);
+    }
   }
+
+
 
   public function getChild($path, $item){
     //return $path.$item."/";

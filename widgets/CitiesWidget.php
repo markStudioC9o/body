@@ -63,7 +63,12 @@ class CitiesWidget extends \yii\bootstrap4\Widget
     }
     if($this->type == 'mob'){
       if(isset($nameThisCity) && !empty($nameThisCity)){
-        return $nameThisCity;
+        $show = $this->cityHide;
+        if(isset($show->value) && $show->value == 'show'){
+          return $nameThisCity;
+        }else{
+          return null;  
+        }
       }else{
         return null;
       }
