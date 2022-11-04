@@ -1224,6 +1224,48 @@
   }
 }
 @media screen and (max-width: 1023px) {
+  .socials_and_player .share{
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  .socials_and_player{
+    display: flex;
+  }
+  .socials_and_player .player{
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .socials_and_player .share .soc .counter{
+    display: none;
+  }
+  .author_info p.inf + p.inf {
+    font-size: 10px;
+    line-height: 12px;
+}
+  .author_info{
+    padding-top: 2px;
+  }
+  .author_color_tag{
+    font-size: 14px;
+  }
+  p.inf a {
+    font-size: 14px;
+    line-height: 20px;
+}
+  .author_img{
+    width: 37px;
+    height: 37px;
+  }
+  .socials_and_player .player{
+    height: inherit;
+    width: 110px;
+    padding: 9px 6px;
+  }
+  
+  p.inf i{
+    display: none;
+  }
   .socials_and_player .player .pl_no_active .text {
     line-height: 12px;
     font-size: 10px;
