@@ -44,7 +44,7 @@ function sendLink($elem, $lang)
   </div>
 </div>
 <div id="mob_bottom_header">
-<?$citesVal =  CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob']); ?>
+<?$citesVal =  CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob', 'cityHide' => $cityHide]); ?>
 <? if(!empty($citesVal)):?>
   <div class="item item_city">
       <a class="current" href=""><?= $citesVal?></a>
@@ -158,7 +158,7 @@ function sendLink($elem, $lang)
     <? endif; ?>
 
     <li>
-      <?$citesVal =  CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob']); ?>
+      <?$citesVal =  CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'type' => 'mob', 'cityHide' => $cityHide]); ?>
       <? if(!empty($citesVal)):?>
       <a class="current" href=""><?= $citesVal?></a>
       <? endif;?>
