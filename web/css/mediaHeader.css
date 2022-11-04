@@ -24,6 +24,12 @@
 }
 
 @media screen and (max-width: 1599px) {
+  .socials_and_player .player{
+    width: 230px;
+  }
+  .socials_and_player .player .pl_no_active .text {
+    line-height: 18px;
+  }
   .item.net-promt{
     margin-right: 4px;
   }
@@ -906,6 +912,11 @@
   }
 }
 @media screen and (max-width: 1365px) {
+  .socials_and_player .player .pl_no_active .text{
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
   .openWidget img {
     width: 223px;
   }
@@ -930,12 +941,16 @@
   }
 
   .socials_and_player .player .big_icon {
-    width: 20px;
-    height: 20px;
-    min-height: 20px;
+    min-width: 28px;
+    min-height: 28px;
+    width: 28px;
+    height: 28px;
+    background-size: 80%;
   }
+  
   .socials_and_player .player {
-    width: 200px;
+    width: 185px;
+    height: inherit;
   }
   .ferty-shert {
     height: 212px;
