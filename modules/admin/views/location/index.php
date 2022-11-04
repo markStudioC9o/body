@@ -14,7 +14,7 @@ use yii\grid\GridView;
     <p>
       
       <?= Html::a('<i class="fas fa-plus"></i>Добавить страну', ['add-country'], ['class' => 'btn btn-primary']) ?>
-      <? if(isset($visible->value) && !empty($visible->value)):?>
+      
         <? if($visible->value == 'show'){
           $ter = 'Скрыть';
           $teg = 'btn-danger';
@@ -23,7 +23,6 @@ use yii\grid\GridView;
           $teg = 'btn-success';
         }?>
         <?= Html::a($ter, ['hide-country'], ['class' => 'btn '.$teg]) ?>
-      <? endif;?>
       
     </p>
   </div>
