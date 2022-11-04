@@ -40,8 +40,6 @@
     </a>
   </li>
 <? endif; ?>
-
-
 <? if (stristr($item['id'], '_', true) == 'heading') : ?>
   <? $elem = $pages->findHeadingId($item['id']) ?>
   <? $imgB = $pages->findImg($item['id']); ?>
