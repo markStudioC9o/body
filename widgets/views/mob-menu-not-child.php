@@ -43,7 +43,6 @@
 
 
 <? if (stristr($item['id'], '_', true) == 'heading') : ?>
-  <?= $item['id']?>
   <? $elem = $pages->findHeadingId($item['id']) ?>
   <? $imgB = $pages->findImg($item['id']); ?>
   <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
