@@ -1239,6 +1239,19 @@
   }
 }
 @media screen and (max-width: 1023px) {
+  .tit_foot_con.aglas{
+    margin-bottom: 17px;
+    font-size: 15px;
+    line-height: 17px;
+  }
+  .phone_foot_con{
+    flex-direction: column;
+    width: 100%;
+  }
+  .phone_foot_con > a{
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
   .socials_and_player .share{
     padding: 0;
     display: flex;
@@ -1920,7 +1933,7 @@
     line-height: 20px;
   }
   .bb-arw-social__link img {
-    width: 26px;
+    width: 38px;
   }
   .over-block {
     overflow-x: auto;

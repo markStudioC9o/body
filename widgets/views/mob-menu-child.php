@@ -34,7 +34,7 @@
   <? $elem = $pages->findHeadingId($item['id']) ?>
   <? $imgB = $pages->findImg($item['id']); ?>
   <li class="main-menu-item menu-item menu-item-has-children" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/pages/' : 'pages/') ?><?= (isset($elem['link']) && ($elem['link']) ? $elem['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/heading/' : 'heading/') ?><?= (isset($elem['link']) && ($elem['link']) ? $elem['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
         <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
       <? endif; ?>
@@ -84,7 +84,7 @@
         <? if (isset($elemChild['title']) && !empty($elemChild['title'])) : ?>
           <? $imgB = $pages->findImg($val['id']); ?>
           <li class="sub-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-            <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/pages/' : 'pages/') ?><?= (isset($elemChild['link']) && ($elemChild['link']) ? $elemChild['link'] : '') ?>" class="menu-link sub-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+            <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/heading/' : 'heading/') ?><?= (isset($elemChild['link']) && ($elemChild['link']) ? $elemChild['link'] : '') ?>" class="menu-link sub-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
               <? if (!empty($imgB) && !empty($imgB['link'])) : ?>
                 <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
               <? endif; ?>
