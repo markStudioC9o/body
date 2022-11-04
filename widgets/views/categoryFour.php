@@ -7,7 +7,9 @@
         <?= $this->render('prevArticlesFourCol', [
           'param' => $item->getOption($item->articles_id),
           'id' => $item->articles_id,
-          'color' => $color
+          'color' => $color,
+          'lang' => $lang
+
         ]) ?>
       <? endforeach; ?>
     </div>

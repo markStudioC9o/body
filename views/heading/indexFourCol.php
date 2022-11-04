@@ -61,7 +61,7 @@ use app\widgets\LeftAside;
               </select>
             </div>
           </div>
-              <?= ContentFourColWidget::widget(['heading'=>$heading, 'type' => 'categ','content' => $pagesOption['type'], 'sort' => $sort, 'color' => (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "#00A6CA")]); ?>
+              <?= ContentFourColWidget::widget(['heading'=>$heading, 'lang' => $lang, 'type' => 'categ','content' => $pagesOption['type'], 'sort' => $sort, 'color' => (isset($colorHex->color) && !empty($colorHex->color) ? $colorHex->color : "#00A6CA")]); ?>
           </div>
           <!-- leftaside -->
         </div>

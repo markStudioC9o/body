@@ -63,6 +63,7 @@ class HeadingController extends MainController
         'param' => null,
         'children' => $children,
         'colorHex' => null,
+        'lang' => $lang,
         'sort' => $sort
       ]);
     }

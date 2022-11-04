@@ -1224,6 +1224,19 @@
   }
 }
 @media screen and (max-width: 1023px) {
+  .socials_and_player .player .pl_no_active .text {
+    line-height: 12px;
+    font-size: 10px;
+    max-height: 24px;
+    overflow: hidden;
+}
+.socials_and_player .player .pl_no_active .big_icon{
+  width: 25px;
+  height: 25px;
+  min-height: 25px;
+  background-size: 55%;
+  min-width: 25px;
+}
   .breadcrambs p{
     line-height: 15px;
   }

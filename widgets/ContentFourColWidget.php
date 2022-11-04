@@ -13,6 +13,7 @@ class ContentFourColWidget extends \yii\bootstrap4\Widget
   public $sort = null;
   public $heading = null;
   public $type = null;
+  public $lang = null;
   public function run()
   {
 
@@ -36,7 +37,8 @@ class ContentFourColWidget extends \yii\bootstrap4\Widget
     $query = Articles::find()->where(['id' => $id])->asArray();
     $model = $query->one(); 
     return $this->render('content',[
-      'model' => $model
+      'model' => $model,
+      'lang' => $this->lang
     ]);
   }
 
@@ -48,7 +50,8 @@ class ContentFourColWidget extends \yii\bootstrap4\Widget
       'col' => $model->col,
       'model' => $model,
       'category' =>$category,
-      'color' => $this->color
+      'color' => $this->color,
+      'lang' => $this->lang
     ]);
   }
 

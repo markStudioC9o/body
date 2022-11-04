@@ -47,7 +47,7 @@ use yii\helpers\ArrayHelper;
           <? if (isset($array['text']) && !empty($array['text'])) : ?>
             <p class="rextDescript"><?= mb_strimwidth($array['text'], 0, 60, '...'); ?></p>
           <? endif; ?>
-          <a href="/articles/<?= $id; ?>" class="linkArticles" style="color: <?= $color;  ?>">Читать далее</a>
+          <a href="<?= (isset($lang) && !empty($lang)? '/ru' : '')?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id);?>" class="linkArticles" style="color: <?= $color;  ?>">Читать далее</a>
         </div>
             <? endif; ?>
         
