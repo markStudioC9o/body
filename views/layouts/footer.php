@@ -22,7 +22,7 @@ use app\widgets\FooterMenu;
         </div>
         <?= FooterLink::widget(); ?>
         <div class="divider"></div>
-        <div class="fb2_seotext">
+        <div class="fb2_seotext" style="border-top: 1px solid <?= ColorWidget::widget(['type' => 'main'])?>">
           <?= FooterInformer::widget(); ?>
           <div class="divider"></div>
         </div>
