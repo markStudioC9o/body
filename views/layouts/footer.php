@@ -1,6 +1,7 @@
 <?php
 
 use app\widgets\BlockOneFooterWidget;
+use app\widgets\ColorWidget;
 use app\widgets\FooterContact;
 use app\widgets\FooterDisc;
 use app\widgets\FooterInformer;
@@ -10,7 +11,7 @@ use app\widgets\FooterMenu;
 ?>
 <footer>
   <?= BlockOneFooterWidget::widget(); ?>
-  <div class="block_2">
+  <div class="block_2" style="background: <?= ColorWidget::widget()?>">
     <div class="container">
       <div class="fb2_content">
         <div class="column">
@@ -28,7 +29,7 @@ use app\widgets\FooterMenu;
       </div>
     </div>
   </div>
-  <div class="block_3">
+  <div class="block_3" style="background: <?= ColorWidget::widget(['type' => 'main'])?>">
     <div class="container">
       <div class="fb3_left">
         <!--  Авторское право "Баланс Тела", 2020 -->
