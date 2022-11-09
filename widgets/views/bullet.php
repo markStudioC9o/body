@@ -1,6 +1,7 @@
 <?
 
 use app\models\SliderLang;
+use app\widgets\ColorWidget;
 
 if (!empty($viewSlider)) : ?>
   <section id="home_top_slider">
@@ -25,9 +26,9 @@ if (!empty($viewSlider)) : ?>
         <div class="bullets">
           <? $i = 1; ?>
           <? foreach ($viewSlider as $slide) : ?>
-            <div class="bullet to_slide <?= ($i == 1 ? 'active' : '')?>" data-bullet-item="<?= $i ?>" data-item-id="<?= $slide['id'] ?>" style="border-top:3px solid #168cad;">
+            <div class="bullet to_slide <?= ($i == 1 ? 'active' : '')?>" data-bullet-item="<?= $i ?>" data-item-id="<?= $slide['id'] ?>" style="border-top:3px solid <?= ColorWidget::widget(['type' => 'dop'])?>;">
               <span class="bullet_title"><?= (isset($slide['bottom']) ? $slide['bottom'] : '') ?></span>
-              <span class="bullet_text" style="color:#168cad;"><?= $slide['end_str'] ?></span>
+              <span class="bullet_text" style="color:<?= ColorWidget::widget(['type' => 'dop'])?>;"><?= $slide['end_str'] ?></span>
             </div>
             <? $i++; ?>
           <? endforeach; ?>
