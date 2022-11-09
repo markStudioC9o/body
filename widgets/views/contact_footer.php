@@ -1,4 +1,9 @@
-  <div class="tit_foot_con">
+  <?
+
+use app\widgets\ColorWidget;
+
+?>
+  <div class="tit_foot_con" style="background: <?= ColorWidget::widget(['type' => 'main'])?>">
     <? if (isset($titarray) && isset($titarray[1]) && !empty($titarray[1])) : ?>
       <?= $titarray[1] ?>
     <? else : ?>
@@ -18,7 +23,7 @@
       <? endif; ?>
     </div>
   </div>
-  <div class="tit_foot_con aglas">
+  <div class="tit_foot_con aglas" style="background: <?= ColorWidget::widget(['type' => 'main'])?>">
     <? if (isset($titarray) && isset($titarray[2]) && !empty($titarray[2])) : ?>
       <?= $titarray[2]; ?>
     <? else : ?>
