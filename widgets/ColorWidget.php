@@ -18,6 +18,13 @@ class ColorWidget extends \yii\bootstrap4\Widget
       }else{
         return '#00a6ca';
       }
+    }elseif($this->type == 'dop'){
+      if(SiteSetting::find()->where(['param' => 'SiteDopColor'])->exists()){
+        $SiteMainColor =  SiteSetting::find()->where(['param' => 'SiteDopColor'])->asArray()->one();
+        return $SiteMainColor['value'];
+      }else{
+        return '#007d96';
+      }
     }else{
 
       if(SiteSetting::find()->where(['param' => 'SiteAcsentColor'])->exists()){

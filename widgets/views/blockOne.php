@@ -1,4 +1,7 @@
 <?
+
+use app\widgets\ColorWidget;
+
 $array = null;
 if(!empty($con)){
   $array = json_decode($con, true);
@@ -8,7 +11,7 @@ if(!empty($con)){
 
 
 
-<div class="block_1">
+<div class="block_1" style="background: <?= ColorWidget::widget(['type' => 'dop'])?>">
   <div class="container">
     <div class="fb1_wrap">
       <div class="item to_site">

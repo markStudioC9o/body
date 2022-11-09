@@ -28,6 +28,18 @@ use yii\helpers\Html;
           ]);
           ?>
     </div>
+
+    <div class="col-md-12 mt-3">
+       <label for="">Вторичный цвет</label>
+       <? echo ColorInput::widget([
+              'name' => 'SiteDopColor',
+              'id'=>'SiteDopColor',
+              'value' => (!empty($SiteDopColor['value']) ? $SiteDopColor['value'] : '#007d96'),
+              'options' => ['readonly' => false]
+          ]);
+          ?>
+    </div>
+    
     <div class="col-md-12 mt-3">
       <?= Html::submitButton('Сохранить',['class' => 'btn btn-success'])?>
     </div>

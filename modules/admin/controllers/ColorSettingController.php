@@ -58,14 +58,34 @@ class ColorSettingController extends MainController
           return var_dump($model->getErrors());
         }
       }
+
+      if(!empty($data['SiteDopColor'])){
+        if(SiteSetting::find()->where(['param' => 'SiteDopColor'])->exists()){
+          $model = SiteSetting::find()->where(['param' => 'SiteDopColor'])->one();
+          $model->value = $data['SiteDopColor'];
+        }else{
+          $model = new SiteSetting([
+            'param' => 'SiteDopColor',
+            'value' => $data['SiteDopColor']
+          ]);
+        }
+        if(!$model->save()){
+          return var_dump($model->getErrors());
+        }
+      }
+
+
       return $this->refresh();
     }
 
     $SiteAcsentColor = SiteSetting::find()->where(['param' => 'SiteAcsentColor'])->asArray()->one();
     $SiteMainColor = SiteSetting::find()->where(['param' => 'SiteMainColor'])->asArray()->one();
+    $SiteDopColor = SiteSetting::find()->where(['param' => 'SiteDopColor'])->asArray()->one();
+    
     return $this->render('index',[
       'SiteMainColor' => $SiteMainColor,
-      'SiteAcsentColor' => $SiteAcsentColor
+      'SiteAcsentColor' => $SiteAcsentColor,
+      'SiteDopColor' => $SiteDopColor
     ]);
   }
 }
