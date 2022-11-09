@@ -6,6 +6,7 @@
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use app\widgets\CalbackWedget;
+use app\widgets\ColorWidget;
 use app\widgets\InfoBanner;
 use app\widgets\LangWidget;
 use app\widgets\Menu;
@@ -172,7 +173,7 @@ AppAsset::register($this);
 
 <body class="d-flex flex-column">
   <?php $this->beginBody() ?>
-  <header>
+  <header style="background-color: <?= ColorWidget::widget(['type' => 'main'])?>">
     <?= Menu::widget() ?>
     <?= InfoBanner::widget();?>
   </header>
