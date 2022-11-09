@@ -1,6 +1,7 @@
 <?
 
 use app\widgets\CitiesWidget;
+use app\widgets\ColorWidget;
 use app\widgets\Language;
 ?>
 
@@ -102,8 +103,8 @@ function sendLink($elem, $lang)
     <? endif; ?>
 
     <? if (!empty($textLink)) : ?>
-      <li class="main-menu-item menu-item link-shop" data-color="#759523">
-        <a href="<?= (isset($hrefShop['value']) && !empty($hrefShop['value']) ? $hrefShop['value'] : "") ?>" class="menu-link main-menu-link" data-color="#759523">
+      <li class="main-menu-item menu-item link-shop" data-color="<?= ColorWidget::widget(['type' => 'dop'])?>" style="background-color: <?= ColorWidget::widget(['type' => 'dop'])?>">
+        <a href="<?= (isset($hrefShop['value']) && !empty($hrefShop['value']) ? $hrefShop['value'] : "") ?>" class="menu-link main-menu-link" data-color="<?= ColorWidget::widget(['type' => 'dop'])?>">
           <?= $textLink ?>
         </a>
       </li>

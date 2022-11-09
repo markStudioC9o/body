@@ -1,7 +1,10 @@
 <? // print_r($model) 
+
+use app\widgets\ColorWidget;
+
 ?>
 <li class="change_lang">
-  <div class="current" onclick="$(this).parent().toggleClass('opened');">
+  <div class="current" onclick="$(this).parent().toggleClass('opened');" style="background-color: <?= ColorWidget::widget(['type' => 'dop'])?>">
     <span class="flag-wrap" data-toogel="<?= $active['tag'] ?>">
       <?= $active['tag'] ?>
       
