@@ -86,6 +86,7 @@ if (!empty($viewSlider)) : ?>
 
 <style>
   #home_top_slider .bullets .bullet.to_slide{
+    
     border: 1px solid <?= ColorWidget::widget(['type' => 'main'])?> !important;
   }
 </style>
