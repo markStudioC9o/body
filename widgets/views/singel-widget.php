@@ -1,6 +1,11 @@
+<?
+
+use app\widgets\ColorWidget;
+
+?>
 <div class="card">
   <? if (!empty($item['title'])) : ?>
-    <div class="card-header">
+    <div class="card-header" style="background: <?= ColorWidget::widget(['type' => 'main'])?>">
       <h5><?= $item['title']?></h5>
     </div>
   <? endif; ?>

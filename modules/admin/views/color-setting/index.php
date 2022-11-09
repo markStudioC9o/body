@@ -11,9 +11,9 @@ use yii\helpers\Html;
     <div class="col-md-12 mt-3">
        <label for="">Главный цвет</label>
        <? echo ColorInput::widget([
-              'name' => 'mainColor',
-              'id'=>'mainColor',
-              'value' => (!empty($model['color']) ? $model['color'] : '#00a6ca'),
+              'name' => 'SiteMainColor',
+              'id'=>'SiteMainColor',
+              'value' => (!empty($SiteMainColor['value']) ? $SiteMainColor['value'] : '#00a6ca'),
               'options' => ['readonly' => false]
           ]);
           ?>
@@ -21,9 +21,9 @@ use yii\helpers\Html;
     <div class="col-md-12 mt-3">
        <label for="">Дополнительный цвет</label>
        <? echo ColorInput::widget([
-              'name' => 'acsentColor',
-              'id'=>'acsentColor',
-              'value' => (!empty($model['color']) ? $model['color'] : '#dbf9ff'),
+              'name' => 'SiteAcsentColor',
+              'id'=>'SiteAcsentColor',
+              'value' => (!empty($SiteAcsentColor['value']) ? $SiteAcsentColor['value'] : '#dbf9ff'),
               'options' => ['readonly' => false]
           ]);
           ?>

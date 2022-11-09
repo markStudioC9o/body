@@ -28,10 +28,49 @@ class ColorSettingController extends MainController
   public function actionIndex(){
     if(Yii::$app->request->isPost){
       $data = Yii::$app->request->post();
-      echo "<pre>";
-      print_r($data);
-      echo "</pre>";
+
+      if(!empty($data['SiteMainColor'])){
+        if(SiteSetting::find()->where(['param' => 'SiteMainColor'])->exists()){
+          $model = SiteSetting::find()->where(['param' => 'SiteMainColor'])->one();
+          $model->value = $data['SiteMainColor'];
+        }else{
+          $model = new SiteSetting([
+            'param' => 'SiteMainColor',
+            'value' => $data['SiteMainColor']
+          ]);
+        }
+        if(!$model->save()){
+          return var_dump($model->getErrors());
+        }
+      }
+
+      if(!empty($data['SiteAcsentColor'])){
+        if(SiteSetting::find()->where(['param' => 'SiteAcsentColor'])->exists()){
+          $model = SiteSetting::find()->where(['param' => 'SiteAcsentColor'])->one();
+          $model->value = $data['SiteAcsentColor'];
+        }else{
+          $model = new SiteSetting([
+            'param' => 'SiteAcsentColor',
+            'value' => $data['SiteAcsentColor']
+          ]);
+        }
+        if(!$model->save()){
+          return var_dump($model->getErrors());
+        }
+      }
+      return $this->refresh();
     }
-    return $this->render('index');
+
+    $SiteAcsentColor = SiteSetting::find()->where(['param' => 'SiteAcsentColor'])->asArray()->one();
+    $SiteMainColor = SiteSetting::find()->where(['param' => 'SiteMainColor'])->asArray()->one();
+    return $this->render('index',[
+      'SiteMainColor' => $SiteMainColor,
+      'SiteAcsentColor' => $SiteAcsentColor
+    ]);
   }
 }
+
+// [mainColor-source] => #00a6ca
+// [mainColor] => #00a6ca
+// [acsentColor-source] => #dbf9ff
+// [acsentColor] => #dbf9ff

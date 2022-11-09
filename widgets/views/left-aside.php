@@ -1,6 +1,8 @@
 <?
 
 use app\models\WidgetBanner;
+use app\widgets\ColorWidget;
+
 ?>
 
 <div class="column">
@@ -44,7 +46,7 @@ use app\models\WidgetBanner;
           <? $data = json_decode($baseParam['param'], true) ?>
           <div class="card">
             <? if (!empty($data['title'])) : ?>
-              <div class="card-header">
+              <div class="card-header asdasd" style="background: <?= ColorWidget::widget(['type' => 'main'])?>">
                 <h5><?= $data['title'] ?></h5>
               </div>
             <? endif; ?>
