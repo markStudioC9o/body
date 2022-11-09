@@ -116,6 +116,7 @@ $config = [
       'showScriptName' => false,
       'rules' => [
         //'admin' => 'modules/admin'
+        'test-page' => 'site/test-page',
         'admin' => 'admin/default/index',
         'inside' => 'inside/index',
         'logout' => 'site/logout',

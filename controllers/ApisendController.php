@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\SiteSetting;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -68,7 +69,8 @@ class ApisendController extends Controller
   }
 
   public function send($tg_user, $text){
-      $bot_token = '5300055050:AAE9H1_PdGo6bHnBkYsQGF4PqVZdjctqWlo';
+    $botTel = SiteSetting::find()->where(['param' => 'bot_telegram'])->one();
+      $bot_token = $botTel->value;
       $params = array(
         'chat_id' => $tg_user,
         'text' => $text,

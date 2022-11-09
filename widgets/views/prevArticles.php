@@ -70,7 +70,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
     
     <div class="info">
       <? if (isset($items['title']) && !empty($items['title'])) : ?>
-        <a href="/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="title">
+        <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="title">
           <?= mb_strimwidth($items['title'], 0, 65, "...");?>
         </a>
       <? endif; ?>
@@ -79,7 +79,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
           <?= mb_strimwidth($items['text'], 0, 190, "...");?>
         </p>
       <? endif; ?>
-      <a href="/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="link" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "color: #39a9f9;") ?>">Читать далее</a>
+      <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="link" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "color: #39a9f9;") ?>">Читать далее</a>
     </div>
   </div>
 </div>

@@ -24,8 +24,7 @@ use yii\web\UploadedFile;
  */
 class SettingController extends MainController
 {
-  public $title;
-
+  public $title = 'Настройки';
   public $contr = array(
     "title" => "",
     "text" => ""
@@ -250,6 +249,102 @@ class SettingController extends MainController
       'link' => $link,
       'lang' => $lang,
       'tag' => $tag
+    ]);
+  }
+
+  public function actionHead()
+  {
+    if (Yii::$app->request->isPost) {
+      $data = Yii::$app->request->post();
+      if (!empty($data['text_logo'])) {
+        if (SiteSetting::find()->where(['param' => 'text_logo'])->exists()) {
+          $model = SiteSetting::find()->where(['param' => 'text_logo'])->one();
+          $model->value = $data['text_logo'];
+        } else {
+          $model = new SiteSetting([
+            'value' => $data['text_logo'],
+            'param' => 'text_logo'
+          ]);
+        }
+        if(!$model->save()){
+          var_dump($model->getErrors());
+        }
+      }
+
+      if (!empty($data['title_default'])) {
+        if (SiteSetting::find()->where(['param' => 'title_default'])->exists()) {
+          $model = SiteSetting::find()->where(['param' => 'title_default'])->one();
+          $model->value = $data['title_default'];
+        } else {
+          $model = new SiteSetting([
+            'value' => $data['title_default'],
+            'param' => 'title_default'
+          ]);
+        }
+        if(!$model->save()){
+          var_dump($model->getErrors());
+        }
+      }
+
+      if (!empty($data['title_custom'])) {
+        if (SiteSetting::find()->where(['param' => 'title_custom'])->exists()) {
+          $model = SiteSetting::find()->where(['param' => 'title_custom'])->one();
+          $model->value = $data['title_custom'];
+        } else {
+          $model = new SiteSetting([
+            'value' => $data['title_custom'],
+            'param' => 'title_custom'
+          ]);
+        }
+        if(!$model->save()){
+          var_dump($model->getErrors());
+        }
+      }
+      if (!empty($data['id_telegram'])) {
+        if (SiteSetting::find()->where(['param' => 'id_telegram'])->exists()) {
+          $model = SiteSetting::find()->where(['param' => 'id_telegram'])->one();
+          $model->value = $data['id_telegram'];
+        } else {
+          $model = new SiteSetting([
+            'value' => $data['id_telegram'],
+            'param' => 'id_telegram'
+          ]);
+        }
+        if(!$model->save()){
+          var_dump($model->getErrors());
+        }
+      }
+
+      if (!empty($data['bot_telegram'])) {
+        if (SiteSetting::find()->where(['param' => 'bot_telegram'])->exists()) {
+          $model = SiteSetting::find()->where(['param' => 'bot_telegram'])->one();
+          $model->value = $data['bot_telegram'];
+        } else {
+          $model = new SiteSetting([
+            'value' => $data['bot_telegram'],
+            'param' => 'bot_telegram'
+          ]);
+        }
+        if(!$model->save()){
+          var_dump($model->getErrors());
+        }
+      }
+
+
+      return $this->refresh();
+
+    }
+    $logo = SiteSetting::find()->where(['param' => 'text_logo'])->one();
+    $titleDefault = SiteSetting::find()->where(['param' => 'title_default'])->one();
+    $titleCustom = SiteSetting::find()->where(['param' => 'title_custom'])->one();
+    $idTelegram = SiteSetting::find()->where(['param' => 'id_telegram'])->one();
+    $botTelegram = SiteSetting::find()->where(['param' => 'bot_telegram'])->one();
+    return $this->render('head',[
+      'logo' => $logo,
+      'titleCustom' => $titleCustom,
+      'titleDefault' => $titleDefault,
+      'idTelegram' => $idTelegram,
+      'botTelegram' => $botTelegram
     ]);
   }
 }

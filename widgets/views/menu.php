@@ -59,7 +59,7 @@ function sendLink($elem, $lang)
 <div id="top_header">
   <div class="item logo">
     <a class="logo" href="/<?= (isset($lang) && !empty($lang) ? $lang : "") ?>">
-      body balance clinic
+    <?= (!empty($logoTExt->value)?$logoTExt->value:'body balance clinic')?>
     </a>
   </div>
   <?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'cityHide' => $cityHide]); ?>

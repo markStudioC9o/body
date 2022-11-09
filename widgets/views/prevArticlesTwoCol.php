@@ -11,13 +11,13 @@ use yii\helpers\ArrayHelper;
         <div class="img_sh" style="background-image: url(/img/default-img.jpg)">
         <? endif; ?>
         <div class="block_b in-image" style="background: <?= $color->color;  ?>">
-              <span class="col_share">100K
-              </span>
-              <img src="/icon/share.svg" alt="">
-            </div>
+          <span class="col_share">100K
+          </span>
+          <img src="/icon/share.svg" alt="">
+        </div>
         </div>
         <div class="block-shild-title">
-        <div class="share_block" style="background: <?= $color->color;  ?>">
+          <div class="share_block" style="background: <?= $color->color;  ?>">
             <div class="block_a">
               <ul>
                 <li><a href=""><img src="/icon/VectorVk.svg" alt=""></a></li>
@@ -32,12 +32,12 @@ use yii\helpers\ArrayHelper;
             </div>
           </div>
           <? if (isset($array['title']) && !empty($array['title'])) : ?>
-            <p><a href="/articles/<?= $id?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
+            <p><a href="<?= (isset($lang) && !empty($lang) ? '/' . $lang : '/ru') ?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id); ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
           <? endif; ?>
           <? if (isset($array['text']) && !empty($array['text'])) : ?>
             <p class="deck"><?= mb_strimwidth($array['text'], 0, 60, '...'); ?></p>
           <? endif; ?>
-          <a href="/articles/<?= $id?>" class="articLink" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "")?>">Читать далее</a>
+          <a href="<?= (isset($lang) && !empty($lang) ? '/' . $lang : '/ru') ?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id); ?>" class="articLink" style="<?= (isset($color) && !empty($color->color) ? "color:" . $color->color : "") ?>">Читать далее</a>
         </div>
       </div>
   </div>

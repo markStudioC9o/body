@@ -9,6 +9,7 @@ use app\widgets\CalbackWedget;
 use app\widgets\InfoBanner;
 use app\widgets\LangWidget;
 use app\widgets\Menu;
+use app\widgets\TitleWidget;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Modal;
@@ -27,7 +28,7 @@ AppAsset::register($this);
   <meta charset="<?= Yii::$app->charset ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php $this->registerCsrfMetaTags() ?>
-  <title><?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? 'BODY BALANCE CLINIC - '.Yii::$app->params['title'] : 'BODY BALANCE CLINIC')?></title>
+  <title><?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? TitleWidget::widget()." ".Yii::$app->params['title'] : TitleWidget::widget(['type' => 'default']))?></title>
   <style>
     @font-face {
     font-family: 'Stem';

@@ -24,8 +24,14 @@ use yii\web\UploadedFile;
  */
 class ColorSettingController extends MainController
 {
+  public $title = "Color Setting";
   public function actionIndex(){
-    $this->title = "Color Setting";
+    if(Yii::$app->request->isPost){
+      $data = Yii::$app->request->post();
+      echo "<pre>";
+      print_r($data);
+      echo "</pre>";
+    }
     return $this->render('index');
   }
 }

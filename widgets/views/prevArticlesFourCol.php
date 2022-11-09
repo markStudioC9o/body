@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
 
           <div class="block-shild-title  arlet">
             <? if (isset($array['title']) && !empty($array['title'])) : ?>
-              <p><a href="/articles/<?= $id; ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
+              <p><a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id);?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
             <? endif; ?>
           </div>
 
@@ -47,7 +47,7 @@ use yii\helpers\ArrayHelper;
           <? if (isset($array['text']) && !empty($array['text'])) : ?>
             <p class="rextDescript"><?= mb_strimwidth($array['text'], 0, 60, '...'); ?></p>
           <? endif; ?>
-          <a href="<?= (isset($lang) && !empty($lang)? '/ru' : '')?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id);?>" class="linkArticles" style="color: <?= $color;  ?>">Читать далее</a>
+          <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id);?>" class="linkArticles" style="color: <?= $color;  ?>">Читать далее</a>
         </div>
             <? endif; ?>
         

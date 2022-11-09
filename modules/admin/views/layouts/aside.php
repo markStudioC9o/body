@@ -54,8 +54,23 @@
           <a href="/admin/setting" class="nav-link">
             <p>
               Настройки
+              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/admin/setting/head" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Настройки шапки</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/color-setting" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Цветовые настройки</p>
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
           <a href="/admin/language-setting" class="nav-link">

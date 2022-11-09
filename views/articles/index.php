@@ -61,22 +61,16 @@ use yii\helpers\ArrayHelper;
                   <? foreach ($siblid as $item) : ?>
                     <? $arOption = ArticlesOption::find()->where(['articles_id' => $item['id']])->asArray()->all(); ?>
                     <? $arraty = ArrayHelper::map($arOption, 'option_param', 'value') ?>
-                    <div class="ferty-shert">
-                      <div class="img-shert">
-                        <? if (!empty($arraty['img_articles'])) : ?>
-                          <img src="/articles/<?= $arraty['img_articles'] ?>" alt="">
-                        <? else : ?>
-                          <img src="/img/statistik_bg.jpg" alt="">
-                        <? endif; ?>
-                      </div>
-                      <div class="text-shert">
-                        <? if (!empty($arraty['title'])) : ?>
-                          <p><?= mb_strimwidth($arraty['title'], 0, 60, "..."); ?></p>
-                        <? else : ?>
-                          <p><?= mb_strimwidth($arraty['text'], 0, 60, "..."); ?></p>
-                        <? endif; ?>
-                      </div>
-                    </div>
+
+                    
+                          <?= $this->render('protG',[
+                            'arraty' => $arraty
+                          ])?>
+
+
+
+                    
+
                   <? endforeach; ?>
                 </div>
               </div>

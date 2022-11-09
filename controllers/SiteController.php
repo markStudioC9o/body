@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\assets\AppAsset;
 use app\models\ArticleLang;
 use app\models\Articles;
 use app\models\ArticlesOption;
@@ -318,4 +319,5 @@ class SiteController extends MainController
       }
     }
   }
+  
 }
