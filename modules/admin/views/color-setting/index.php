@@ -39,6 +39,17 @@ use yii\helpers\Html;
           ]);
           ?>
     </div>
+
+    <div class="col-md-12 mt-3">
+       <label for="">Цвет #4</label>
+       <? echo ColorInput::widget([
+              'name' => 'SiteFourColor',
+              'id'=>'SiteFourColor',
+              'value' => (!empty($SiteFourColor['value']) ? $SiteFourColor['value'] : '#007d96'),
+              'options' => ['readonly' => false]
+          ]);
+          ?>
+    </div>
     
     <div class="col-md-12 mt-3">
       <?= Html::submitButton('Сохранить',['class' => 'btn btn-success'])?>

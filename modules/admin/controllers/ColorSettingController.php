@@ -74,6 +74,22 @@ class ColorSettingController extends MainController
         }
       }
 
+      if(!empty($data['SiteFourColor'])){
+        if(SiteSetting::find()->where(['param' => 'SiteFourColor'])->exists()){
+          $model = SiteSetting::find()->where(['param' => 'SiteFourColor'])->one();
+          $model->value = $data['SiteFourColor'];
+        }else{
+          $model = new SiteSetting([
+            'param' => 'SiteFourColor',
+            'value' => $data['SiteFourColor']
+          ]);
+        }
+        if(!$model->save()){
+          return var_dump($model->getErrors());
+        }
+      }
+      
+
 
       return $this->refresh();
     }
@@ -81,11 +97,13 @@ class ColorSettingController extends MainController
     $SiteAcsentColor = SiteSetting::find()->where(['param' => 'SiteAcsentColor'])->asArray()->one();
     $SiteMainColor = SiteSetting::find()->where(['param' => 'SiteMainColor'])->asArray()->one();
     $SiteDopColor = SiteSetting::find()->where(['param' => 'SiteDopColor'])->asArray()->one();
+    $SiteFourColor = SiteSetting::find()->where(['param' => 'SiteFourColor'])->asArray()->one();
     
     return $this->render('index',[
       'SiteMainColor' => $SiteMainColor,
       'SiteAcsentColor' => $SiteAcsentColor,
-      'SiteDopColor' => $SiteDopColor
+      'SiteDopColor' => $SiteDopColor,
+      'SiteFourColor' => $SiteFourColor
     ]);
   }
 }
