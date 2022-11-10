@@ -103,7 +103,7 @@ function sendLink($elem, $lang)
     <? endif; ?>
 
     <? if (!empty($textLink)) : ?>
-      <li class="main-menu-item menu-item link-shop" data-color="<?= ColorWidget::widget(['type' => 'dop'])?>" style="background-color: <?= ColorWidget::widget(['type' => 'dop'])?>">
+      <li class="main-menu-item menu-item link-shop" data-color="<?= ColorWidget::widget(['type' => 'dop'])?>" style="background-color: <?= ColorWidget::widget(['type' => 'four'])?>">
         <a href="<?= (isset($hrefShop['value']) && !empty($hrefShop['value']) ? $hrefShop['value'] : "") ?>" class="menu-link main-menu-link" data-color="<?= ColorWidget::widget(['type' => 'dop'])?>">
           <?= $textLink ?>
         </a>
