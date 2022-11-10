@@ -2220,3 +2220,6 @@ p.inf i{
   -moz-user-select: none;
   -ms-user-select: none;
 }
+.prev-image-logo img{
+  max-width: 250px;
+}

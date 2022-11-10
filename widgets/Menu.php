@@ -52,7 +52,7 @@ class Menu extends \yii\bootstrap4\Widget
 
     $hrefShop = SiteSetting::find()->where(['param' => 'shop-link'])->andWhere(['tag' => $lang])->one();
     $logoTExt = SiteSetting::find()->where(['param' => 'text_logo'])->one();
-    
+    $logoImage = SiteSetting::find()->where(['param' => 'image_logo'])->one();
     $menuParam = new MenuParam();
     
     
@@ -67,7 +67,8 @@ class Menu extends \yii\bootstrap4\Widget
       'search' => $search,
       'menuParam' => $menuParam,
       'cityHide' => SiteSetting::find()->where(['param' => 'site-hide'])->one(),
-      'logoTExt' => $logoTExt
+      'logoTExt' => $logoTExt,
+      'logoImage' => $logoImage
     ]);
   }
 }

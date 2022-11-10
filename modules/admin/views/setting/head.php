@@ -12,6 +12,17 @@ use yii\helpers\Html;
     <label for="">Текстовое лого</label>
     <input type="text" class="form-control" name="text_logo" value="<?= (!empty($logo->value) ? $logo->value : '')?>">
   </div>
+  <div class="col-md-6">
+  
+    <input type="hidden" class='logo-image-form' value="<?= (!empty($imageLogo->value) ? $imageLogo->value : '')?>" name="image_logo">
+    <a href="#" id="logoImage" class="btn btn-success">Установить изображение</a>
+    <a href="/admin/setting/delete-log" id="logoImageDelete" class="btn btn-info">Удалить</a>
+    <div class="prev-image-logo">
+      <? if(!empty($imageLogo->value)):?>
+        <img src="<?= $imageLogo->value?>" alt="">
+        <? endif;?>
+    </div>
+  </div>
   <div class="col-md-12 mb-5"></div>
   <div class="col-md-6">
     <label for="">Title default</label>
@@ -35,3 +46,5 @@ use yii\helpers\Html;
   </div>
   </div>
   <? ActiveForm::end();?>
+
+

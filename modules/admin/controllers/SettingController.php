@@ -330,6 +330,21 @@ class SettingController extends MainController
         }
       }
 
+      if (!empty($data['image_logo'])) {
+        if (SiteSetting::find()->where(['param' => 'image_logo'])->exists()) {
+          $model = SiteSetting::find()->where(['param' => 'image_logo'])->one();
+          $model->value = $data['image_logo'];
+        } else {
+          $model = new SiteSetting([
+            'value' => $data['image_logo'],
+            'param' => 'image_logo'
+          ]);
+        }
+        if(!$model->save()){
+          var_dump($model->getErrors());
+        }
+      }
+
 
       return $this->refresh();
 
@@ -339,12 +354,24 @@ class SettingController extends MainController
     $titleCustom = SiteSetting::find()->where(['param' => 'title_custom'])->one();
     $idTelegram = SiteSetting::find()->where(['param' => 'id_telegram'])->one();
     $botTelegram = SiteSetting::find()->where(['param' => 'bot_telegram'])->one();
+    $imageLogo = SiteSetting::find()->where(['param' => 'image_logo'])->one();
+    
     return $this->render('head',[
       'logo' => $logo,
       'titleCustom' => $titleCustom,
       'titleDefault' => $titleDefault,
       'idTelegram' => $idTelegram,
-      'botTelegram' => $botTelegram
+      'botTelegram' => $botTelegram,
+      'imageLogo' => $imageLogo
     ]);
+  }
+
+  public function actionDeleteLog(){
+    if(SiteSetting::find()->where(['param' => 'image_logo'])->exists()){
+      $imageLogo = SiteSetting::find()->where(['param' => 'image_logo'])->one();
+      $imageLogo->delete();
+      
+    }
+    return $this->redirect('/admin/setting/head');
   }
 }

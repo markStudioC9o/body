@@ -3410,3 +3410,22 @@ $(document).on("click", "#prevImageArticles", function (e) {
   AddsImage();
   $(".abbred-image").addClass("imageArticles");
 });
+$(document).on('click', '#logoImage', function(e){
+  e.preventDefault();
+  $('#image').modal('show');
+  $('.abbred-image').addClass('imageLogo');
+})
+$(document).on('click', '.close[data-dismiss="modal"]', function(e){
+  $('.abbred-image').removeClass('imageLogo');
+})
+ 
+$(document).on('click', '.img_gal_pop', function(e){
+  if($(this).closest('.abbred-image').hasClass('imageLogo')){
+    var stc = $(this).find('.img-tag-prop').attr('src');
+    $('.logo-image-form').val(stc);
+    var img = "<img src='"+stc+"'>";
+    $('.prev-image-logo').html(img);
+    $('.abbred-image').removeClass('imageLogo');
+    $('#image').modal('hide');
+  }
+})

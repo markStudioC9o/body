@@ -60,7 +60,11 @@ function sendLink($elem, $lang)
 <div id="top_header">
   <div class="item logo">
     <a class="logo" href="/<?= (isset($lang) && !empty($lang) ? $lang : "") ?>">
+    <? if(!empty($logoImage->value)):?>
+      <img src="<?= $logoImage->value?>" alt="<?= (!empty($logoTExt->value)?$logoTExt->value:'body balance clinic')?>">
+      <? else:?>
     <?= (!empty($logoTExt->value)?$logoTExt->value:'body balance clinic')?>
+    <? endif;?>
     </a>
   </div>
   <?= CitiesWidget::widget(['city' => $city, 'cosial' => $cosial, 'cityHide' => $cityHide]); ?>
