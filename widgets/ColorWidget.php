@@ -25,7 +25,7 @@ class ColorWidget extends \yii\bootstrap4\Widget
       }else{
         return '#007d96';
       }
-    }elseif($this->type = 'four'){
+    }elseif($this->type == 'four'){
       if(SiteSetting::find()->where(['param' => 'SiteFourColor'])->exists()){
         $SiteFourColor =  SiteSetting::find()->where(['param' => 'SiteFourColor'])->asArray()->one();
         return $SiteFourColor['value'];
