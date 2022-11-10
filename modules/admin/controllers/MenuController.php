@@ -296,7 +296,7 @@ class MenuController extends MainController
     if (Yii::$app->request->post()) {
 
       $data = Yii::$app->request->post();
-
+      
       if (isset($data['param']) && !empty($data['param'])) {
         $menuList = MainOption::find()->where(['key_param' => 'menu_list'])->one();
         $menu = json_decode($menuList->value, true);
@@ -343,9 +343,11 @@ class MenuController extends MainController
 
       $pages = Pages::find()->where(['not in', 'id', $array])->andWhere(['!=', 'id', '5'])->asArray()->select(['id', 'title'])->all();
       $articles = Articles::find()->asArray()->all();
+      $heading = Heading::find()->asArray()->all();
       return $this->renderPartial('punkt_menu', [
         'pages' => $pages,
-        'articles' => $articles
+        'articles' => $articles,
+        'heading' => $heading
       ]);
     }
     if (Yii::$app->request->post()) {
@@ -357,7 +359,13 @@ class MenuController extends MainController
         foreach ($menu['data'] as $val) {
           $order = $val['order'];
         }
-        $order = $order + 1;
+        if(!empty($order)){
+          $order = $order + 1;
+        }else{
+          $order = 0;
+        }
+        
+        
         foreach ($data['param'] as $key => $value) {
           if (isset($value['id']) && !empty($value['id'])) {
             $order = $order + 1;
