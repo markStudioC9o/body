@@ -16,6 +16,7 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\Modal;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -125,50 +126,53 @@ AppAsset::register($this);
   </style>
   <?php $this->head() ?>
   <!-- /favicon-1.jpg -->
-  <link rel="icon" href="<?= (isset(Yii::$app->params['favicon']) && !empty(Yii::$app->params['favicon']) ? Yii::$app->params['favicon'] : '')?>" sizes="32x32">
-  <link rel="icon" href="<?= (isset(Yii::$app->params['favicon']) && !empty(Yii::$app->params['favicon']) ? Yii::$app->params['favicon'] : '')?>" sizes="192x192">
-  <link rel="apple-touch-icon" href="<?= (isset(Yii::$app->params['favicon']) && !empty(Yii::$app->params['favicon']) ? Yii::$app->params['favicon'] : '')?>">
-  <meta name="msapplication-TileImage" content="<?= (isset(Yii::$app->params['favicon']) && !empty(Yii::$app->params['favicon']) ? Yii::$app->params['favicon'] : '')?>">
 
-  <link rel="image_src" href="<?= (isset(Yii::$app->params['shipet']) && !empty(Yii::$app->params['shipet']) ? Yii::$app->params['shipet'] : '/icon/snippet-vk.jpg')?>">
-  <meta property="og:image" content="<?= (isset(Yii::$app->params['shipet']) && !empty(Yii::$app->params['shipet']) ? Yii::$app->params['shipet'] : '/icon/snippet-vk.jpg')?>">
-  <meta property="og:title" content="<?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? Yii::$app->params['title'] : 'BODY BALANCE CLINIC')?>"/>
-  <meta property="og:description" content="<?= (isset(Yii::$app->params['description']) && !empty(Yii::$app->params['description']) ? Yii::$app->params['description'] : 'BODY BALANCE CLINIC')?>" />
+  <?
+  function issetFunction($mod){
+    if(isset($mod) && !empty($mod)){
+      return trim(str_replace('"', '', $mod));
+    }
+  }
+  
+  ?>
+  <link rel="icon" href="<?= issetFunction(Yii::$app->params['favicon'])?>" sizes="32x32">
+  <link rel="icon" href="<?= issetFunction(Yii::$app->params['favicon'])?>" sizes="192x192">
+  <link rel="apple-touch-icon" href="<?= issetFunction(Yii::$app->params['favicon'])?>">
+  <meta name="msapplication-TileImage" content="<?= issetFunction(Yii::$app->params['favicon'])?>">
+  <link rel="image_src" href="<?= issetFunction(Yii::$app->params['shipet'])?>">
+  
+  
+  
+  <!-- <link rel="image_src" href='/icon/snippet-vk.jpg'> -->
+  <meta property="og:type" content="website" />
+  <link property="og:image" href="<?= issetFunction(Yii::$app->params['shipet'])?>">
+  <meta property="og:title" content="<?= issetFunction(Yii::$app->params['title'])?>"/>
+  <meta property="og:description" content="<?= issetFunction(Yii::$app->params['description'])?>"/>
   <meta property="og:locale" content="<?= $lang?>_<?= mb_strtoupper($lang)?>" />
-  <meta property="og:url" content="https://body-balance.com/">
-  <meta property="og:site_name" content="BODY BALANCE CLINIC <?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? ' - '.Yii::$app->params['title'] : '')?>"/>
+  <meta property="og:url" content="https://<?= Yii::$app->request->serverName.Url::to(); ?>">
+  <meta property="og:site_name" content="<?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? TitleWidget::widget()." ".issetFunction(Yii::$app->params['title']) : TitleWidget::widget(['type' => 'default']))?>"/>
 
-  <meta property="twitter:title" content="<?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? Yii::$app->params['title'] : 'BODY BALANCE CLINIC')?>"/>
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:description" content="<?= (isset(Yii::$app->params['description']) && !empty(Yii::$app->params['description']) ? Yii::$app->params['description'] : 'BODY BALANCE CLINIC')?>" />
-  <meta property="twitter:image" content="<?= (isset(Yii::$app->params['shipet']) && !empty(Yii::$app->params['shipet']) ? Yii::$app->params['shipet'] : '/icon/snippet-vk.jpg')?>">
+  <meta property="twitter:image" content="<?= issetFunction(Yii::$app->params['shipet'])?>">
+  <meta property="twitter:title" content="<?= issetFunction(Yii::$app->params['title'])?>"/>
+  <meta property="twitter:description" content="<?= issetFunction(Yii::$app->params['description'])?>" />
+
   <meta property="twitter:locale" content="<?= $lang?>_<?= mb_strtoupper($lang)?>" />
-  <meta property="twitter:url" content="https://body-balance.com/">
-  <meta property="twitter:site_name" content="BODY BALANCE CLINIC <?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? ' - '.Yii::$app->params['title'] : '')?>"/>
+  <meta property="twitter:url" content="https://<?= Yii::$app->request->serverName.Url::to(); ?>">
+
+  <meta property="twitter:site_name" content="<?= (isset(Yii::$app->params['title']) && !empty(Yii::$app->params['title']) ? TitleWidget::widget()." ".issetFunction(Yii::$app->params['title']) : TitleWidget::widget(['type' => 'default']))?>"    />
+
+  <meta name="twitter:card" content="summary_large_image" />
 
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="x-rim-auto-match" content="none">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  <meta property="og:type" content="website" />
-  
-  <link rel="canonical" href="https://body-balance.com/">
-  
-
-  
-  
-  
-  
+  <link rel="canonical" href="https://<?= Yii::$app->request->serverName;?>">
   <meta property="article:modified_time" content="2022-03-29T16:33:06+00:00" />
-  
   <meta name="robots" content="max-image-preview:large">
   <meta name="robots" content="index, follow">
-
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-
   
-
 </head>
 
 <body class="d-flex flex-column">
