@@ -52,6 +52,7 @@ use yii\helpers\Html;
   </div>
 
   <div class="col-md-12 mt-1">
+    <input type="checkbox" value="1" <?= (isset($modelActiveBannersTitle->value) && $modelActiveBannersTitle->value == '1' ? 'checked' : '')?>  name="activeBannersTitle">
     <label>Информационный баннер</label>
     <?= Html::textInput('bannersTitle', $bannersTitle, ['class' => 'form-control']) ?>
   </div>

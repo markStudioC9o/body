@@ -19,8 +19,9 @@ use yii\web\Controller;
 
 class ArticlesController extends MainController
 {
-  public function actionIndex($index)
+  public function actionIndex($articles)
   {
+    $index = $articles;
 
     $sizeSes = isset($_SESSION['size']) ? $_SESSION['size'] : null;
     $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : null;
@@ -83,6 +84,10 @@ class ArticlesController extends MainController
     }
     if (isset($param['shipet']) && !empty($param['shipet'])) {
       Yii::$app->params['shipet'] = '/shipet/' . $param['shipet'];
+    }else{
+      // echo "<pre>";
+      // print_r($param);
+      Yii::$app->params['shipet'] = '/gallery/' . $param['img_articles'];
     }
     if (isset($param['keywords']) && !empty($param['keywords'])) {
       Yii::$app->params['keywords'] = $param['keywords'];

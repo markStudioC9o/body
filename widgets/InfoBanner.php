@@ -13,10 +13,13 @@ class InfoBanner extends \yii\bootstrap4\Widget
 {
   public function run()
   {
-    $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
+    $lang = LangStat::widget();
     $model = SiteSetting::find()->where(['param' => 'banners'])->andWhere(['tag' => $lang])->asArray()->one();
-    return $this->render('info-banner',[
-      'model' => $model
-    ]);
+    $active = SiteSetting::find()->where(['param' => 'activeBannersTitle'])->andWhere(['tag' => $lang])->one();
+    if(isset($active->value) && $active->value == '1'){
+      return $this->render('info-banner',[
+        'model' => $model
+      ]);
+    }
   }
 }

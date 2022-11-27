@@ -10,7 +10,8 @@ $config = [
   'controllerMap' => [
     'elfinder' => [
       'class' => 'mihaildev\elfinder\Controller',
-      'access' => ['@', '?'],
+      'access' => ['@'],
+      'disabledCommands' => ['netmount'],
       'roots' => [
         // [
         //   'baseUrl'=>'@web',
@@ -19,35 +20,45 @@ $config = [
         //   'name' => 'Global'
         // ],
         [
+          'baseUrl'=>'@web',
+          'basePath'=>'@webroot',
           'path' => 'files',
           'name' => 'Файлы'
         ],
         [
+          'baseUrl'=>'@web',
+          'basePath'=>'@webroot',
           'path' => 'authors',
           'name' => 'Авторы',
         ],
         [
+          'baseUrl'=>'@web',
+          'basePath'=>'@webroot',
           'path' => 'botom-banner',
           'name' => 'Баннеры',
         ],
         [
+          'baseUrl'=>'@web',
+          'basePath'=>'@webroot',
           'path' => 'articles',
           'name' => 'Обложка статей',
         ],
         [
+          'basePath'=>'@webroot',
+          'basePath'=>'@webroot',
           'path' => 'gallery',
           'name' => 'Галерея',
         ],
       ],
-      'watermark' => [
-        'source'         => __DIR__ . '/logo.png', // Path to Water mark image
-        'marginRight'    => 5,          // Margin right pixel
-        'marginBottom'   => 5,          // Margin bottom pixel
-        'quality'        => 95,         // JPEG image save quality
-        'transparency'   => 70,         // Water mark image transparency ( other than PNG )
-        'targetType'     => IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP | IMG_WEBP,// Target image formats ( bit-field )
-        'targetMinPixel' => 200         // Target image minimum pixel size
-      ]
+      // 'watermark' => [
+      //   'source'         => __DIR__ . '/logo.png', // Path to Water mark image
+      //   'marginRight'    => 5,          // Margin right pixel
+      //   'marginBottom'   => 5,          // Margin bottom pixel
+      //   'quality'        => 95,         // JPEG image save quality
+      //   'transparency'   => 70,         // Water mark image transparency ( other than PNG )
+      //   'targetType'     => IMG_GIF | IMG_JPG | IMG_PNG | IMG_WBMP | IMG_WEBP,// Target image formats ( bit-field )
+      //   'targetMinPixel' => 200         // Target image minimum pixel size
+      // ]
     ]
   ],
   'bootstrap' => ['log'],
@@ -115,21 +126,43 @@ $config = [
       'enablePrettyUrl' => true,
       'showScriptName' => false,
       'rules' => [
-        //'admin' => 'modules/admin'
-        'test-page' => 'site/test-page',
-        'admin' => 'admin/default/index',
-        'inside' => 'inside/index',
-        'logout' => 'site/logout',
-        'search' =>  'site/search',
-        'def-page' => 'site/def-page',
-        'apisend' => 'apisend/index',
-        'pages/<index>' => 'pages/index',
-        'articles/<index>' => 'articles/index',
-        '<module:admin>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>' => '<module>/<controller>/<action>',
-        '<lang:\w+>/articles/<index>' => 'articles/index',
-        '<lang:\w+>/heading/<index>' => 'heading/index',
-        '<lang:\w+>/pages/<index>' => 'pages/index',
-        '<lang:\w+>' => 'site/index',
+        '' => 'site/index',
+        '/inside' => 'inside/index',
+        '/admin' => 'admin/default/index',
+        '/apisend' => 'apisend/index',
+        '/logout' => 'site/logout',
+        '/site/size-load' => 'site/size-load',
+        '/site/location-city' => 'site/location-city',
+        '/site/image-popup' => 'site/image-popup',
+        '/test/test' => 'test/test',
+        '/apisend/index' => 'apisend/index',
+        '/admin/<controller>' => 'admin/<controller>/index',
+        '/admin/<controller>/<action:[0-9a-zA-Z_\-]+>' => 'admin/<controller>/<action>',
+        '/param/<tag>' => 'param/lang',
+        'GET,POST controller:elfinder/' => '/',
+        '/elfinder/<a>' => 'elfinder/<a>',
+        '/<lang>' => 'site/index',
+        '/<lang>/<index>' => 'global/index',
+        '/<lang>/<pages>/<index>' => 'global/index',
+        
+        
+        // 'param/lang/<tag>' => 'param/lang',
+        // 'test-page' => 'site/test-page',
+        // 'admin' => 'admin/default/index',
+        
+        
+        // 'search' =>  'site/search',
+        // 'def-page' => 'site/def-page',
+        
+        
+        // 'pages/<index>' => 'pages/index',
+        
+        //'<lang:\w+>/articles/<index>' => 'articles/index',
+        
+        // '<lang:\w+>/<index>' => 'global/index',
+        // '<lang:\w+>/heading/<index>' => 'heading/index',
+        // '<lang:\w+>/pages/<index>' => 'pages/index',
+        // '<lang:\w+>' => 'site/index',
       ],
     ],
     'assetManager' => [
@@ -145,14 +178,14 @@ if (YII_ENV_DEV) {
   $config['modules']['debug'] = [
     'class' => 'yii\debug\Module',
     // uncomment the following to add your IP if you are not connecting from localhost.
-    'allowedIPs' => ['176.52.112.117', '::1'],
+    'allowedIPs' => ['176.52.115.240', '::1'],
   ];
 
   $config['bootstrap'][] = 'gii';
   $config['modules']['gii'] = [
     'class' => 'yii\gii\Module',
     // uncomment the following to add your IP if you are not connecting from localhost.
-    'allowedIPs' => ['176.52.112.117', '::1'],
+    'allowedIPs' => ['176.52.115.240', '::1'],
   ];
 }
 if(YII_ENV == YII_ENV_DEV){

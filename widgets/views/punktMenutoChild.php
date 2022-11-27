@@ -75,7 +75,7 @@
         <? if (isset($elemChild['artic']['text']) && !empty($elemChild['artic']['text'])) : ?>
           <? $imgB = $pages->findImg($val['id']); ?>
           <li class="sub-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-            <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/articles/' : 'articles/') ?><?= (isset($elemChild['option']['link']) && ($elemChild['option']['link']) ? $elemChild['option']['link'] : '') ?>" class="menu-link sub-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+            <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/' : '/') ?><?= $elem['link'].'/'?><?= (isset($elemChild['option']['link']) && ($elemChild['option']['link']) ? $elemChild['option']['link'] : '') ?>" class="menu-link sub-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
               <? if (!empty($imgB) && !empty($imgB['link'])) : ?>
                 <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
               <? endif; ?>
@@ -92,7 +92,7 @@
         <? if (isset($elemChild['title']) && !empty($elemChild['title'])) : ?>
           <? $imgB = $pages->findImg($val['id']); ?>
           <li class="sub-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-            <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/heading/' : 'heading/') ?><?= (isset($elemChild['link']) && ($elemChild['link']) ? $elemChild['link'] : '') ?>" class="menu-link sub-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+            <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/' : '/') ?><?= $elem['link'].'/'?><?= (isset($elemChild['link']) && ($elemChild['link']) ? $elemChild['link'] : '') ?>" class="menu-link sub-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
               <? if (!empty($imgB) && !empty($imgB['link'])) : ?>
                 <img src="/icon/<?= $imgB['link'] ?>" alt="" class="menu-icon">
               <? endif; ?>

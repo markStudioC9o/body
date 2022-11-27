@@ -72,7 +72,8 @@ if (isset($col) && !empty($col) && $col == "2") : ?>
           <?= $this->render('prevArticlesTwoCol', [
             'param' => $item->getOption($item->articles_id),
             'id' => $item->articles_id,
-            'color' => $color
+            'color' => $color,
+            'model' => $model
           ]) ?>
         <? endforeach; ?>
       </div>
@@ -91,7 +92,8 @@ if (isset($col) && !empty($col) && $col == "2") : ?>
           <?= $this->render('prevArticlesTwoCol', [
             'param' => $item->getOption($item->articles_id),
             'id' => $item->articles_id,
-            'color' => $color
+            'color' => $color,
+            'model' => $model
           ]) ?>
         <? endforeach; ?>
       </div>
@@ -106,7 +108,8 @@ if (isset($col) && !empty($col) && $col == "2") : ?>
         <?= $this->render('prevArticlesTwoCol', [
           'param' => $item->getOption($item->articles_id),
           'id' => $item->articles_id,
-          'color' => $color
+          'color' => $color,
+          'model' => $model
         ]) ?>
       <? endforeach; ?>
     </div>
@@ -120,7 +123,8 @@ if (isset($col) && !empty($col) && $col == "2") : ?>
         'param' => $item->getOption($item->articles_id),
         'id' => $item->articles_id,
         'color' => $color,
-        'lang' => $lang
+        'lang' => $lang,
+        'model' => $model
       ]) ?>
     <? endforeach; ?>
     <div class="divider"></div>

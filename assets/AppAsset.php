@@ -57,7 +57,8 @@ class AppAsset extends AssetBundle
     "js/general.js",
     "/js/jquery.session.js",
     '/js/main.js',
-    '/js/galleryNormalize.js'
+    '/js/galleryNormalize.js',
+    '/js/toshare.js',
   ];
   public $depends = [
     'yii\web\YiiAsset',

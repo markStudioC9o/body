@@ -26,7 +26,9 @@ class ParamController extends MainController
     }
   }
   public function actionLang($tag)
+
   {
+    
     $session = Yii::$app->session;
     
     $country = Countries::find()->where(['tag' => $tag])->one();

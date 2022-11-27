@@ -266,7 +266,7 @@ class SettingController extends MainController
             'param' => 'text_logo'
           ]);
         }
-        if(!$model->save()){
+        if (!$model->save()) {
           var_dump($model->getErrors());
         }
       }
@@ -281,7 +281,7 @@ class SettingController extends MainController
             'param' => 'title_default'
           ]);
         }
-        if(!$model->save()){
+        if (!$model->save()) {
           var_dump($model->getErrors());
         }
       }
@@ -296,7 +296,7 @@ class SettingController extends MainController
             'param' => 'title_custom'
           ]);
         }
-        if(!$model->save()){
+        if (!$model->save()) {
           var_dump($model->getErrors());
         }
       }
@@ -310,7 +310,7 @@ class SettingController extends MainController
             'param' => 'id_telegram'
           ]);
         }
-        if(!$model->save()){
+        if (!$model->save()) {
           var_dump($model->getErrors());
         }
       }
@@ -325,7 +325,7 @@ class SettingController extends MainController
             'param' => 'bot_telegram'
           ]);
         }
-        if(!$model->save()){
+        if (!$model->save()) {
           var_dump($model->getErrors());
         }
       }
@@ -340,14 +340,13 @@ class SettingController extends MainController
             'param' => 'image_logo'
           ]);
         }
-        if(!$model->save()){
+        if (!$model->save()) {
           var_dump($model->getErrors());
         }
       }
 
 
       return $this->refresh();
-
     }
     $logo = SiteSetting::find()->where(['param' => 'text_logo'])->one();
     $titleDefault = SiteSetting::find()->where(['param' => 'title_default'])->one();
@@ -355,8 +354,8 @@ class SettingController extends MainController
     $idTelegram = SiteSetting::find()->where(['param' => 'id_telegram'])->one();
     $botTelegram = SiteSetting::find()->where(['param' => 'bot_telegram'])->one();
     $imageLogo = SiteSetting::find()->where(['param' => 'image_logo'])->one();
-    
-    return $this->render('head',[
+
+    return $this->render('head', [
       'logo' => $logo,
       'titleCustom' => $titleCustom,
       'titleDefault' => $titleDefault,
@@ -366,12 +365,46 @@ class SettingController extends MainController
     ]);
   }
 
-  public function actionDeleteLog(){
-    if(SiteSetting::find()->where(['param' => 'image_logo'])->exists()){
+  public function actionDeleteLog()
+  {
+    if (SiteSetting::find()->where(['param' => 'image_logo'])->exists()) {
       $imageLogo = SiteSetting::find()->where(['param' => 'image_logo'])->one();
       $imageLogo->delete();
-      
     }
     return $this->redirect('/admin/setting/head');
+  }
+
+  public function actionImageFooter()
+  {
+    if (SiteSetting::find()->where(['param' => 'image-footer'])->exists()) {
+      $imageFooter = SiteSetting::find()->where(['param' => 'image-footer'])->one();
+    } else {
+      $imageFooter = new SiteSetting([
+        'param' => 'image-footer'
+      ]);
+    }
+
+    if (Yii::$app->request->post()) {
+      $data = Yii::$app->request->post();
+      $imageFooter->value = $data['image-footer'];
+      if ($imageFooter->save()) {
+        return $this->refresh();
+      }
+    }
+    return $this->render('image-footer', [
+      'imageFooter' => $imageFooter
+    ]);
+  }
+
+  public function actionDeleteFooterImage()
+  {
+    if (SiteSetting::find()->where(['param' => 'image-footer'])->exists()) {
+      $model = SiteSetting::find()->where(['param' => 'image-footer'])->one();
+      
+      if (!$model->delete()) {
+        var_dump($model->getErrors());
+      }
+    }
+    return $this->redirect('image-footer');
   }
 }

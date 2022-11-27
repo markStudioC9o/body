@@ -31,7 +31,7 @@
   <? $elem = $pages->findArticId(str_replace("item_", "", $item['id'])) ?>
   <? $imgB = $pages->findImg($item['id']); ?>
   <li class="main-menu-item menu-item" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/articles/' : 'articles/') ?><?= (isset($elem['option']['link']) && ($elem['option']['link']) ? $elem['option']['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/' : '/') ?><?= (isset($elem['option']['link']) && ($elem['option']['link']) ? $elem['option']['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
         <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
       <? endif; ?>
@@ -44,7 +44,7 @@
   <? $elem = $pages->findHeadingId($item['id']) ?>
   <? $imgB = $pages->findImg($item['id']); ?>
   <li class="main-menu-item menu-item heading-menu" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
-    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/heading/' : 'heading/') ?><?= (isset($elem['link']) && ($elem['link']) ? $elem['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
+    <a href="/<?= (isset($lang) && !empty($lang) ? $lang . '/' : '/') ?><?= (isset($elem['link']) && ($elem['link']) ? $elem['link'] : '') ?>" class="menu-link main-menu-link" data-color="<?= (isset($imgB) && !empty($imgB['color']) ? $imgB['color'] : '#759523') ?>">
       <? if (isset($imgB['link']) && !empty($imgB['link'])) : ?>
         <div class="menu-icon" style="background-image: url(/icon/<?= $imgB['link'] ?>)"></div>
       <? endif; ?>

@@ -1,6 +1,5 @@
 function AddsImage() {
-  
-  $.post("/admin/articles/render-image-gal", Success)
+  $.post("/admin/articles/render-image-gal", Success);
   function Success(data) {
     $("#image").modal("show");
     $("#idrety").html(data);
@@ -184,8 +183,10 @@ $(document).on("input keyup", "#list-margin-input input", function (e) {
   var type = $(this).data("type");
   var block = $(this).data("param");
   var id = $(this).data("id");
-  if(block == "qut"){
-    $('.block-qout[data-id="'+id+'"]').find('.su-service ').css(type, val + "px");
+  if (block == "qut") {
+    $('.block-qout[data-id="' + id + '"]')
+      .find(".su-service ")
+      .css(type, val + "px");
   }
   if (block == "text-imger") {
     $("." + block + "_margin_tag." + id + "_opens")
@@ -321,7 +322,6 @@ $("#img-dowloand").on("click", function (e) {
       data: formData,
       dataType: "json",
       success: function (data) {
-        
         //AddsImage();
         //$.pjax.reload({ container: "#pajax-modal-img", async: false });
 
@@ -331,18 +331,18 @@ $("#img-dowloand").on("click", function (e) {
           $(".abbred-image").data("img_id", "");
           $("#image .abbred-image").removeClass("in-slider");
           $("#image").modal("hide");
-        }else if ($(".abbred-image").hasClass("aprovCol")) {
+        } else if ($(".abbred-image").hasClass("aprovCol")) {
           var dataId = $(".abbred-image").attr("data-img_id");
           console.log(dataId);
           aprovCol(data.path, dataId);
           $("#image .abbred-image").removeClass("aprovCol");
           $("#image").modal("hide");
-        }else if ($(".abbred-image").hasClass("imageCol")) {
+        } else if ($(".abbred-image").hasClass("imageCol")) {
           var dataId = $(".abbred-image").attr("data-img_id");
           addImageCol(data.path, dataId);
           $("#image .abbred-image").removeClass("imageCol");
           $("#image").modal("hide");
-        }else{
+        } else {
           addImageStr(data.path);
         }
       },
@@ -803,14 +803,64 @@ Array.prototype.forEach.call(inputs, function (input) {
   });
 });
 
+function cutTegs(str) {
+  //var regex = /( |<([^>]+)>)/ig,
+  result = str.replace(/<\/?[^>]+>/g, "");
+  newStr = result.trim();
+  return newStr;
+}
+
 $(".saveArticleThis").on("click", function (e) {
   e.preventDefault();
+
+  var description = $('textarea[name="SeoDescription"]').val();
+  if (description == "") {
+    if ($(".poor-block").length) {
+      // description = cutTegs($('.contrel-text').html());
+      $(".poor-block").each(function (index) {
+          if ($(this).find(".contrel-text").length) {
+            description = cutTegs(
+              $(this).find(".contrel-text").html()
+            );
+            return false;
+          } else {
+            if ($(this).find(".add-te").length) {
+              description = cutTegs($(this).find(".add-te").html());
+              return false;
+            } 
+          }
+          description = "";
+      });
+    }
+  }
+
   var textArticles = $("#textPrevArticles").val();
+  if (textArticles == "") {
+    if ($(".poor-block").length) {
+      // description = cutTegs($('.contrel-text').html());
+      $(".poor-block").each(function (index) {
+          if ($(this).find(".contrel-text").length) {
+            textArticles = cutTegs(
+              $(this).find(".contrel-text").html()
+            );
+            return false;
+          } else {
+            if ($(this).find(".add-te").length) {
+              textArticles = cutTegs($(this).find(".add-te").html());
+              return false;
+            } 
+          }
+          textArticles = "";
+      });
+    }
+  }
+  
+
   var titleArticles = $("#titleArticles").val();
   var link = $("#linkArticles").val();
   var val = $("#blockContent");
   $(".element-bord").unwrap(".poor-block");
-  $('.block-radactor-pen').remove();
+  $(".block-radactor-pen").remove();
   $(".sirkle-param-cop").remove();
   $(".step-block").remove();
   $(".setLestBlock").remove();
@@ -833,9 +883,10 @@ $(".saveArticleThis").on("click", function (e) {
   var lang = $("#ArticlesLang").val();
   var size = $("#ArticlesSize").val();
   var keywords = $('textarea[name="SeoKeywords"]').val();
-  var description = $('textarea[name="SeoDescription"]').val();
+  
+  
   var imgArt = $("#articles_image").val();
-  var breadcram = $('#breadcramArticles').val();
+  var breadcram = $("#breadcramArticles").val();
 
   if ($("input[name='videoArticles']").prop("checked")) {
     var videoArticles = "2";
@@ -895,7 +946,7 @@ $(".saveArticleThis").on("click", function (e) {
         Success
       );
       function Success(data) {
-        
+        console.log(data);
         if (!!id) {
           //alert(id);
           //alert('123');
@@ -1409,15 +1460,14 @@ $(document).on("click", "#add-gallery", function (e) {
   }
 });
 $(document).on("click", ".app-gelser", function (e) {
-
   var id = $(this).data("id");
   $.post("/admin/gallery/get", { id: id }, Success);
   function Success(data) {
-    if($('.abbred-gal').hasClass('inner-accardion')){
-      var dataId = $('.abbred-gal.inner-accardion').attr("data-img_id")
-      $(".content-one-accardion[data-id='"+dataId+"']").append(data);
-      $('.abbred-gal').removeClass('inner-accardion');
-    }else{
+    if ($(".abbred-gal").hasClass("inner-accardion")) {
+      var dataId = $(".abbred-gal.inner-accardion").attr("data-img_id");
+      $(".content-one-accardion[data-id='" + dataId + "']").append(data);
+      $(".abbred-gal").removeClass("inner-accardion");
+    } else {
       MainBlock.append(data);
     }
     $("#modal-gal").modal("hide");
@@ -1433,7 +1483,6 @@ $(document).on("click", ".app-gelser", function (e) {
       }
     });
   }
-
 });
 $(document).on("click", ".block-gall-default", function (e) {
   var obj = $(this).parent(".asp-gall");
@@ -2394,19 +2443,16 @@ $(document).on("click", ".img-elem-accr", function (e) {
   AddsImage();
 });
 
-
 $(document).on("click", ".col-elem-accr", function (e) {
   var id = $(this).data("id");
   $.post("/admin/gallery/list", Success);
   function Success(data) {
-    $(".abbred-gal").addClass('inner-accardion');
-    $(".abbred-gal").attr('data-img_id', id);
+    $(".abbred-gal").addClass("inner-accardion");
+    $(".abbred-gal").attr("data-img_id", id);
     $(".abbred-gal").html(data);
     $("#modal-gal").modal("show");
   }
 });
-
-
 
 $(document).on("click", ".accardion-title", function (e) {
   var id = $(this).closest(".block-accardion").data("id");
@@ -2999,8 +3045,8 @@ $(document).on("click", ".deleteThisElem", function (e) {
 });
 $(document).on("click", ".dir-tag", function (e) {
   var path = $(this).data("dir");
-  $('.dir-tag').removeClass('this-folder');
-  $(this).addClass('this-folder');
+  $(".dir-tag").removeClass("this-folder");
+  $(this).addClass("this-folder");
   $.post("/admin/file/get-dir", { path: path }, Success);
   function Success(data) {
     $(".pod_ht").html(data);
@@ -3008,7 +3054,7 @@ $(document).on("click", ".dir-tag", function (e) {
   }
 });
 $(document).on("click", ".dir-home", function (e) {
-  $.post("/admin/file/get-dir", { path: '/' }, Success);
+  $.post("/admin/file/get-dir", { path: "/" }, Success);
   function Success(data) {
     $(".pod_ht").html(data);
     // $(".pod_fd").html(data);
@@ -3147,11 +3193,9 @@ $(document).on("click", ".posert", function (e) {
     }
 
     if ($('.elga[data-fict="' + id + '"]').length) {
-
       $(this).text("Включить авто размер колонки");
       $(this).removeClass("texflowColum");
       $(this).addClass("texflowAddColum");
-
 
       $('.elga[data-fict="' + id + '"]')
         .closest(".param-colum")
@@ -3169,17 +3213,14 @@ $(document).on("click", ".posert", function (e) {
       }
 
       if ($('.elga[data-fict="' + id + '"]').length) {
-
         $(this).text("Отключить авто размер колонки");
         $(this).removeClass("texflowColum");
         $(this).addClass("texflowAddColum");
-  
-        
+
         $('.elga[data-fict="' + id + '"]')
           .closest(".param-colum")
           .css("flex-grow", "1");
       }
-
     }
   }
 });
@@ -3225,20 +3266,23 @@ $(document).on("click", ".asd-fert", function (e) {
   var obj = new Object();
   obj["title"] = $(".title-qut").val();
   obj["color"] = $("#colorMenu").val();
-  obj["text"] = $("#quote-bodsy").find('.contrel-text').html();
-  var cssStyle = $("#quote-bodsy").find('.contrel-text').attr('style');
+  obj["text"] = $("#quote-bodsy").find(".contrel-text").html();
+  var cssStyle = $("#quote-bodsy").find(".contrel-text").attr("style");
   console.log(cssStyle);
   obj["img"] = $("#link-img").val();
   obj["icon"] = $("#link-icon").val();
   if ($("#quote").hasClass("update")) {
     var id = $("#quote").attr("data-id");
-    $.post("/admin/qut/update", { obj: obj, id: id, cssStyle: cssStyle }, Success);
+    $.post(
+      "/admin/qut/update",
+      { obj: obj, id: id, cssStyle: cssStyle },
+      Success
+    );
     function Success(data) {
       $('.block-qout[data-id="' + id + '"]').html(data);
       $("#quote").removeClass("update");
       $("#quote").removeAttr("data-id");
       $("#quote").modal("hide");
-
     }
   } else {
     $.post("/admin/qut/render", { obj: obj }, Success);
@@ -3249,29 +3293,22 @@ $(document).on("click", ".asd-fert", function (e) {
   }
 });
 
-$(document).on('click', ".block-qout", function(e){
-  
-  var id = $(this).data('id');
+$(document).on("click", ".block-qout", function (e) {
+  var id = $(this).data("id");
 
   var output = new Object();
   var cssProperties = $(this)
     .find(".su-service ")
-    .css([
-      "margin-top",
-      "margin-bottom",
-      "margin-right",
-      "margin-left",
-    ]);
+    .css(["margin-top", "margin-bottom", "margin-right", "margin-left"]);
   $.each(cssProperties, function (prop, value) {
     output[prop] = value;
   });
 
-
-  $.post('/admin/qut/parametr', {id: id, output: output}, Success);
-  function Success(data){
+  $.post("/admin/qut/parametr", { id: id, output: output }, Success);
+  function Success(data) {
     $(".block-parametrs").html(data);
   }
-})
+});
 $(document).on("click", ".block-radactor-pen", function (e) {
   var id = $(this).closest(".block-qout").data("id");
   $("#quote").attr("data-id", id);
@@ -3283,20 +3320,28 @@ $(document).on("click", ".block-radactor-pen", function (e) {
   // $("#link-icon").val(icon);
 
   var data = new Object();
-  data['title'] = $(this).closest(".block-qout").find(".susu-title").html();
-  data['text'] = $(this).closest(".block-qout").find(".su-service-content").html();
-  var cssStyle = $(this).closest(".block-qout").find(".su-service-content").attr('style');
-  data['icon'] = $(this).closest(".block-qout").find(".sui").attr("data-tag");
-  data['color'] = $(this).closest(".block-qout").find('.su-service').attr("data-color");
+  data["title"] = $(this).closest(".block-qout").find(".susu-title").html();
+  data["text"] = $(this)
+    .closest(".block-qout")
+    .find(".su-service-content")
+    .html();
+  var cssStyle = $(this)
+    .closest(".block-qout")
+    .find(".su-service-content")
+    .attr("style");
+  data["icon"] = $(this).closest(".block-qout").find(".sui").attr("data-tag");
+  data["color"] = $(this)
+    .closest(".block-qout")
+    .find(".su-service")
+    .attr("data-color");
 
-  $.post("/admin/qut/index", {data: data, cssStyle: cssStyle}, Success);
+  $.post("/admin/qut/index", { data: data, cssStyle: cssStyle }, Success);
   function Success(data) {
     $(".qoute").html(data);
     $("#quote").addClass("update");
     $("#quote").modal("show");
   }
 });
-
 
 $(document).on("click", ".img-quote", function (e) {
   $(".abbred-image").addClass("qouter");
@@ -3410,22 +3455,28 @@ $(document).on("click", "#prevImageArticles", function (e) {
   AddsImage();
   $(".abbred-image").addClass("imageArticles");
 });
-$(document).on('click', '#logoImage', function(e){
+$(document).on("click", "#logoImage", function (e) {
   e.preventDefault();
-  $('#image').modal('show');
-  $('.abbred-image').addClass('imageLogo');
-})
-$(document).on('click', '.close[data-dismiss="modal"]', function(e){
-  $('.abbred-image').removeClass('imageLogo');
-})
- 
-$(document).on('click', '.img_gal_pop', function(e){
-  if($(this).closest('.abbred-image').hasClass('imageLogo')){
-    var stc = $(this).find('.img-tag-prop').attr('src');
-    $('.logo-image-form').val(stc);
-    var img = "<img src='"+stc+"'>";
-    $('.prev-image-logo').html(img);
-    $('.abbred-image').removeClass('imageLogo');
-    $('#image').modal('hide');
+  $("#image").modal("show");
+  $(".abbred-image").addClass("imageLogo");
+});
+$(document).on("click", '.close[data-dismiss="modal"]', function (e) {
+  $(".abbred-image").removeClass("imageLogo");
+});
+
+$(document).on("click", ".img_gal_pop", function (e) {
+  if ($(this).closest(".abbred-image").hasClass("imageLogo")) {
+    var stc = $(this).find(".img-tag-prop").attr("src");
+    $(".logo-image-form").val(stc);
+    var img = "<img src='" + stc + "'>";
+    $(".prev-image-logo").html(img);
+    $(".abbred-image").removeClass("imageLogo");
+    $("#image").modal("hide");
   }
-})
+});
+
+$(document).on("click", ".new-image-footer", function (e) {
+  e.preventDefault();
+  $("#image").modal("show");
+  $(".abbred-image").addClass("imageLogo");
+});

@@ -12,7 +12,7 @@ function sendLink($elem, $lang)
     return $elem['ex_link'];
   } else {
     if (isset($elem['link']) && !empty($elem['link'])) {
-      return (isset($lang) && !empty($lang) ? "/" . $lang . "/" : "/") . "pages/" . $elem['link'];
+      return (isset($lang) && !empty($lang) ? "/" . $lang . "/" : "/")  . $elem['link'];
     } else {
       return null;
     }

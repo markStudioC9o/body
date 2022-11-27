@@ -1,7 +1,7 @@
 <?
-
 use yii\helpers\ArrayHelper;
 ?>
+
 <div class="col-pod-s">
   <? $array = ArrayHelper::map($param, 'option_param', 'value') ?>
   <div class="block-shild-arcti set-er">
@@ -20,9 +20,9 @@ use yii\helpers\ArrayHelper;
           <div class="share_block" style="background: <?= $color->color;  ?>">
             <div class="block_a">
               <ul>
-                <li><a href=""><img src="/icon/VectorVk.svg" alt=""></a></li>
-                <li><a href=""><img src="/icon/VectorFb.svg" alt=""></a></li>
-                <li><a href=""><img src="/icon/VectorOk.svg" alt=""></a></li>
+                <li><a href="" class="soc vk"><img src="/icon/VectorVk.svg" alt=""></a></li>
+                <li><a href="" class="soc fb"><img src="/icon/VectorFb.svg" alt=""></a></li>
+                <li><a href="" class="soc ok"><img src="/icon/VectorOk.svg" alt=""></a></li>
               </ul>
             </div>
             <div class="block_b">
@@ -32,12 +32,12 @@ use yii\helpers\ArrayHelper;
             </div>
           </div>
           <? if (isset($array['title']) && !empty($array['title'])) : ?>
-            <p><a href="<?= (isset($lang) && !empty($lang) ? '/' . $lang : '/ru') ?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id); ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
+            <p><a href="<?= (isset($lang) && !empty($lang) ? '/' . $lang : '/ru') ?>/<?= $model->link?>/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id); ?>"><?= mb_strimwidth($array['title'], 0, 60, '...'); ?></a></p>
           <? endif; ?>
           <? if (isset($array['text']) && !empty($array['text'])) : ?>
             <p class="deck"><?= mb_strimwidth($array['text'], 0, 60, '...'); ?></p>
           <? endif; ?>
-          <a href="<?= (isset($lang) && !empty($lang) ? '/' . $lang : '/ru') ?>/articles/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id); ?>" class="articLink" style="<?= (isset($color) && !empty($color->color) ? "color:" . $color->color : "") ?>">Читать далее</a>
+          <a href="<?= (isset($lang) && !empty($lang) ? '/' . $lang : '/ru') ?>/<?= $model->link?>/<?= (isset($array['link']) && !empty($array['link']) ? $array['link'] : $id); ?>" class="articLink" style="<?= (isset($color) && !empty($color->color) ? "color:" . $color->color : "") ?>">Читать далее</a>
         </div>
       </div>
   </div>

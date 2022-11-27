@@ -1,5 +1,6 @@
 $(function () {
   const windowWidth = window.outerWidth;
+  console.log(windowWidth);
   $.post("/site/size-load", { windowWidth: windowWidth }, Success);
   function Success(data) {
     if (data == "203") {

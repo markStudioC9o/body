@@ -3,6 +3,7 @@ function toShare(e) {
 }
 
 $(document).on('click', '.soc', function(e){
+  e.preventDefault();
   if($(this).hasClass('vk')){
     toShare('http://vk.com/share.php?url='+document.location);
   }

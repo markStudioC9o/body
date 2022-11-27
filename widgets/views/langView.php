@@ -21,7 +21,7 @@ use app\widgets\ColorWidget;
   <div class="others">
     <? foreach ($model as $item) : ?>
       <? if($item['tag'] != $active['tag']):?>
-      <a href="/param/lang?tag=<?= $item['tag']?>">
+      <a href="/param/<?= $item['tag']?>">
         <span class="flag-wrap" data-toogel="<?= $item['tag'] ?>"><?= $item['tag'] ?><span class="flag" style="background-image: url('/lang/<?= $item['icon'] ?>');"></span>
         </span>
       </a>

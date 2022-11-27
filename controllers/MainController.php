@@ -40,7 +40,7 @@ class MainController extends Controller
             $session->set('lang', $request['lang']);
           }else{
             $session->set('lang', 'en');
-            return $this->redirect('/def-page');
+            // return $this->redirect('/def-page');
           }
         }
       }else{
@@ -51,7 +51,7 @@ class MainController extends Controller
           }else{
 
             $session->set('lang', 'en');
-            return $this->redirect('/def-page');
+            // return $this->redirect('/def-page');
           }
         }else{
           // $newLang = $this->setLang();
@@ -62,7 +62,12 @@ class MainController extends Controller
           // }
         }
       }
+
+      //print_r(Yii::$app->request->get());
+
       return parent::beforeAction($action);
+      // $controller = new ArticlesController('articles', $this->module);
+      // return $controller->actionIndex('chto-takoe-body-balance-clinic');
   }
 
   public function setLang(){

@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 $items = ArrayHelper::map($param, 'option_param', 'value');
 $image = ArticlesOption::find()->where(['option_param'=>'img_articles'])->andWhere(['articles_id' => $id])->asArray()->one();
 ?>
+
 <?if($lang !='ru'):?>
 <? $ilert = ArticlesOptionLang::find()->where(['articles_id' => $id])->andWhere(['tag' => $lang])->all();
 $items = ArrayHelper::map($ilert, 'option_param', 'value');
@@ -32,7 +33,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
     
     <div class="info">
       <? if (isset($items['title']) && !empty($items['title'])) : ?>
-        <a href="/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="title">
+        <a href="/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="title">
           <?= mb_strimwidth($items['title'], 0, 65, "...");?>
         </a>
       <? endif; ?>
@@ -42,7 +43,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
         </p>
       <? endif; ?>
       
-      <a href="/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="link" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "color: #39a9f9;") ?>">Read more</a>
+      <a href="/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="link" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "color: #39a9f9;") ?>">Read more</a>
     </div>
   </div>
 </div>
@@ -70,7 +71,7 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
     
     <div class="info">
       <? if (isset($items['title']) && !empty($items['title'])) : ?>
-        <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="title">
+        <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/<?= $model->link?>/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="title">
           <?= mb_strimwidth($items['title'], 0, 65, "...");?>
         </a>
       <? endif; ?>
@@ -79,9 +80,10 @@ $items = ArrayHelper::map($ilert, 'option_param', 'value');
           <?= mb_strimwidth($items['text'], 0, 190, "...");?>
         </p>
       <? endif; ?>
-      <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/articles/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="link" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "color: #39a9f9;") ?>">Читать далее</a>
+      <a href="<?= (isset($lang) && !empty($lang)? '/'.$lang : '/ru')?>/<?= $model->link?>/<?= (isset($items['link'])?  $items['link'] : $id);?>" class="link" style="<?= (isset($color) && !empty($color->color) ? "color:".$color->color : "color: #39a9f9;") ?>">Читать далее</a>
     </div>
   </div>
 </div>
+
 
 <? endif;?>

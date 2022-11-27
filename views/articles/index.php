@@ -31,7 +31,7 @@ use yii\helpers\ArrayHelper;
                 <? if (isset($param['mainHeading']) && !empty($param['mainHeading'])) : ?>
                   <? $head = $heading->getHeading($param['mainHeading']); ?>
                   <? if (!empty($head['title']) && !empty($head['link'])) : ?>
-                    <a href="/<?= $lang ?>/heading/<?= $head['link'] ?>"><?= $head['title']; ?></a>
+                    <a href="/<?= $lang ?>/<?= $head['link'] ?>"><?= $head['title']; ?></a>
                   <? endif; ?>
                 <? endif; ?>
                 <? if (isset($param['breadcram']) && !empty($param['breadcram'])) : ?>

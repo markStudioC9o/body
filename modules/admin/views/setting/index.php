@@ -57,8 +57,10 @@ $this->title = 'Настройки';
                   </div>
                 </div>
                 <div class="tab-pane fade" id="vert-tabs-footer" role="tabpanel" aria-labelledby="vert-tabs-footer">
-                  <div class="col-md-12">
-                    <?= Html::a('Языковые версии', '/admin/setting/lang-link-footer') ?>
+                  <div class="col-md-12 mb-5">
+                        <?= Html::a('Языковые версии ', '/admin/setting/lang-link-footer') ?>
+                      
+                        <?= Html::a(' Картинка в подвале', '/admin/setting/image-footer') ?>
                   </div>
                   <? $form = ActiveForm::begin([
                     'id' => 'footer_if',

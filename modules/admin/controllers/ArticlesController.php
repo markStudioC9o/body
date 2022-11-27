@@ -305,6 +305,9 @@ class ArticlesController extends MainController
     if (Yii::$app->request->isAjax) {
       $ids = null;
       $data = Yii::$app->request->post();
+      // echo "<pre>";
+      // print_r($data);
+      // exit();
       if (empty($data['id'])) {
         $model = new Articles();
       } else {

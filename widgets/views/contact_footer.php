@@ -13,7 +13,10 @@ use app\widgets\ColorWidget;
   </div>
   <div class="block_foot_con">
     <div class="img_foot_con">
-      <img src="/icon/image48.png" alt="">
+      <? if(isset($footerImage->value) && !empty($footerImage->value)):?>
+      <!-- <img src="/icon/image48.png" alt=""> -->
+      <img src = "<?= $footerImage->value?>">
+      <? endif;?>
     </div>
     <div class="text_foot_con">
       <? if (isset($data['adress']) && !empty($data['adress'])) : ?>

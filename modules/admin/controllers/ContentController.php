@@ -65,6 +65,14 @@ class ContentController extends MainController
     }
 
     if ($tag == null || $tag == 'ru') {
+      $modelActiveBannersTitle = $this->activeBannersTitle('ru');
+    } else {
+      $modelActiveBannersTitle = $this->activeBannersTitle($tag);
+    }
+
+    
+
+    if ($tag == null || $tag == 'ru') {
       $modelSearch = $this->getSearch('ru');
     } else {
       $modelSearch = $this->getSearch($tag);
@@ -191,6 +199,20 @@ class ContentController extends MainController
         
       }
 
+      if(isset($data['activeBannersTitle']) && !empty($data['activeBannersTitle'])){
+        $modelActiveBannersTitle->value = $data['activeBannersTitle'];
+        $modelActiveBannersTitle->param = 'activeBannersTitle';
+        $modelActiveBannersTitle->tag = $tag;
+      }else{
+        $modelActiveBannersTitle->value = '0';
+        $modelActiveBannersTitle->param = 'activeBannersTitle';
+        $modelActiveBannersTitle->tag = $tag;
+      }
+      if (!$modelActiveBannersTitle->save()) {
+        var_dump($modelActiveBannersTitle->getErrors());
+      }
+
+
       if(isset($data['modalTitle']) && !empty($data['modalTitle'])){
         $modal->value = $data['modalTitle'];
         $modal->param = 'modal-title';
@@ -222,7 +244,8 @@ class ContentController extends MainController
       'modalTitle' => $modalTitle,
       'bannersTitle' => $bannersTitle,
       'search' => $search,
-      'crambsTitle' => $crambsTitle
+      'crambsTitle' => $crambsTitle,
+      'modelActiveBannersTitle' => $modelActiveBannersTitle
     ]);
   }
 
@@ -292,6 +315,16 @@ class ContentController extends MainController
   {
     if (SiteSetting::find()->where(['param' => 'search'])->andWhere(['tag' => $tag])->exists()) {
       $model = SiteSetting::find()->where(['param' => 'search'])->andWhere(['tag' => $tag])->one();
+    } else {
+      $model = new SiteSetting();
+    }
+    return $model;
+  }
+
+  public function activeBannersTitle($tag)
+  {
+    if (SiteSetting::find()->where(['param' => 'activeBannersTitle'])->andWhere(['tag' => $tag])->exists()) {
+      $model = SiteSetting::find()->where(['param' => 'activeBannersTitle'])->andWhere(['tag' => $tag])->one();
     } else {
       $model = new SiteSetting();
     }

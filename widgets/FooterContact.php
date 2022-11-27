@@ -56,6 +56,7 @@ class FooterContact extends \yii\bootstrap4\Widget
       $titarray = null;
     }
     return $this->render('contact_footer', [
+      'footerImage' => SiteSetting::find()->where(['param' => 'image-footer'])->one(),
       'data' => $this->cityData,
       'kontakty' => $kontakty,
       'titarray' => $titarray

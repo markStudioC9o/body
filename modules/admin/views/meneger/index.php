@@ -1,7 +1,7 @@
 
 <?
-use mihaildev\elfinder\InputFile;
-use mihaildev\elfinder\ElFinder;
+use \mihaildev\elfinder\InputFile;
+use \mihaildev\elfinder\ElFinder;
 use yii\web\JsExpression;
 mihaildev\elfinder\Assets::noConflict($this);
 

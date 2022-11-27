@@ -58,15 +58,19 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
+          <li class="nav-item">
+              <a href="/admin/setting" class="nav-link">
+                <p>Параметры</p>
+              </a>
+            </li>
+
             <li class="nav-item">
               <a href="/admin/setting/head" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
                 <p>Настройки шапки</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/admin/color-setting" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
                 <p>Цветовые настройки</p>
               </a>
             </li>
