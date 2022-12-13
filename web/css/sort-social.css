@@ -1,0 +1,29 @@
+.tabLi{
+  padding: 10px;
+  background-color: #ddd;
+  color: #555  
+}
+#treeSortSoc li{
+  padding: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+
+}
+#treeSortSoc li.prytir{
+  border-bottom: 30px solid #ddd;
+}
+.arrbuf{
+  display: flow-root;
+  float: right;
+}
+.removeTab,
+.addTab{
+  cursor: pointer;
+  padding: 3px 5px;
+  font-size: 15px;
+  display: block;
+  width: fit-content;
+  float: right;
+  border-radius: 15px;
+  border: 1px solid #ddd
+}

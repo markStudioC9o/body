@@ -1,0 +1,36 @@
+.content-text-redactor{
+  margin-bottom: 11px;
+}
+.content-text-redactor .contrel-text{
+  font-size: 15px;
+  line-height: 21px;
+}
+.block-tex-title h1.tit_elm{
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+h2.tit_elm{
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 39px;
+}
+.ul-wrap.croce li:before{
+  margin: 0;
+  left: -12px;
+}
+.ul-wrap.croce li{
+  margin-left: 15px;
+}
+.ul-wrap.check-list li:before{
+  margin: 0;
+  left: -12px;
+}
+.ul-wrap.check-list li{
+  margin-left: 15px;
+}
+.ul-wrap ul{
+  font-size: 15px;
+  line-height: 24px;
+}

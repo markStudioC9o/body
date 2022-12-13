@@ -1,0 +1,310 @@
+.bb-arw-card {
+    background-color: #FAFAFA;
+    border-radius: 5px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    font-family: 'Stem', system-ui, ui-sans-serif, sans-serif;
+}
+
+.bb-arw-card_final {
+    background-image: url(./visuals/bg-layer-3.png), url(./visuals/bg-layer-2.png), url(./visuals/bg-layer-1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 72.75541795665634% 48.22485207100592%, 100% 100%, 100% 100%;
+    color: #00A6CA;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    text-align: center;
+}
+
+.bb-arw-card__header {
+    color: #00A6CA;
+    text-align: center;
+}
+
+.bb-arw-card__headline {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.bb-arw-card__subline {
+    font-weight: 500;
+}
+
+.bb-arw-card__headline,
+.bb-arw-card__subline {
+    margin-bottom: unset;
+    margin-top: unset;
+}
+
+.bb-arw-card__links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bb-arw-card__link {
+    color: #00A6CA;
+    font-size: 300;
+}
+
+.bb-arw-card__link:any-link:not(:hover) {
+    
+}
+.bb-arw-card__link:hover {
+  text-decoration: underline;
+  color: #00A6CA;
+}
+
+.bb-arw-card__button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 1023px) {
+    .bb-arw-card {
+        padding: 20px;
+        width: 350px;
+    }
+
+    .bb-arw-card_final {
+        height: 366px;
+        padding: 126px 64px;
+    }
+
+    .bb-arw-card__headline {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .bb-arw-card__subline {
+        font-size: 16px;
+        line-height: 16px;
+        margin-top: 7px;
+    }
+
+    .bb-arw-card__tabs {
+        margin-top: 17px;
+    }
+
+    .bb-arw-card__form {
+        margin-top: 3px;
+    }
+
+    .bb-arw-card__banner {
+        height: 184px;
+        width: 309px;
+    }
+
+    .bb-arw-card__field {
+        margin-top: 10px;
+    }
+
+    .bb-arw-card__links {
+        margin-top: 5px;
+    }
+
+    .bb-arw-card__link {
+        font-size: 10px;
+        line-height: 13px;
+    }
+
+    .bb-arw-card__button {
+        margin-top: 20px;
+    }
+
+    .bb-arw-card__privacy-policy {
+        margin-top: 8px;
+        
+    }
+
+    .bb-arw-card__footer {
+        margin-top: 24px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .bb-arw-card {
+        padding: 18px;
+        width: 246px;
+    }
+
+    .bb-arw-card_final {
+        height: 257px;
+        padding: 88px 45px;
+    }
+
+    .bb-arw-card__headline {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .bb-arw-card__subline {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 5px;
+    }
+
+    .bb-arw-card__tabs {
+        margin-top: 9px;
+    }
+
+    .bb-arw-card__form {
+        margin-top: 9px;
+    }
+
+    .bb-arw-card__banner {
+        height: 140px;
+        width: 210px;
+    }
+
+    .bb-arw-card__field {
+        margin-top: 6px;
+    }
+
+    .bb-arw-card__links {
+        margin-top: 4px;
+    }
+
+    .bb-arw-card__link {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .bb-arw-card__button {
+        margin-top: 20px;
+    }
+
+    .bb-arw-card__privacy-policy {
+        margin-top: 5px;
+        
+    }
+
+    .bb-arw-card__footer {
+        margin-top: 19px;
+    }
+}
+
+@media (min-width: 1366px) and (max-width: 1599px) {
+    .bb-arw-card {
+        padding: 21px;
+        width: 277px;
+    }
+
+    .bb-arw-card_final {
+        height: 290px;
+        padding: 100px 50px;
+    }
+
+    .bb-arw-card__headline {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .bb-arw-card__subline {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .bb-arw-card__tabs {
+        margin-top: 10px;
+    }
+
+    .bb-arw-card__form {
+        margin-top: 9px;
+    }
+
+    .bb-arw-card__banner {
+        height: 157px;
+        width: 235px;
+    }
+
+    .bb-arw-card__field {
+        margin-top: 7px;
+    }
+
+    .bb-arw-card__links {
+        margin-top: 4px;
+    }
+
+    .bb-arw-card__link {
+        font-size: 9px;
+        line-height: 11px;
+    }
+
+    .bb-arw-card__button {
+        margin-top: 22px;
+    }
+
+    .bb-arw-card__privacy-policy {
+        margin-top: 6px;
+        
+    }
+
+    .bb-arw-card__footer {
+        margin-top: 21px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .bb-arw-card {
+        padding: 24px;
+        width: 323px;
+    }
+
+    .bb-arw-card_final {
+        height: 338px;
+        padding: 118px 60px;
+    }
+
+    .bb-arw-card__headline {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .bb-arw-card__subline {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .bb-arw-card__tabs {
+        margin-top: 12px;
+    }
+
+    .bb-arw-card__form {
+        margin-top: 10px;
+    }
+
+    .bb-arw-card__banner {
+        height: 184px;
+        width: 275px;
+    }
+
+    .bb-arw-card__field {
+        margin-top: 8px;
+    }
+
+    .bb-arw-card__links {
+        margin-top: 5px;
+        margin-bottom: 2px;
+    }
+
+    .bb-arw-card__link {
+        font-size: 10px;
+        line-height: 13px;
+    }
+
+    .bb-arw-card__button {
+        margin-top: 25px;
+    }
+
+    .bb-arw-card__privacy-policy {
+        margin-top: 8px;
+        
+    }
+
+    .bb-arw-card__footer {
+        margin-top: 15px;
+    }
+}
